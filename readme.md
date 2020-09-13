@@ -2,11 +2,11 @@
 
 ## Project
 
-Link to completed project [here](http://finance-tracker.surge.sh/)
+Link to completed project [here](https://haven-homes.netlify.app/)
 
-Link to project frontend on GitHub [here](https://github.com/weilyl/project-3-frontend)
+Link to project frontend on GitHub [here](https://github.com/infiniteloom/project4-frontend)
 
-Link to project backend on GitHub [here](https://github.com/weilyl/project-3-backend)
+Link to project backend on GitHub [here](https://github.com/infiniteloom/project4-backend)
 
 ## Project Schedule
 
@@ -21,7 +21,7 @@ Link to project backend on GitHub [here](https://github.com/weilyl/project-3-bac
 | Day 4 | Bootstrap modals - complete login & register for Buyer & Realtor | Incomplete |
 | Day 5 | Bootstrap modals - connect create/edit functionality to backend  | Incomplete |
 | Day 5 | Create Realtor admin list view                                   | Incomplete |
-| Day 6 | CSS styling & finetuning UX for error handling & required fields | Incomplete |
+| Day 6 | CSS styling & fine-tuning UX for error handling & required fields| Incomplete |
 | Day 7 | Add sort/filter features to list view                            | Incomplete |
 | Day 8 | Add Map functionality with Geopy                                 | Incomplete |
 | Day 9 | Final Touches and Present                                        | Incomplete |
@@ -38,6 +38,43 @@ Haven is a web application to showcase real estate listings. Haven is available 
 The front-end is built with HTML, CSS and JavaScript using Vue.js and Bootstrap. 
 The backend is built with Python and PostgreSQL using Django. 
 
+
+## Wireframes
+#### Mobile:
+
+- [Home Page](https://res.cloudinary.com/infiniteloom/image/upload/v1599963622/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Landing_kd4h3z.png)
+- [Home Page - Menu Expanded](https://res.cloudinary.com/infiniteloom/image/upload/v1599963622/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Landing_Menu_Expanded_dt8jr2.png)
+- [Buyer Login](https://res.cloudinary.com/infiniteloom/image/upload/v1599963621/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Buyer_Login_cv7rcc.png)
+- [Buyer Register](https://res.cloudinary.com/infiniteloom/image/upload/v1599963621/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Buyer_Register_gganag.png)
+- [Realtor Login](https://res.cloudinary.com/infiniteloom/image/upload/v1599963621/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Realtor_Login_e5u9bm.png)
+- [Realtor Register](https://res.cloudinary.com/infiniteloom/image/upload/v1599963622/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Realtor_Register_byhrxo.png)
+- [Listings - List View](https://res.cloudinary.com/infiniteloom/image/upload/v1599963622/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Listings_ed90y4.png)
+- [Realtor Admin Panel]()
+- [Create Listings Modal]()
+
+
+#### Web:
+- [Home Page](https://res.cloudinary.com/infiniteloom/image/upload/v1599963504/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Landing_uqntdt.png)
+- [Home Page - User Menu Expanded](https://res.cloudinary.com/infiniteloom/image/upload/v1599965100/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Listings_User_Menu_Expanded_mp8vtz.png)
+- [Buyer Login](https://res.cloudinary.com/infiniteloom/image/upload/v1599963503/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Buyer_Login_tclvje.png)
+- [Buyer Register](https://res.cloudinary.com/infiniteloom/image/upload/v1599963504/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Buyer_Register_rh0l2c.png)
+- [Realtor Login](https://res.cloudinary.com/infiniteloom/image/upload/v1599963503/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Realtor_Login_d1pqyb.png)
+- [Realtor Register](https://res.cloudinary.com/infiniteloom/image/upload/v1599963502/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Realtor_Register_mwyvvw.png)
+- [Listings - List View](https://res.cloudinary.com/infiniteloom/image/upload/v1599966783/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Listings_List_ejrkp2.png)
+- [Listings - Map View](https://res.cloudinary.com/infiniteloom/image/upload/v1599966391/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Listings_Map_View_User_Menu_Expanded_oszn5d.png)
+- [Realtor Admin Panel]()
+- [Create Listings Modal]()
+
+#### Tablet:
+- [Home Page](https://res.cloudinary.com/infiniteloom/image/upload/v1599963504/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Landing_uqntdt.png)
+- [Home Page - User Menu Expanded]()
+- [Buyer Login](https://res.cloudinary.com/infiniteloom/image/upload/v1599963503/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Buyer_Login_tclvje.png)
+- [Buyer Register](https://res.cloudinary.com/infiniteloom/image/upload/v1599963504/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Buyer_Register_rh0l2c.png)
+- [Realtor Login](https://res.cloudinary.com/infiniteloom/image/upload/v1599963503/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Realtor_Login_d1pqyb.png)
+- [Realtor Register](https://res.cloudinary.com/infiniteloom/image/upload/v1599963502/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Realtor_Register_mwyvvw.png)
+- [Listings - List View]()
+- [Realtor Admin Panel]()
+- [Create Listings Modal]()
 
 
 ##User Stories
@@ -92,48 +129,6 @@ After a half an hour of browsing and saving more favorite listings, Cleo wants t
 Each saved listing has an image and details of the home beneath the image as well as a hypertext that reads “Notes +.” He clicks on this text and an empty text field unfurls. He leaves a note, “Solar power but no deck” and clicks save. The text field becomes read-only and closes automatically. 
 
 Cleo really likes one house in particular and would like to speak to an agent about it. He clicks on the link to “Contact Agent” and a modal pops up with an email form. In the footer of the modal, he sees the name of the real estate agent, as well as the agency’s name and phone number. He decides to call them and inquire further about the listing. 
-
-
-
-
-
-
-## Wireframes
-#### Mobile:
-
-- [Home Page](https://res.cloudinary.com/infiniteloom/image/upload/v1599963622/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Landing_kd4h3z.png)
-- [Home Page - Menu Expanded](https://res.cloudinary.com/infiniteloom/image/upload/v1599963622/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Landing_Menu_Expanded_dt8jr2.png)
-- [Buyer Login](https://res.cloudinary.com/infiniteloom/image/upload/v1599963621/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Buyer_Login_cv7rcc.png)
-- [Buyer Register](https://res.cloudinary.com/infiniteloom/image/upload/v1599963621/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Buyer_Register_gganag.png)
-- [Realtor Login](https://res.cloudinary.com/infiniteloom/image/upload/v1599963621/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Realtor_Login_e5u9bm.png)
-- [Realtor Register](https://res.cloudinary.com/infiniteloom/image/upload/v1599963622/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Realtor_Register_byhrxo.png)
-- [Listings - List View](https://res.cloudinary.com/infiniteloom/image/upload/v1599963622/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Listings_ed90y4.png)
-- [Realtor Admin Panel]()
-- [Create Listings Modal]()
-
-
-#### Web:
-- [Home Page](https://res.cloudinary.com/infiniteloom/image/upload/v1599963504/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Landing_uqntdt.png)
-- [Home Page - User Menu Expanded](https://res.cloudinary.com/infiniteloom/image/upload/v1599965100/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Listings_User_Menu_Expanded_mp8vtz.png)
-- [Buyer Login](https://res.cloudinary.com/infiniteloom/image/upload/v1599963503/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Buyer_Login_tclvje.png)
-- [Buyer Register](https://res.cloudinary.com/infiniteloom/image/upload/v1599963504/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Buyer_Register_rh0l2c.png)
-- [Realtor Login](https://res.cloudinary.com/infiniteloom/image/upload/v1599963503/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Realtor_Login_d1pqyb.png)
-- [Realtor Register](https://res.cloudinary.com/infiniteloom/image/upload/v1599963502/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Realtor_Register_mwyvvw.png)
-- [Listings - List View](https://res.cloudinary.com/infiniteloom/image/upload/v1599966783/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Listings_List_ejrkp2.png)
-- [Listings - Map View](https://res.cloudinary.com/infiniteloom/image/upload/v1599966391/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Listings_Map_View_User_Menu_Expanded_oszn5d.png)
-- [Realtor Admin Panel]()
-- [Create Listings Modal]()
-
-#### Tablet:
-- [Home Page](https://res.cloudinary.com/infiniteloom/image/upload/v1599963504/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Landing_uqntdt.png)
-- [Home Page - User Menu Expanded]()
-- [Buyer Login](https://res.cloudinary.com/infiniteloom/image/upload/v1599963503/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Buyer_Login_tclvje.png)
-- [Buyer Register](https://res.cloudinary.com/infiniteloom/image/upload/v1599963504/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Buyer_Register_rh0l2c.png)
-- [Realtor Login](https://res.cloudinary.com/infiniteloom/image/upload/v1599963503/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Realtor_Login_d1pqyb.png)
-- [Realtor Register](https://res.cloudinary.com/infiniteloom/image/upload/v1599963502/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Realtor_Register_mwyvvw.png)
-- [Listings - List View]()
-- [Realtor Admin Panel]()
-- [Create Listings Modal]()
 
 
 
