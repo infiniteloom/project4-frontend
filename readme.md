@@ -169,38 +169,37 @@ The functionality of Haven.com is divided into two separate lists: MPV and PostM
 
 #### MVP
 
-| Component                     | Priority | Estimated Time | Time Allotted | Actual Time |
-| ----------------------------- | :------: | :------------: | :------------: | :---------: |
-| Hamburger menu/Navbar (mobile-first)  |    H     |   1 hr      |     10 hrs       |     2 hrs     |
-| Sign In Modal                 |    H     |     3 hrs      |      3 hrs       |     1.5 hrs   |
-| Input Modal                   |    H     |     3 hrs      |      3 hrs       |     1.5 hrs   |
-| Table Template                |    H     |     3 hrs      |      10 hrs      |     5 hrs     |
-| Vue.js                        |    M     |     3 hrs      |      5 hrs       |     5 hrs     |
-| Average and totals            |    H     |     3 hrs      |      1hr       |     1 hr     |
-| CSS (Bootstrap & D3.js)       |    H     |      3hrs      |      17 hrs      |     8hrs     |
-| D3.js Chart & Table           |    H     |     2 hrs      |      10 hrs       |     10hrs     |
-| Total                         |    H     |     23 hrs     |      59 hrs      |    34 hrs     |
+| Component                     | Priority | Estimated Time | Time Invested | Actual Time |
+| ----------------------------- | :------: | :------------: | :------------:| :---------: |
+| Bootstrap nav, footer         |    H     |     1 hr       |       hrs     |      hrs    |
+| Log in Modal (realtor,buyer)  |    H     |     3 hrs      |       hrs     |      hrs    |
+| Register Modal (realtor,buyer)|    H     |     3 hrs      |       hrs     |      hrs    |
+| List View (Bootstrap Grid Gallery)|    H |     1 hr       |       hrs     |      hrs    |
+| Create, edit modals           |    H     |     3 hrs      |       hrs     |      hrs    |
+| Realtor admin panel           |    M     |     2 hrs      |       hrs     |      hr     |
+| Error handling for required fields in modals|    L     |    2 hrs       |      hr       |     hr     |
+| CSS Fine-tuning UX            |    M     |     3 hrs      |       hrs     |      hr     |
+| Total                         |    H     |     18 hrs     |       hrs     |      hrs    |
 
 #### PostMVP
 
 | Component                                      | Priority | Estimated Time | Time Invested | Actual Time |
 | ---------------------------------------------- | :------: | :------------: | :------------: | :---------: |
-| About, Contact, etc. for the footer            |    L     |     2 hrs      |      8 hrs     |     12 hrs  |
-| More charts (line graph, bar chart)           |    L     |     4 hrs      |      -hr       |     -hr     |
-| Filter by month, year, etc.                    |    H     |     4 hrs      |      -hr       |     -hr     |
-| Sort by category                               |    H     |     4 hrs      |      -hr       |     -hr     |
-| Choose specific category/date to look at       |    H     |     4 hrs      |      -hr       |     -hr     |
-| Logo                                           |    L     |    2.5 hrs     |      1 hr       |     1 hr     |
-| Landing page                                        |    L     |    3 hrs     |      1 hr       |     2 hr     |
-| Animations                                           |    L     |    2 hrs     |      1 hr       |     1 hr     |
-| Refactoring                                     | L | 10 hrs | -hrs | - hrs|
-| Total                                          |    M     |     35.5 hrs    |      11 hrs      |     16 hrs     |
+| Sort Functions (price, newest, etc.)           |    H     |     2 hrs      |      hrs      |      hrs   |
+| Buyer ability to comment on favorite homes     |    H     |     4 hrs      |      hr       |     hr     |
+| Overlaying and connecting hearts to favorites list|    H     |    4 hrs       |      hr       |     hr     |
+| Creating maps view                             |    M     |     5 hrs      |      hr       |     hr     |
+| AWS File Drop (Realtor create listing view)    |    M     |     5 hrs      |      hr       |     hr     |
+| "New" Listing sticker on new listings          |    L     |     2 hrs      |      hr       |     hr     |
+| Sending email confirmations of registration    |    L     |    2 hrs       |      hr       |     hr     |
+| Autologin                                      |    L     |    2 hrs       |      hr       |     hr     |
+| Error handling - trying to save homes w/out login|    L     |    2 hrs       |      hr       |     hr     |
+| Total                                          |          |     28 hrs   |      hrs      |    hrs     |
 
 ## Additional Libraries
 
 - Vue.js (DOM manipulation, sending and retrieving data to and from the backend)
 - Bootstrap (nav bar, modal menus, grid gallery, footer, mobile responsiveness)
-- Geopy (create longitude and latitude coordinates from street address in data base, display on Google Maps)
 
 ## Code Snippet
 
