@@ -134,7 +134,7 @@ Cleo really likes one house in particular and would like to speak to an agent ab
 
 ## Time/Priority Matrix
 
-[A graph of all features](https://res.cloudinary.com/infiniteloom/image/upload/v1600031319/Unit%2004%20-%20Project%20-%20Haven/Frontend_Time_Priority_Matrix_vppgu6.jpg) based on their priority and the time estimated to complete each.
+[A graph of all features](https://res.cloudinary.com/dssciwyew/image/upload/v1598141818/Priority%20Matrix%20Frontend%20P3.png) based on their priority and the time estimated to complete each.
 
 ### MVP/PostMVP
 
