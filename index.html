@@ -1,0 +1,125 @@
+<!DOCTYPE <!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Haven</title>
+        <meta name="description" content="Discover your perfect home with Haven.com">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="style.css">
+        <script src="https://use.fontawesome.com/releases/v5.14.0/js/all.js" data-auto-a11y="true"></script>
+        <script src="app.js" defer></script>
+    </head>
+
+    <body>
+        <first-component mytext="Hello" mycolor="red"> </first-component>
+        <first-component mytext="Goodbye" mycolor="blue"></first-component>
+        <first-component mytext="Come back soon!" mycolor="green"></first-component>
+        <fancy-button mylabel="One"></fancy-button>
+        <fancy-button mylabel="Two"></fancy-button>
+        <fancy-button mylabel="Three"></fancy-button>
+        <border-div div-style="Hey" ><p>Hey This is my div </p></border-div>
+
+
+        <script>
+
+
+            // This defines our first component
+            class FirstComponent extends HTMLElement {
+                constructor(){
+                    super()
+                    const text = this.getAttribute ("mytext")
+                    const color = this.getAttribute("mycolor")
+                    console.log(text, color)
+                    this.innerHTML = `<h2 style="color:${color}"> ${text} </h2>`
+                }
+            }
+            // Register our component with the browser: 
+            customElements.define('first-component', FirstComponent)
+
+
+
+            class FancyButton extends HTMLElement{
+                constructor(){
+                    super()
+                    const label = this.getAttribute
+                    ("mylabel")
+                    const style = "background-color: white; padding: 6px; border: 2px solid blue; font-size: 20px;"
+                    
+                    this.innerHTML = `<button style="${style}">${label}</button>`
+                }
+            }
+            customElements.define('fancy-button', FancyButton)
+
+
+
+
+            class BorderedDiv extends HTMLElement{
+                constructor(){
+                    super()
+                    console.log('reaching bordered div')
+                    const border = this.getAttribute("div-style")
+                    const background = "width: 200px; background-color: grey; border-radius: 5px;"
+                    this.innerHTML = `<div style="${background}">Hey Whats up</div>`
+                }
+                    
+            }
+            customElements.define('border-div', BorderedDiv)
+
+
+        </script>
+
+        <!-- 
+           
+           
+            <div class="navbar-right">
+                <form class="search-form form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button id="search-submit" class="btn my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars nav-white"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item nav-white">
+                            <a class="nav-link" href="#">Sign Up</a>
+                         </li>
+
+                        <li class="nav-item nav-white">
+                            <a class="nav-link" href="#">Login</a>
+                        </li>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class='far fa-user-circle nav-white'></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="#">Saved Homes</a>
+                                <a class="dropdown-item" href="#">Log Out</a>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="home-full-image">
+
+        </div>
+ -->
+
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

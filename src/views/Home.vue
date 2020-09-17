@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Mockup of grid gallery" src="https://res.cloudinary.com/infiniteloom/image/upload/v1600367647/Unit%2004%20-%20Project%20-%20Haven/Web_Listings_List_copy_nur1as.png">
+    <HelloWorld msg="All listings here in grid gallery view "/>
   </div>
 </template>
 

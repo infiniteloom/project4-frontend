@@ -33,6 +33,8 @@ Link to project backend on GitHub [here](https://github.com/infiniteloom/project
 ### Haven 
 <i>Ha•ven /ˈhāvən/ (noun) a place of safety or refuge.</i>
 
+Find your perfect home with Haven.com
+
 Haven is a web application to showcase real estate listings. Haven is available for public browsing and offers additional features such as saving favorite homes and full CRUD functionality for realtors upon registration.
 
 The front-end is built with HTML, CSS and JavaScript using Vue.js and Bootstrap. 
@@ -40,6 +42,10 @@ The backend is built with Python and PostgreSQL using Django.
 
 
 ## Wireframes
+#### Logo:
+
+- [Logo](https://res.cloudinary.com/infiniteloom/image/upload/v1599965230/Unit%2004%20-%20Project%20-%20Haven/haven-logo-black_sysaf0.png)
+
 #### Mobile:
 
 - [Home Page](https://res.cloudinary.com/infiniteloom/image/upload/v1599963622/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Landing_kd4h3z.png)

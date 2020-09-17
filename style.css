@@ -1,0 +1,67 @@
+html{
+    scroll-behavior: smooth;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+li{
+    text-decoration: none;
+    list-style: none;
+}
+
+
+
+/* Navbar styling */
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+#logo-white{
+    height: 30px;
+}
+.navbar-right{
+    display: flex;
+}
+.search-form{    
+    margin-block-end: 0;
+    flex-wrap: nowrap;
+}
+.form-control{
+    padding: 2px;
+    font-size: .8rem;
+    width: auto;
+}
+#search-submit{
+    padding: 2px;
+    font-size: .8rem;
+}
+#navbarNavDropdown{
+    z-index: 100;
+}
+.nav-white{
+    color: white!important;
+}
+.nav-black{
+    color: black!important;
+}
+
+
+
+
+/* Home Page */
+.home-full-image{
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    z-index: -10000;
+    background-image: url("https://res.cloudinary.com/infiniteloom/image/upload/v1600093975/Unit%2004%20-%20Project%20-%20Haven/houses/b57cb3fe060b4e365f4756e99b2b4287w-c257231xd-w685_h860_q80_d9x7oq.jpg");
+}
