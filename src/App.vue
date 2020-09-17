@@ -4,9 +4,11 @@
       <Header/>
     </div>
 
-    <Gridgallery v-bind:houses="housedata"/>  
-      <!-- Binds to the 'data' values in the script section below. 
-      prop name 'testblock' is user created here? Value must equal name of data.  -->
+    <div class="body-container">
+      <Gridgallery v-bind:houses="housedata"/>  
+            <!-- Binds to the 'data' values in the script section below. 
+            prop name 'testblock' is user created here? Value must equal name of data.  -->
+    </div>
     
     <router-view/>
     <div id="footer">
@@ -62,8 +64,24 @@ export default {
           zip:'05060',
           image:'https://res.cloudinary.com/infiniteloom/image/upload/v1600093976/Unit%2004%20-%20Project%20-%20Haven/houses/b57cb3fe060b4e365f4756e99b2b4287w-c256612xd-w685_h860_q80_gg7dvw.jpg'
         },
+        {
+          id:3,
+          street: "66 Hawk Mountain Drive",
+          price: "$290,000", 
+          bed: 2,
+          bath: 2,
+          home_size: 1900,
+          lot_size: 3,
+          city: 'Burlington',
+          state: 'VT', 
+          zip:'44331',
+          image:'https://res.cloudinary.com/infiniteloom/image/upload/v1600093976/Unit%2004%20-%20Project%20-%20Haven/houses/b57cb3fe060b4e365f4756e99b2b4287w-c256612xd-w685_h860_q80_gg7dvw.jpg'
+        },
       ]
     }
+  },
+  methods(){
+
   }
 
 }
@@ -81,6 +99,7 @@ export default {
 
 #nav {
   padding: 30px;
+  margin: 0 auto;
 }
 
 #nav a {
@@ -90,5 +109,9 @@ export default {
 
 #nav a.router-link-exact-active {
   color: rgb(34, 34, 34);
+}
+
+.body-container{
+  margin: 0 auto;
 }
 </style>

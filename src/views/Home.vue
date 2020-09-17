@@ -1,18 +1,23 @@
 <template>
-  <div class="home">
-    <img alt="Mockup of grid gallery" src="https://res.cloudinary.com/infiniteloom/image/upload/v1600367647/Unit%2004%20-%20Project%20-%20Haven/Web_Listings_List_copy_nur1as.png">
-    <HelloWorld msg="All listings here in grid gallery view "/>
+<div>
+
+    <div class="body-container">
+      <Gridgallery v-bind:houses="housedata"/>  
+            <!-- Binds to the 'data' values in the script section below. 
+            prop name 'testblock' is user created here? Value must equal name of data.  -->
+    </div>
+
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Gridgallery from '@/components/Gridgallery.vue'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    Gridgallery
   }
 }
 </script>
