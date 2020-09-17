@@ -1,7 +1,7 @@
 <template>
 <div>
 
-    <div class="body-container">
+    <div class="list-view-container">
       <Gridgallery v-bind:houses="housedata"/>  
             <!-- Binds to the 'data' values in the script section below. 
             prop name 'testblock' is user created here? Value must equal name of data.  -->

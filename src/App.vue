@@ -5,12 +5,13 @@
     </div>
 
     <div class="body-container">
+      <router-view/>
       <Gridgallery v-bind:houses="housedata"/>  
             <!-- Binds to the 'data' values in the script section below. 
             prop name 'testblock' is user created here? Value must equal name of data.  -->
     </div>
     
-    <router-view/>
+
     <div id="footer">
       <Footer/>
     </div>
@@ -34,9 +35,11 @@ export default {
     Footer,
     Gridgallery
   },
-  data() {
+  data: function() {
     return {
       msg:'hello',
+      loggedIn: false,
+      token: '',
       housedata: [
         {
           id:1,
