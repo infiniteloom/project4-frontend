@@ -83,16 +83,16 @@ The backend is built with Python and PostgreSQL using Django.
 - [Create Listings Modal]()
 
 
-##User Stories
+## User Stories
 
-###User types:
+### User types:
 - **Public users** may browse available homes but will not be able to save favorite homes without registering for an account. 
 - **Realtor users** may sign up to create, delete or update a listing and manage their listings via a simple admin panel.
 - **Home buyer users** may sign up to browse available homes and save their favorite homes to a list where they can also append personal notes to each home. 
 
 <br/>
 
-####Public User
+#### Public User
 Angelica, the casual browser:
 
 Angelica has a dream to move to a house with a garden “some day.” She is intrigued by aesthetics and loves to casually browse the homes on Haven.com while she suns on her back porch. She is not a serious buyer and therefore does not feel motivated to sign up or reach out to agents for any of her favorite homes. 
@@ -101,7 +101,7 @@ Angelica periodically returns to Haven.com to browse but does not have any furth
 
 <br/>
 
-####Realtor User
+#### Realtor User
 Rachel, the realtor:
 
 Rachel is a realtor in Ulster County, New York. Rachel works for Halstead Realtors, Inc. and would like to increase the exposure of the listings she manages. She hears of Haven.com and browses the existing listings on her mobile phone. She feels like the aesthetic is clean and highlights the featured homes well. She decides to create an account. Rachel navigates to the menu and selects ‘Sign Up’ and finds the prompt in the modal footer, “Are you a real estate agent? Register here” and continues to fill in the required fields. 
@@ -118,7 +118,7 @@ After lunch, Rachel gets word from a client that they are no longer interested i
 
 <br/>
 
-####Home Buyer User
+#### Home Buyer User
 
 Cleo, the motivated buyer:
 
