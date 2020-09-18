@@ -2,40 +2,13 @@
 
     <div class='login-view-container'>
         <b-field>
-            <b-input placeholder="email" type="email"></b-input>
+            <b-input placeholder="email" v-model="username" type="email"></b-input>
         </b-field>
         <b-field>
-            <b-input placeholder="User handle (custom validation for only lowercase)"
-              type="text"
-              required
-              validation-message="Only lowercase is allowed"
-              pattern="[a-z]*">
-            </b-input>
-        </b-field>
-
-
-        <b-field label="Username"
-            type="is-danger"
-            message="This username is invalid">
-            <b-input type="text"
-                value="user"
-                v-model="username"
-                maxlength="30">
-            </b-input>
-        </b-field>
-
-        <b-field label="Password"
-            type="is-warning"
-            :message="['Password is too short', 'Password must have at least 8 characters']">
             <b-input value="" type="password" v-model="password" maxlength="30" placeholder="password"></b-input>
         </b-field>
 
-
-
-
         <b-button @click="handleLogin">Login</b-button>
-
-
         <!--FOR REGISTERING
         <b-field label="Username"
         type="is-success"
@@ -100,13 +73,8 @@ export default{
 <style>
     .login-view-container{
         width: 50%;
-        margin: 0 auto;
+        margin: 0 auto; 
+        padding: 100px 20px 100px 20px;
     }
-    .help.is-danger,.help.is-warning, .taginput .is-danger.taginput-container.is-focusable, .is-danger.textarea, .is-danger.input{
-        color: darkred;
-        border-color: darkred;
-    }
-    .taginput .is-warning.taginput-container.is-focusable, .is-warning.textarea, .is-warning.input{
-        border-color: darkred;
-    }
+
 </style>
