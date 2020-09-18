@@ -1,6 +1,6 @@
 <template>
     <div class="house-info">
-        <!-- Insert home data from db as captions to each listing. -->
+        <!-- Inserts home data from db as captions to each listing. -->
         <p><strong>{{house.bed}}</strong>bed  <strong>{{house.bath}}</strong>bath  <strong>{{house.home_size}}</strong>sqft  <strong>{{house.lot_size}}</strong>acre lot</p>
         <p>{{house.street}}</p>
         <p>{{house.city}}, {{house.state}} {{house.zip}}</p>
@@ -17,11 +17,12 @@ export default {
 </script>
 
 
-
-
-
 <style scoped>  
     .house-info{
-        padding: 10px;
+        padding-top: 5px;
+        padding-bottom: 10px;
+    }
+    .house-info p{
+        font-size: .8em;
     }
 </style>

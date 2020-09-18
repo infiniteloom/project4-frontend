@@ -1,10 +1,12 @@
 <template>
   <div class="gallery-container">
     <!-- For each house in house listings, print all properties/values! -->
-    <div class="gallery-item" v-bind:key="house.id" v-for="house in housedata" >
+    <div class="gallery-item" v-bind:key="house.id" v-for="house in housedata">
+      <div>
+        
+      </div>
       <img v-bind:src="house.image">
-        <Houseinfo v-bind:house="housedata"/>
-        <br/>
+      <Houseinfo v-bind:house="house"/>  
     </div>
   </div>
 
@@ -28,7 +30,8 @@ export default {
 
 <style >
   .gallery-container{
-    width: 90%;
+    background-color: #fafafa;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -47,5 +50,6 @@ export default {
     height: auto;
     padding: 10px;
   }
+
 
 </style>

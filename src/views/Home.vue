@@ -33,7 +33,9 @@ export default {
     max-width: 1200px;
   }
   #brand-subtitle{
-    padding: 30px;
+    color: #a59494;
+    font-style: italic;
+    padding: 50px;
     width: 100%;
     text-align: center;
   }
