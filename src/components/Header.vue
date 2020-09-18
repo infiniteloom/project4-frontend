@@ -15,25 +15,26 @@
             <b-input placeholder="Search..."
                 type="search"
                 icon="magnify"
-                icon-clickable
-                @icon-click="searchIconClick">
+                icon-clickable>
             </b-input>
+            <!-- <b-input placeholder="Search..."
+              type="search"
+              icon="magnify"
+              icon-clickable
+              @icon-click="searchIconClick">
+            </b-input> -->
         </b-field>
         </b-navbar-item>
 
       </template>
-
-      <!-- <template slot="start">
-        <b-navbar-item href="#">
-          <router-link to="/">Search bar</router-link>
-        </b-navbar-item>
-      </template> -->
 
       <template slot="end">
         <b-navbar-item tag="div">
           <div class="buttons nav-right">
             <router-link to="/signup"><a class="button login-reg" href="#"><strong>Sign up</strong></a></router-link>
             <router-link to="/login"><a class="button login-reg"  v-bind:URL="URL">Log in</a></router-link>
+            <!-- <router-link to="/login"><a class="button login-reg"="URL">Log in</a></router-link> -->
+
            </div>
         </b-navbar-item>
         <b-navbar-item>
@@ -64,8 +65,8 @@ export default {
 
 <style>
 .header {
-    width: 100%;
-    margin: 0px auto;
+  width: 100%;
+  margin: 0px auto;
 }
 .navbar{
   background-color: rgba(255, 255, 255, 0);
@@ -75,19 +76,19 @@ export default {
   margin: 0;
 }
 .brand-subtitle{
-    width: 90%;
-    margin: 10px auto;
-    font-size: .7em;
-    font-weight: normal;
-    text-decoration: none;
+  width: 90%;
+  margin: 10px auto;
+  font-size: .7em;
+  font-weight: normal;
+  text-decoration: none;
 }
 .user-icon:after{
-    font-family: 'Font Awesome\ 5 Brands' , 'arial';
-   content: '\f007';
-   font-weight: normal;
-   font-style: normal;
-   margin:0px 0px 0px 10px;
-   text-decoration:none;
+  font-family: 'Font Awesome\ 5 Brands' , 'arial';
+  content: '\f007';
+  font-weight: normal;
+  font-style: normal;
+  margin:0px 0px 0px 10px;
+  text-decoration:none;
 
 }
 .button.login-reg, .user-drop{

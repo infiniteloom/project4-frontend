@@ -7,7 +7,7 @@
         <b-field>
             <b-input value="" type="password" v-model="password" maxlength="30" placeholder="password"></b-input>
         </b-field>
-
+        <p>{{URL}}</p>
         <b-button @click="handleLogin">Login</b-button>
         <!--FOR REGISTERING
         <b-field label="Username"
@@ -50,13 +50,17 @@ export default{
         //     })
         // },
         handleLogin: function(){
-            fetch(`${URL}/auth/users/login/`, {
+            console.log(` testing url ${URL}`)
+            console.log(`this props ${this.props}`)
+            // console.log($this.$props)
+            fetch(`http://127.0.0.1:8000/auth/users/login/`, {
                 method: 'post',
                 headers:{
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    username: this.email,
+                    username: this.username,
+                    email: this.username,
                     password: this.password
                 })
             })
