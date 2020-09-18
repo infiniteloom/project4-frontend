@@ -4,14 +4,14 @@
     <div id="nav">
       <Header v-bind:URL="URL" />
     </div>
-    <!-- {{houseData}} -->
-
+    {{$globalHouseData}}
+    <!-- {{$globalHouseData}} -->
     <div class="body-container">
       <router-view  @loggedIn="login($event)" />
     </div>
-    <!-- <div v-bind:key="house.id" v-for="house in houseData">
+    <div v-bind:key="house.id" v-for="house in $globalHouseData">
         {{house}}
-    </div> -->
+    </div>
       <Footer/>
 
   </div>
@@ -40,6 +40,7 @@ export default {
       loggedIn: false,
       tokens: {},
       houseData: null,
+
       URL: 'http://127.0.0.1:8000'
     }
   },
@@ -51,8 +52,15 @@ export default {
     }
   },
   beforeMount: function(){
+    this.$getHouseData()
+    console.log(`this is before mount house data ???????? ${this.$globalHouseData}`)
     // this.houseData = this.$getHouseData()
-    // fetch(`http://127.0.0.1:8000/api/listings/`)
+
+
+    //testing 
+    // this.$globalHouseData = this.$getHouseData()
+
+// fetch(`http://127.0.0.1:8000/api/listings/`)
     // // fetch('https://jsonplaceholder.typicode.com/users')
     //   .then(response => response.json())
     //   .then(data => {
