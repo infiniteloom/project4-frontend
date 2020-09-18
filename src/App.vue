@@ -100,6 +100,7 @@ export default {
 }
 
 #nav {
+  background-color: transparent;
   width: 100%;
   padding: 0;
   margin: 0 auto;

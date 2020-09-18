@@ -8,9 +8,9 @@
             alt="Ha•ven /ˈhāvən/ (noun) a place of safety or refuge. Find your perfect home with Haven.com"
           />
         </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/' }">
-          <p id="brand-subtitle">Ha•ven /ˈhāvən/ (noun) a place of safety or refuge.</p>
-        </b-navbar-item>
+        <!-- <b-navbar-item tag="router-link" :to="{ path: '/' }">
+
+        </b-navbar-item> -->
       </template>
 
       <template slot="start">
@@ -50,6 +50,7 @@ export default {
 .header {
     width: 90%;
     margin: 10px auto;
+    background-color: (255, 255, 255, 0);
 }
 .brand{
   padding: 0;

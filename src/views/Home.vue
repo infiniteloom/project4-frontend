@@ -1,29 +1,28 @@
 <template>
-<div>
-
+  <div>
     <div class="home-body-container">
       <div class="home-body">
-        <img id="home-wide-img" src="https://res.cloudinary.com/infiniteloom/image/upload/v1600093976/Unit%2004%20-%20Project%20-%20Haven/houses/wooden-wall-decor_dfkdfs.jpg">
+        <Featureimage/>
       </div>
+      <p id="brand-subtitle">Ha•ven /ˈhāvən/ (noun) a place of safety or refuge.</p>
       <div>
         <Gridgallery/>  
       </div>
-      
     </div>
-
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Gridgallery from '@/components/Gridgallery.vue'
+import Featureimage from '@/components/Featureimage.vue'
 
 export default {
   name: 'Home',
   components: {
-    Gridgallery
-  },
-  // props: ["housedata"] 
+    Gridgallery,
+    Featureimage
+  }
 }
 </script>
 
@@ -33,8 +32,9 @@ export default {
     width: 100%;
     max-width: 1200px;
   }
-  #home-wide-img{
+  #brand-subtitle{
+    padding: 30px;
     width: 100%;
-    max-width: 1200px;
+    text-align: center;
   }
 </style>

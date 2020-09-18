@@ -3,7 +3,7 @@
     <!-- For each house in house listings, print all properties/values! -->
     <div class="gallery-item" v-bind:key="house.id" v-for="house in housedata" >
       <img v-bind:src="house.image">
-        <Houseinfo v-bind:house="house"/>
+        <Houseinfo v-bind:house="housedata"/>
         <br/>
     </div>
   </div>
@@ -26,7 +26,7 @@ export default {
 };
 </script>
 
-<style>
+<style >
   .gallery-container{
     width: 90%;
     display: flex;
@@ -36,6 +36,9 @@ export default {
     justify-content: space-around;
     align-content: center;
   }
+  .gallery-container p{
+    font-size: .7fem;
+  }
 
   .gallery-item{
     flex-basis: 25%;
@@ -44,4 +47,5 @@ export default {
     height: auto;
     padding: 10px;
   }
+
 </style>
