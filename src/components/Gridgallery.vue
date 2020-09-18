@@ -1,18 +1,14 @@
 <template>
 
   <div class="gallery-container">
-    <!-- {{$globalHouseData}} -->
-    <!-- {{houseData}} -->
     <!-- For each house in house listings, print all properties/values! -->
-    <div class="gallery-item" v-bind:key="house.id" v-for="house in $globalHouseData">
-       {{house}}
+    <div class="gallery-item" v-bind:key="house.id" v-for="house in houseData">
+      <!-- {{house}} -->
+      <!-- <img v-bind:src="house.image1">
+      <p>{{house.street}}</p>
+      <p>{{house.city}}, {{house.state}} {{house.zip}}</p> -->
+      <Houseinfo v-bind:house="house"/>
       </div>
-      <div>
-     
-      <!-- <img v-bind:src="house.image1"> -->
-      <!-- <Houseinfo/>> -->
-      <!-- <Houseinfo v-bind:house="house"/>   -->
-    </div>
   </div>
 
 </template>
@@ -22,13 +18,26 @@
 
 <script>
 // Import info for the houses from the House Info component
-// import Houseinfo from './Houseinfo.vue';
+import Houseinfo from './Houseinfo.vue';
 
 export default {
   name: "Gridgallery",
   // houseData: null,
   components: {
-    // Houseinfo
+    Houseinfo
+  },
+  data: function() {
+    return {
+      houseData: null
+    }
+  },
+  beforeMount: function(){
+    fetch('http://127.0.0.1:8000/api/listings/')
+        .then(response => response.json())
+        .then(data => {
+            this.houseData = data.results
+            console.log(data.results)
+        })
   }
 };
 </script>

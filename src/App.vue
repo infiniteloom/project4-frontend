@@ -4,14 +4,11 @@
     <div id="nav">
       <Header v-bind:URL="URL" />
     </div>
-    {{$globalHouseData}}
-    <!-- {{$globalHouseData}} -->
+
     <div class="body-container">
       <router-view  @loggedIn="login($event)" />
     </div>
-    <div v-bind:key="house.id" v-for="house in $globalHouseData">
-        {{house}}
-    </div>
+
       <Footer/>
 
   </div>
@@ -50,33 +47,7 @@ export default {
       this.tokens = event
       this.$router.push('/')
     }
-  },
-  beforeMount: function(){
-    this.$getHouseData()
-    console.log(`this is before mount house data ???????? ${this.$globalHouseData}`)
-    // this.houseData = this.$getHouseData()
-
-
-    //testing 
-    // this.$globalHouseData = this.$getHouseData()
-
-// fetch(`http://127.0.0.1:8000/api/listings/`)
-    // // fetch('https://jsonplaceholder.typicode.com/users')
-    //   .then(response => response.json())
-    //   .then(data => {
-    //       this.houseData = data
-    //       console.log(data)
-    //   })
-  }  
-  // beforeMount: function (){
-  //   this.$axios.get('http://127.0.0.1:8000/api/listings/')
-  //   .then(res => {
-  //     this.houseData = res.data
-  //     // this.$globalHouseData = res.data
-  //     console.log(res.data)
-  //   })
-  //   // .then(console.log(` this is global hosue data: ${this.$globalHouseData}`))
-  // }
+  }
 }
 </script>
 
@@ -113,5 +84,8 @@ export default {
   flex-direction: flex-start;     
   width: 100%;
   max-width: 1200px;
+  min-height: 78vh;
+  min-height: -webkit-calc(100% - 186px);
+  min-height: -moz-calc(100% - 186px);
 }
 </style>
