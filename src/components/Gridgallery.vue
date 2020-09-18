@@ -1,7 +1,7 @@
 <template>
   <div class="gallery-container">
     <!-- For each house in house listings, print all properties/values! -->
-    <div class="gallery-item" v-bind:key="house.id" v-for="house in houses" >
+    <div class="gallery-item" v-bind:key="house.id" v-for="house in housedata" >
       <img v-bind:src="house.image">
         <Houseinfo v-bind:house="house"/>
         <br/>
@@ -22,7 +22,7 @@ export default {
   components: {
     Houseinfo
   },
-  props: ["houses"] 
+  props: ["housedata"] 
 };
 </script>
 
@@ -32,6 +32,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    margin: 0 auto;
     justify-content: space-around;
     align-content: center;
   }
@@ -41,7 +42,6 @@ export default {
     max-width: 400px;
     flex-grow: 1;
     height: auto;
-    /* margin: 2%; */
     padding: 10px;
   }
 </style>

@@ -5,10 +5,9 @@
     </div>
 
     <div class="body-container">
-      <router-view @loggedIn="login($event)" />
-      <Gridgallery v-bind:houses="housedata"/>  
-            <!-- Binds to the 'data' values in the script section below. 
-            prop name 'testblock' is user created here? Value must equal name of data.  -->
+      <router-view  @loggedIn="login($event)" />
+      <Gridgallery v-bind:housedata="housedata" />  
+      <!-- Passes the housedata down to the child Gridgallery component as "houses" prop  -->
     </div>
       <Footer/>
   </div>
@@ -28,6 +27,7 @@ export default {
   components: {
     Header,
     Footer,
+    // Home
     Gridgallery
   },
   data: function() {
@@ -90,18 +90,18 @@ export default {
 }
 </script>
 
-// Global Styling
+//  Global Styling
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
   color: #000000;
 }
 
 #nav {
-  padding: 30px;
+  width: 100%;
+  padding: 0;
   margin: 0 auto;
 }
 
@@ -116,5 +116,6 @@ export default {
 
 .body-container{
   margin: 0 auto;
+
 }
 </style>
