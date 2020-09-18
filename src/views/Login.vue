@@ -7,7 +7,7 @@
         <b-field>
             <b-input value="" type="password" v-model="password" maxlength="30" placeholder="password"></b-input>
         </b-field>
-        <p>{{URL}}</p>
+        <!-- <p>{{URL}}</p> -->
         <b-button @click="handleLogin">Login</b-button>
         <!--FOR REGISTERING
         <b-field label="Username"

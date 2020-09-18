@@ -41,7 +41,7 @@
            <div>
             <b-navbar-dropdown class="user-drop" label="User">     
               <b-navbar-item class="user-drop" href="#">
-                View Listings
+                <router-link to="/admin">Manage Listings</router-link>
               </b-navbar-item>
               <b-navbar-item class="user-drop" href="#">
                 Logout

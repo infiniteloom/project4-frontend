@@ -37,8 +37,8 @@ export default {
       loggedIn: false,
       tokens: {},
       houseData: null,
+      URL: 'http://127.0.0.1:8000',
 
-      URL: 'http://127.0.0.1:8000'
     }
   },
   methods:{
@@ -77,7 +77,6 @@ export default {
 }
 
 .body-container{
-  /* ********************* */
   margin: -70px auto; 
   display: flex;
   flex-direction: column;

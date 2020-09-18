@@ -7,6 +7,15 @@
         <p>{{house.city}}, {{house.state}} {{house.zip}}</p>
         <p>${{house.price}} </p>   
     </div>
+    <!-- If a realtor was logged in, show this div with edit/delete functions -->
+    <!-- <div class="admin-edit-delete-container" v-if="isRealtor">
+        <button class="admin-edit-delete">
+            Edit
+        </button>
+        <button class="admin-edit-delete">
+            Delete
+        </button>
+        </div> -->
 </template>
 
 

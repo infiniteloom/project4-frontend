@@ -6,7 +6,7 @@
       </div>
         <Brandsubtitle/>
       <div>
-        <Gridgallery/>  
+        <Gridgallery v-bind:houseData="houseData"/>  
       </div>
     </div>
   </div>
@@ -25,6 +25,19 @@ export default {
     Gridgallery,
     Featureimage,
     Brandsubtitle
+  },
+  data: function(){
+    return{
+      houseData: null
+    }
+  },
+  beforeMount: function(){
+    fetch('http://127.0.0.1:8000/api/listings/')
+        .then(response => response.json())
+        .then(data => {
+            this.houseData = data.results
+            console.log(data.results)
+        })
   }
 }
 </script>
