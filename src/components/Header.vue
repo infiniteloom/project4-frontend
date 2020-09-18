@@ -22,10 +22,12 @@
       <template slot="end">
         <b-navbar-item tag="div">
           <div class="buttons">
-            <a class="button is-light" href="#"><strong>Sign up</strong></a>
-            <a class="button is-light" href="./login">Log in</a>
-            <b-navbar-dropdown label="faUserCircle">
-              <font-awesome-icon :icon="['fa', 'user-icon']" />
+            <router-link to="/signup"><a class="button is-light" href="#"><strong>Sign up</strong></a></router-link>
+            <router-link to="/login"><a class="button is-light" href="#" v-bind:URL="URL">Log in</a></router-link>
+            <font-awesome-icon :icon="['fas', 'user']" />
+            <b-navbar-dropdown label="Account">            <font-awesome-icon :icon="['fas', 'user']" />
+
+              
               <b-navbar-item href="#">
                 View Listings
               </b-navbar-item>

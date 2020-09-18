@@ -1,21 +1,16 @@
 <template>
   <div id="app">
     <div id="nav">
-      <Header/>
+      <Header v-bind:URL="URL" />
     </div>
 
     <div class="body-container">
-      <router-view/>
+      <router-view @loggedIn="login($event)" />
       <Gridgallery v-bind:houses="housedata"/>  
             <!-- Binds to the 'data' values in the script section below. 
             prop name 'testblock' is user created here? Value must equal name of data.  -->
     </div>
-    
-
-    <div id="footer">
       <Footer/>
-    </div>
-
   </div>
 </template>
 
@@ -39,7 +34,8 @@ export default {
     return {
       msg:'hello',
       loggedIn: false,
-      token: '',
+      tokens: {},
+      URL: 'http://127.0.0.1:8000',
       housedata: [
         {
           id:1,
@@ -83,8 +79,12 @@ export default {
       ]
     }
   },
-  methods(){
-
+  methods: {
+    login: function(event){
+      this.loggedIn = true
+      this.tokens = event
+      this.$router.push('/')
+    }
   }
 
 }

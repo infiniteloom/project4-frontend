@@ -21,7 +21,7 @@
 
 
 
-        <b-button @click="clickMe">Login</b-button>
+        <b-button @click="handleLogin">Login</b-button>
 
 
         <!--FOR REGISTERING
@@ -45,8 +45,22 @@ export default{
         }
     },
     methods: {
-        clickMe() {
-            this.$buefy.notification.open('Clicked!!')
+        handleLogin: function(){
+            fetch('http://127.0.0.1:8000/auth/users/login/', {
+                method: 'post',
+                headers:{
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username: this.username,
+                    password: this.password
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .then(data => {
+                this.$emit('loggedIn', data)
+            })
         }
     }
 }

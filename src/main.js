@@ -8,9 +8,9 @@ import "buefy/dist/buefy.css";
 
 // Import Font Awesome Icon Library:
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-library.add(faUserCircle)
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 
