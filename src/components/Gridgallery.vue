@@ -1,14 +1,16 @@
 <template>
 
   <div class="gallery-container">
-  
+    <!-- {{$globalHouseData()}} -->
+    {{houseData}}
     <!-- For each house in house listings, print all properties/values! -->
-    <div class="gallery-item" v-bind:key="house.id" v-for="house in housedata">
+    <!-- <div class="gallery-item" v-bind:key="house.results.id" v-for="house in houseData">
+      </div> -->
       <div>
-
-      </div>
-      <img v-bind:src="house.image">
-      <Houseinfo v-bind:house="house"/>  
+      <!-- {{house}} -->
+      <!-- <img v-bind:src="house.image1"> -->
+      <!-- <Houseinfo/>> -->
+      <!-- <Houseinfo v-bind:house="house"/>   -->
     </div>
   </div>
 
@@ -19,14 +21,18 @@
 
 <script>
 // Import info for the houses from the House Info component
-import Houseinfo from './Houseinfo.vue';
+// import Houseinfo from './Houseinfo.vue';
 
 export default {
   name: "Gridgallery",
+  houseData: null,
   components: {
-    Houseinfo
+    // Houseinfo
   },
-  props: ["housedata"] 
+  beforeMount: function(){
+    this.houseData = this.$getHouseData()
+  }
+ 
 };
 </script>
 
