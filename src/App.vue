@@ -116,7 +116,12 @@ export default {
 }
 
 .body-container{
-  margin: 0 auto;
-
+  /* ********************* */
+  margin: -70px auto; 
+  display: flex;
+  flex-direction: column;
+  flex-direction: flex-start;     
+  width: 100%;
+  max-width: 1200px;
 }
 </style>

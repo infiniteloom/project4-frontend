@@ -18,6 +18,7 @@ export default {
 
 <style>
   .footer{
+    margin-top: 100px;
     /* position: absolute;
     bottom: 0;
     height: 80px;
@@ -25,5 +26,8 @@ export default {
   }
   .footer .content{
     font-size: .8em;
+  }
+  .footer{
+    padding: 3rem 1.5rem;
   }
 </style>

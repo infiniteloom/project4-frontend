@@ -23,6 +23,7 @@
 <script>
 export default{
     name: "Login",
+    props:["URL"],
     data: function(){
         return{
             username:'',
@@ -49,13 +50,13 @@ export default{
         //     })
         // },
         handleLogin: function(){
-            fetch('http://127.0.0.1:8000/auth/users/login/', {
+            fetch(`${URL}/auth/users/login/`, {
                 method: 'post',
                 headers:{
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    email: this.email,
+                    username: this.email,
                     password: this.password
                 })
             })
@@ -76,5 +77,4 @@ export default{
         margin: 0 auto; 
         padding: 100px 20px 100px 20px;
     }
-
 </style>

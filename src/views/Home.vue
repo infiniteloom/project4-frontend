@@ -4,7 +4,7 @@
       <div class="home-body">
         <Featureimage/>
       </div>
-      <p id="brand-subtitle">Ha•ven /ˈhāvən/ (noun) a place of safety or refuge.</p>
+        <Brandsubtitle/>
       <div>
         <Gridgallery/>  
       </div>
@@ -16,12 +16,15 @@
 // @ is an alias to /src
 import Gridgallery from '@/components/Gridgallery.vue'
 import Featureimage from '@/components/Featureimage.vue'
+import Brandsubtitle from '@/components/Brandsubtitle.vue'
+
 
 export default {
   name: 'Home',
   components: {
     Gridgallery,
-    Featureimage
+    Featureimage,
+    Brandsubtitle
   }
 }
 </script>
@@ -32,11 +35,5 @@ export default {
     width: 100%;
     max-width: 1200px;
   }
-  #brand-subtitle{
-    color: #a59494;
-    font-style: italic;
-    padding: 50px;
-    width: 100%;
-    text-align: center;
-  }
+
 </style>
