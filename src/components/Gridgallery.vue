@@ -40,27 +40,31 @@ export default {
 </script>
 
 <style >
-  .gallery-container{
-    background-color: #fafafa;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    margin: 0 auto;
-    justify-content: space-around;
-    align-content: center;
-  }
-  .gallery-container p{
-    font-size: .7fem;
-  }
+.gallery-container{
+  background-color: #fafafa;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 0 auto;
+  justify-content: space-around;
+  align-content: center;
+}
+.gallery-container p{
+  font-size: .7fem;
+}
 
+.gallery-item{
+  max-width: 400px;
+  min-width: 300px;
+  height: auto;
+  padding: 10px;
+}
+@media (max-width: 600px){
   .gallery-item{
-    flex-basis: 25%;
-    max-width: 400px;
-    flex-grow: 1;
-    height: auto;
-    padding: 10px;
-  }
+    /* flex-basis: 35%; */
+}
 
+}
 
 </style>

@@ -35,7 +35,7 @@ export default {
     return {
       msg:'hello',
       loggedIn: false,
-      tokens: {},
+      tokens: '',
       houseData: null,
       URL: 'http://127.0.0.1:8000',
 

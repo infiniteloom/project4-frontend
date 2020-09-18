@@ -50,9 +50,7 @@ export default{
         //     })
         // },
         handleLogin: function(){
-            console.log(` testing url ${URL}`)
-            console.log(`this props ${this.props}`)
-            // console.log($this.$props)
+            console.log(`${this.username}`)
             fetch(`http://127.0.0.1:8000/auth/users/login/`, {
                 method: 'post',
                 headers:{
