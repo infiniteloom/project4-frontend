@@ -32,7 +32,7 @@ export default {
     }
   },
   beforeMount: function(){
-    fetch('http://127.0.0.1:8000/api/listings/')
+    fetch(`${this.$URL}/api/listings/`)
         .then(response => response.json())
         .then(data => {
             this.houseData = data.results

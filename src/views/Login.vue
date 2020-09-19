@@ -1,6 +1,10 @@
 <template>
 
     <div class='login-view-container'>
+        <div class='welcome-message-login'>
+            <h4>{{genericWelcome}}</h4>
+            <p>{{welcomeRealtor}}</p>
+        </div>
         <b-field>
             <b-input placeholder="email" v-model="username" type="email"></b-input>
         </b-field>
@@ -8,7 +12,7 @@
             <b-input value="" type="password" v-model="password" maxlength="30" placeholder="password"></b-input>
         </b-field>
         <!-- <p>{{URL}}</p> -->
-        <b-button @click="handleLogin">Login</b-button>
+        <b-button @click="handleLogin">Log In</b-button>
         <!--FOR REGISTERING
         <b-field label="Username"
         type="is-success"
@@ -28,6 +32,8 @@ export default{
         return{
             username:'',
             password:'',
+            genericWelcome: 'Welcome back!',
+            welcomeRealtor: 'Log in to manage your listings.'
         }
     },
     methods: {
@@ -50,8 +56,8 @@ export default{
         //     })
         // },
         handleLogin: function(){
-            console.log(`${this.username}`)
-            fetch(`http://127.0.0.1:8000/auth/users/login/`, {
+            console.log(`${this.$URL} is the login url URL`)
+            fetch(`${this.$URL}/auth/users/login/`, {
                 method: 'post',
                 headers:{
                     "Content-Type": "application/json"
@@ -63,10 +69,11 @@ export default{
                 })
             })
             .then(response => response.json())
-            .then(data => console.log(data))
             .then(data => {
-                this.$emit('loggedIn', data)
+                console.log(data)
+                this.$emit("loggedIn", data)
             })
+            
         }
     }
 }
@@ -74,9 +81,16 @@ export default{
 </script>
 
 <style>
-    .login-view-container{
-        width: 50%;
-        margin: 0 auto; 
-        padding: 100px 20px 100px 20px;
-    }
+.welcome-message-login{
+    padding: 30px;
+}
+.welcome-message-login p, .welcome-message-login h4{
+    text-align: center;
+}
+.login-view-container{
+    width: 50%;
+    min-width: 350px;
+    margin: 0 auto; 
+    padding: 100px 20px 100px 20px;
+}
 </style>

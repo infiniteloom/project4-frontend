@@ -2,11 +2,11 @@
   <div id="app">
 
     <div id="nav">
-      <Header v-bind:URL="URL" />
+      <Header v-bind:loggedIn="loggedIn"  @logout="logout"  />
     </div>
 
     <div class="body-container">
-      <router-view  @loggedIn="login($event)" />
+      <router-view  @loggedIn="login($event)"/>
     </div>
 
       <Footer/>
@@ -26,19 +26,15 @@ import Footer from './components/Footer.vue'
 // Helpful for repetitive components such as header, footer, etc. 
 export default {
   name: 'App',
-  URL: 'http://127.0.0.1:8000',
   components: {
     Header,
     Footer
   },
   data: function() {
     return {
-      msg:'hello',
       loggedIn: false,
-      tokens: '',
-      houseData: null,
-      URL: 'http://127.0.0.1:8000',
-
+      tokens: {},
+      houseData: null
     }
   },
   methods:{
@@ -46,6 +42,10 @@ export default {
       this.loggedIn = true
       this.tokens = event
       this.$router.push('/')
+    },
+    logout: function() {
+      this.loggedIn = false
+      this.tokens = {}
     }
   }
 }

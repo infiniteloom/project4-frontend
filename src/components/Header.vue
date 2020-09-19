@@ -31,24 +31,28 @@
       <template slot="end">
         <b-navbar-item tag="div">
           <div class="buttons nav-right">
-            <router-link to="/signup"><a class="button login-reg" href="#"><strong>Sign up</strong></a></router-link>
-            <router-link to="/login"><a class="button login-reg"  v-bind:URL="URL">Log in</a></router-link>
-            <!-- <router-link to="/login"><a class="button login-reg"="URL">Log in</a></router-link> -->
-
+            <router-link to="/signup" v-if="!loggedIn"><a v-if="!loggedIn" class="button login-reg" href="#"><strong>Sign up</strong></a></router-link>
+            <router-link to="/login" v-if="!loggedIn"><a v-if="!loggedIn" class="button login-reg">Log in</a></router-link>
            </div>
         </b-navbar-item>
-        <b-navbar-item>
+        <b-navbar-item href="#">
+          <router-link  v-if="loggedIn" to="/admin"><button class="button drop-down-button">Manage Listings</button></router-link>
+        </b-navbar-item>
+        <b-navbar-item v-if="loggedIn" href="#">
+          <button class="button drop-down-button" v-if="loggedIn" @click="logout">Log out</button>
+        </b-navbar-item>
+        <!-- <b-navbar-item>
            <div>
-            <b-navbar-dropdown class="user-drop" label="User">     
+            <b-navbar-dropdown v-if="loggedIn" class="user-drop" label="User">     
               <b-navbar-item class="user-drop" href="#">
-                <router-link to="/admin">Manage Listings</router-link>
+                <router-link to="/admin"><button class="button drop-down-button">Manage Listings</button></router-link>
               </b-navbar-item>
-              <b-navbar-item class="user-drop" href="#">
-                Logout
+              <b-navbar-item v-if="loggedIn" class="user-drop" href="#">
+                <button class="button drop-down-button" v-if="loggedIn" @click="logout">Log out</button>
               </b-navbar-item>
             </b-navbar-dropdown>
           </div>
-        </b-navbar-item>
+        </b-navbar-item> -->
 
 
       </template>
@@ -59,7 +63,12 @@
 <script>
 export default {
   name: "Header",
-  props: ["URL"]
+  props:['loggedIn'],
+  methods: {
+    logout: function(){
+      this.$emit('logout')
+    }
+  }
 };
 </script>
 
@@ -70,6 +79,9 @@ export default {
 }
 .navbar{
   background-color: rgba(255, 255, 255, 0);
+}
+.nav-bar-menu{
+  background-color: #ffffff;
 }
 .brand{
   padding: 0;
@@ -91,9 +103,11 @@ export default {
   text-decoration:none;
 
 }
-.button.login-reg, .user-drop{
+.button.login-reg, .button.drop-down-button{
   border: none;
   background-color: white;
 }
-
+.navbar-dropdown{
+  left: -60px;
+}
 </style>
