@@ -41,7 +41,7 @@ export default {
     login: function(event){
       this.loggedIn = true
       this.tokens = event
-      this.$router.push('/')
+      this.$router.push({ path: 'Admin', query: { tokens: this.tokens }})
     },
     logout: function() {
       this.loggedIn = false
