@@ -4,9 +4,10 @@
     <div id="nav">
       <Header v-bind:loggedIn="loggedIn"  @logout="logout"  />
     </div>
-
+    <!-- {{tokens.id}}
+    {{tokens.token}} -->
     <div class="body-container">
-      <router-view  @loggedIn="login($event)"/>
+      <router-view :realtorListings="realtorListings" :loggedIn="loggedIn" @loggedIn="login($event)"/>
     </div>
 
       <Footer/>
@@ -34,18 +35,40 @@ export default {
     return {
       loggedIn: false,
       tokens: {},
-      houseData: null
+      houseData: null,
+      realtorListings: [],
     }
   },
   methods:{
     login: function(event){
-      this.loggedIn = true
       this.tokens = event
-      this.$router.push({ path: 'Admin', query: { tokens: this.tokens }})
+      // console.log(`thisis the event login tokens before condition: ${this.tokens}`)
+
+      if(this.tokens.token){
+        this.loggedIn = true
+        console.log('these are the tokens passed from the log in ${this.tokens}', this.tokens)
+        // console.log(`${this.$URL}/api/realtor/${this.tokens.id}/listings/`)
+      // If user logs in successfully, fetch the listings associated with the realtor 
+      // and pass along to child as a prop through routerview.
+        fetch(`${this.$URL}/api/realtor/${this.tokens.id}/listings/`, {
+          method: 'GET',
+          headers:{
+            "Content-Type": "application/json",
+            "Authorization" : `JWT ${this.tokens.token}`
+          }
+        })
+        .then(response => response.json())
+        .then(data => {
+            this.realtorListings = data.results 
+            console.log(`this is what the fetch is returning in app.vue ${data.results[0].city}`)
+        })
+        this.$router.push({ path: 'Admin', query: { tokens: this.tokens, loggedIn: 'this.loggedIn' }})
+      }
     },
     logout: function() {
       this.loggedIn = false
       this.tokens = {}
+      // this.realtorListings = []
     }
   }
 }

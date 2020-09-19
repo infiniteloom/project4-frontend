@@ -38,25 +38,26 @@ export default{
     },
     methods: {
         // Register function not implemented yet 
-        // register: function(){
-        //     fetch('http://127.0.0.1:8000/auth/users/login/', {
-        //         method: 'post',
-        //         headers:{
-        //             "Content-Type": "application/json"
-        //         },
-        //         body: JSON.stringify({
-        //             email: this.username,
-        //             password: this.password
-        //         })
-        //     })
-        //     .then(response => response.json())
-        //     .then(data => console.log(data))
-        //     .then(data => {
-        //         this.$emit('loggedIn', data)
-        //     })
-        // },
+        register: function(){
+            fetch(`${this.$URL}/auth/users/register/`, {
+                method: 'post',
+                headers:{
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username: this.username,
+                    email: this.username,
+                    password: this.password
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                this.$emit("loggedIn", data)
+            })
+        },
         handleLogin: function(){
-            console.log(`${this.$URL} is the login url URL`)
+            // console.log(`${this.$URL} is the login url URL`)
             fetch(`${this.$URL}/auth/users/login/`, {
                 method: 'post',
                 headers:{
@@ -73,7 +74,6 @@ export default{
                 console.log(data)
                 this.$emit("loggedIn", data)
             })
-            
         }
     }
 }

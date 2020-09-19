@@ -12,12 +12,12 @@
   </div>
 </template>
 
+
 <script>
 // @ is an alias to /src
 import Gridgallery from '@/components/Gridgallery.vue'
 import Featureimage from '@/components/Featureimage.vue'
 import Brandsubtitle from '@/components/Brandsubtitle.vue'
-
 
 export default {
   name: 'Home',
@@ -36,7 +36,7 @@ export default {
         .then(response => response.json())
         .then(data => {
             this.houseData = data.results
-            console.log(data.results)
+            console.log(this.houseData)
         })
   }
 }

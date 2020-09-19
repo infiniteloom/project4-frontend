@@ -18,24 +18,10 @@ import Houseinfo from './Houseinfo.vue';
 
 export default {
   name: "Gridgallery",
-  // houseData: null,
   components: {
     Houseinfo
   },
-  data: function() {
-    return {
-      // houseData: null
-    }
-  },
   props: ['houseData']
-  // beforeMount: function(){
-  //   fetch('http://127.0.0.1:8000/api/listings/')
-  //       .then(response => response.json())
-  //       .then(data => {
-  //           this.houseData = data.results
-  //           console.log(data.results)
-  //       })
-  // }
 };
 </script>
 

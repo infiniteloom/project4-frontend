@@ -34,7 +34,7 @@
 
           <div class="buttons nav-right">
             <router-link to="/signup" v-if="!loggedIn"><a v-if="!loggedIn" class="button login-reg" href="#"><strong>Sign up</strong></a></router-link>
-            <router-link :to="{ name: 'Login', query: { URL: this.URL }}" v-if="!loggedIn"><a v-if="!loggedIn" class="button login-reg">Log in</a></router-link>
+            <router-link to="/login" v-if="!loggedIn"><a v-if="!loggedIn" class="button login-reg">Log in</a></router-link>
            </div>
 
 

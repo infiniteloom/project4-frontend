@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <Gridgallery  v-bind:houseData="houseData" />
+    <Gridgallery v-bind:houseData="realtorListings" />
   </div>
 </template>
 
+‹‹
 <script>
-// @ is an alias to /src
 import Gridgallery from '../components/Gridgallery.vue'
 
 
@@ -14,18 +14,24 @@ export default{
   components: {
     Gridgallery
   },
-  data: function(){
-    return{
-      houseData: null
-    }
-  },
-  beforeMount: function(){
-    fetch('http://127.0.0.1:8000/api/realtor/2/listings/')
-        .then(response => response.json())
-        .then(data => {
-            this.houseData = data.results
-            console.log(data.results)
-        })
-  }
+  props: ['loggedIn', 'realtorListings']
+  // methods: {
+  //   getListings: function(){
+  //     console.log(this.$URL)
+  //     // console.log(`this is the route query tokens: ${this.$route.query.tokens.id}`)
+  //     fetch(`${this.$URL}/api/realtor/${this.$route.query.tokens.id}/listings/`, {
+  //       method: 'GET',
+  //       headers:{
+  //           authorization : `JWT ${this.$route.query.tokens.token}`
+  //       }
+  //     })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //         this.houseData = data.results 
+  //         console.log(`this is what the fetch is returning in realtor admin: ${data.results}`)
+  //     })
+
+  //   }
+  // }
 }
 </script>
