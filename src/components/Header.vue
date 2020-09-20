@@ -1,6 +1,8 @@
 <template>
   <div class="header">
     <b-navbar class="navbar-transp">
+
+      <!-- Brand Logo -->
       <template slot="brand">
         <b-navbar-item tag="router-link" :to="{ path: '/' }">
           <img
@@ -17,34 +19,44 @@
                 icon="magnify"
                 icon-clickable>
             </b-input>
-            <!-- <b-input placeholder="Search..."
-              type="search"
-              icon="magnify"
-              icon-clickable
-              @icon-click="searchIconClick">
-            </b-input> -->
         </b-field>
         </b-navbar-item>
-
       </template>
 
       <template slot="end">
         <b-navbar-item tag="div">
 
-
           <div class="buttons nav-right">
-            <router-link to="/signup" v-if="!loggedIn"><a v-if="!loggedIn" class="button login-reg" href="#"><strong>Sign up</strong></a></router-link>
-            <router-link to="/login" v-if="!loggedIn"><a v-if="!loggedIn" class="button login-reg">Log in</a></router-link>
-           </div>
+            <router-link to="/signup" v-if="!loggedIn">
+              <a v-if="!loggedIn" class="button login-reg" href="#">
+                  <strong>Sign up</strong>
+              </a>
+            </router-link>
+            <router-link to="/login" v-if="!loggedIn">
+              <a v-if="!loggedIn" class="button login-reg">
+                Log in
+              </a>
+            </router-link>
+          </div>
 
-
-
-        </b-navbar-item>
-        <b-navbar-item href="#">
-          <router-link  v-if="loggedIn" to="/admin"><button class="button drop-down-button">Manage Listings</button></router-link>
         </b-navbar-item>
         <b-navbar-item v-if="loggedIn" href="#">
-          <button class="button drop-down-button" v-if="loggedIn" @click="logout">Log out</button>
+          <!-- <router-link  v-if="loggedIn" @click="isAdminPanel"><button class="button drop-down-button">Manage Listings</button></router-link> -->
+          <button class="button drop-down-button" 
+            @click="isAdminPanel">
+            Manage listings</button>
+        </b-navbar-item>
+
+        <b-navbar-item v-if="loggedIn" href="#">
+          <button class="button drop-down-button" 
+            @click="isCreateListing">
+            New listing</button>
+        </b-navbar-item>
+
+        <b-navbar-item v-if="loggedIn" href="#">
+          <button class="button drop-down-button" 
+            @click="logout">
+            Log out</button>
         </b-navbar-item>
         <!-- <b-navbar-item>
            <div>
@@ -72,6 +84,14 @@ export default {
   methods: {
     logout: function(){
       this.$emit('logout')
+    },
+    isAdminPanel: function(){
+      console.log('this is admin panel trigger in header ')
+      this.$emit('isAdminPanel')
+    },
+    isCreateListing: function(){
+      console.log('this is the create new listing trigger in header')
+      this.$emit('isCreateListing')
     }
   }
 };

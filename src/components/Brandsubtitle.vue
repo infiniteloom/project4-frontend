@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p id="brand-subtitle">Ha•ven /ˈhāvən/ (noun) a place of safety or refuge.</p>
+        <p id="brand-subtitle">Ha•ven /ˈhāvən/ (noun) a place of refuge.</p>
 
     </div>
 

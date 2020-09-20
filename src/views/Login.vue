@@ -11,8 +11,11 @@
         <b-field>
             <b-input value="" type="password" v-model="password" maxlength="30" placeholder="password"></b-input>
         </b-field>
-        <!-- <p>{{URL}}</p> -->
-        <b-button @click="handleLogin">Log In</b-button>
+
+        <b-button @click="login">Log In</b-button>
+
+
+
         <!--FOR REGISTERING
         <b-field label="Username"
         type="is-success"
@@ -56,7 +59,7 @@ export default{
                 this.$emit("loggedIn", data)
             })
         },
-        handleLogin: function(){
+        login: function(){
             // console.log(`${this.$URL} is the login url URL`)
             fetch(`${this.$URL}/auth/users/login/`, {
                 method: 'post',

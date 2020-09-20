@@ -2,12 +2,23 @@
   <div id="app">
 
     <div id="nav">
-      <Header v-bind:loggedIn="loggedIn"  @logout="logout"  />
+      <Header 
+      v-bind:loggedIn="loggedIn" 
+      v-bind:user="user" 
+      @isAdminPanel="handleAdminPanel($event)" 
+      @isCreateListing="handleCreateListing($event)"
+      @logout="handleLogout"  />
     </div>
-    <!-- {{tokens.id}}
-    {{tokens.token}} -->
+
     <div class="body-container">
-      <router-view :realtorListings="realtorListings" :loggedIn="loggedIn" @loggedIn="login($event)"/>
+      <router-view 
+        :realtorListings="realtorListings" 
+        :isAdminPanel="isAdminPanel" 
+        :isCreateListing="isCreateListing"
+        :isEditListing="isEditListing"
+        :isSelectListing="isSelectListing"
+        :loggedIn="loggedIn" 
+        @loggedIn="handleLogin($event)"/>
     </div>
 
       <Footer/>
@@ -34,40 +45,51 @@ export default {
   data: function() {
     return {
       loggedIn: false,
-      tokens: {},
+      user: {},
       houseData: null,
       realtorListings: [],
+      isAdminPanel: false,
+      isCreateListing: false,
+      isEditListing: false,
+      isSelectListing: false
     }
   },
   methods:{
-    login: function(event){
-      this.tokens = event
-      // console.log(`thisis the event login tokens before condition: ${this.tokens}`)
+    handleLogin: function(event){
+      this.user = event
 
-      if(this.tokens.token){
+      if(this.user.token){
         this.loggedIn = true
-        console.log('these are the tokens passed from the log in ${this.tokens}', this.tokens)
-        // console.log(`${this.$URL}/api/realtor/${this.tokens.id}/listings/`)
+        this.$router.push({ path: '/', query: { user: this.user, loggedIn: 'this.loggedIn' }})
       // If user logs in successfully, fetch the listings associated with the realtor 
       // and pass along to child as a prop through routerview.
-        fetch(`${this.$URL}/api/realtor/${this.tokens.id}/listings/`, {
-          method: 'GET',
-          headers:{
-            "Content-Type": "application/json",
-            "Authorization" : `JWT ${this.tokens.token}`
-          }
-        })
-        .then(response => response.json())
-        .then(data => {
-            this.realtorListings = data.results 
-            console.log(`this is what the fetch is returning in app.vue ${data.results[0].city}`)
-        })
-        this.$router.push({ path: 'Admin', query: { tokens: this.tokens, loggedIn: 'this.loggedIn' }})
+        // fetch(`${this.$URL}/api/realtor/${this.user.id}/listings/`, {
+        //   method: 'GET',
+        //   headers:{
+        //     "Content-Type": "application/json",
+        //     "Authorization" : `JWT ${this.user.token}`
+        //   }
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        //     this.realtorListings = data.results 
+        // })
+        // this.$router.push({ path: 'Admin', query: { user: this.user, loggedIn: 'this.loggedIn' }})
       }
     },
-    logout: function() {
+    handleLogout: function() {
       this.loggedIn = false
-      this.tokens = {}
+      this.user = {}
+      this.$router.push('/')
+    },
+    handleAdminPanel: function(){
+      console.log('handle admin panel in app.vue is being called ')
+      this.isAdminPanel = true
+      this.$router.push({ path: 'Admin', query: { user: this.user, isAdminPanel: this.isAdminPanel, loggedIn: 'this.loggedIn' }})
+    },
+    handleCreateListing: function(){
+      this.isCreateListing = true
+      this.$router.push({ path: 'Newlisting', query: { user: this.user, isAdminPanel: this.isAdminPanel, loggedIn: 'this.loggedIn'  }})
     }
   }
 }
