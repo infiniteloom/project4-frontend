@@ -5,16 +5,13 @@
         v-if="singleListingInfo" 
         v-bind:house="singleListingInfo" 
         />
+
     </div>
-    
+        <div class="single-listing-view-description">
+            {{singleListingInfo.description}}
+        </div>
 
 </div>
-<!-- 
-// <div class="gallery-item" 
-//       v-bind:key="house.id" 
-//       v-for="house in houseData">
-//       <Houseinfo 
-//       v-bind:house="house"/> -->
 
 </template>
 
@@ -35,10 +32,17 @@ export default {
 <style>
 .single-listing-view-container{
     width: 100%;
+    min-width: 300px;
     margin: 0 auto;
     text-align: center;
     display: flex;
     justify-content: center;
     padding-top: 200px;
+}
+.single-listing-view-description{
+    margin: 0 auto;
+    width: 60%;
+    min-width: 300px;
+    max-width: 600px;
 }
 </style>
