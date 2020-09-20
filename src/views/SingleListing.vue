@@ -5,11 +5,10 @@
         v-if="singleListingInfo" 
         v-bind:house="singleListingInfo" 
         />
-
     </div>
-        <div class="single-listing-view-description">
-            {{singleListingInfo.description}}
-        </div>
+    <div class="single-listing-view-description">
+        {{singleListingInfo.description}}
+    </div>
 
 </div>
 

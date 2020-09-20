@@ -8,6 +8,7 @@
     v-bind:key="`${i}-${house.id}`" 
     v-for="(house, i) in houseData">
       <Houseinfo 
+      @deletingListing="passDeletingListing($event)"
       @singleListingInfo="passSingleListingInfo($event)"
       v-bind:house="house"/>
     </div>
@@ -37,6 +38,9 @@ export default {
     passSingleListingInfo: function(event){
       console.log('passing single listing info from house info now in grid gallery', event)
       this.$emit('singleListingInfo', event)
+    },
+    passDeletingListing: function(event){
+      this.$emit('deletingListing', event)
     }
   }
 };
@@ -61,5 +65,7 @@ export default {
   min-width: 300px;
   height: auto;
   padding: 10px;
+}.gallery-item :hover{
+  opacity: .95;
 }
 </style>

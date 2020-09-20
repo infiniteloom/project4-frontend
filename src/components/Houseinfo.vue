@@ -1,13 +1,13 @@
 <template>
 <div>
     <div> 
-        <div @click="handleSelectingListing" class="house-info">
+        <div class="house-info">
             <!-- Inserts home data from db as captions to each listing. -->
-            <div class="house-info-image-container">
+            <div @click="handleSelectingListing"  class="house-info-image-container">
                 <img class="house-info-image" v-bind:src="house.image1">
             </div>
-            <div @click="handleSelectingListing" class="house-info-p-container">
-                <div class="house-info-p">
+            <div  class="house-info-p-container">
+                <div @click="handleSelectingListing" class="house-info-p">
                     <p><strong>{{house.bed}}</strong>bed  <strong>{{house.bath}}</strong>bath  <strong>{{house.home_size}}</strong>sqft  <strong>{{house.lot_size}}</strong>acre lot</p>
                     <p>{{house.street}}</p>
                     <p>{{house.city}}, {{house.state}} {{house.zip}}</p>
@@ -15,10 +15,10 @@
                 </div>
                 <!-- If a realtor was logged in, show this div with edit/delete functions -->
                 <div class="admin-edit-delete-container" v-if="this.$route.query.loggedIn ">
-                    <button class="admin-edit-delete">
+                    <button @click="handleEditListing" class="admin-edit-delete">
                         Edit
                     </button>
-                    <button class="admin-edit-delete">
+                    <button @click="handleDeleteListing" class="admin-edit-delete">
                         Delete
                     </button>
                 </div>
@@ -34,10 +34,24 @@ export default {
   name: "Houseinfo",
   props: ["house"],
   methods: {
-      handleSelectingListing: function(){
-        //   console.log(this.house)
-          this.$emit("singleListingInfo", this.house)
-      }
+        handleSelectingListing: function(){
+            //   console.log(this.house)
+            this.$emit("singleListingInfo", this.house)
+        },
+        handleEditListing: function(){
+            console.log('edit listing is being triggered')
+        },
+        handleDeleteListing: function(){
+            this.$emit("deletingListing", this.house.id)
+            // console.log(`the url is deleting ${this.$URL}/api/listings/${id}/`)
+            // fetch(`${this.$URL}/api/listings/${id}/`, {
+            //     method: "DELETE",
+            //     headers:{
+            //         "Content-Type": "application/json",
+            //         "Authorization" : `JWT ${this.$route.query.user.token}`
+            //     }
+            // })
+        },
   }
 }
 </script>
@@ -77,5 +91,8 @@ export default {
     border-style: none;
     background-color: transparent;
     margin: 0;
+}
+.admin-edit-delete button :hover{
+    opacity: .95;
 }
 </style>

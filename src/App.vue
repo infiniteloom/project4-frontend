@@ -20,6 +20,7 @@
         :isSelectListing="isSelectListing"
         :house="singleListingInfo"
         :loggedIn="loggedIn" 
+        @refreshRealtorListings="refreshRealtorListings($event)"
         @singleListingInfo="handleSingleListing($event)"
         @createdNewListing="createdNewListing($event)"
         @loggedIn="handleLogin($event)"/>
@@ -80,7 +81,7 @@ export default {
       this.isCreateListing = false
       this.isEditListing = false
       this.getAdminListings()
-      console.log('realtor listings in handle admin panel : ', this.realtorListings)
+      console.log('realtor listings in handle admin in app.vue : ', this.realtorListings)
       this.$router.push({ path: 'Admin', query: { user: this.user, loggedIn: 'this.loggedIn' } , props:{realtorListings: this.realtorListings}})
     },
     handleCreateListing: function(){
@@ -94,6 +95,7 @@ export default {
       this.$router.push({ path: 'Admin', query: { user: this.user, isAdminPanel: this.isAdminPanel, loggedIn: 'this.loggedIn' }})
     },
     getAdminListings: function(){
+      console.log('getting admin listings')
       fetch(`${this.$URL}/api/realtor/${this.user.id}/listings/`, {
         method: 'GET',
         headers:{
@@ -105,6 +107,11 @@ export default {
       .then(data => {
           this.realtorListings = data.results 
       })
+    },
+    refreshRealtorListings: function(){
+      console.log('refreshing admin listings')
+      this.getAdminListings()
+      this.$router.push({ path: 'Admin', query: { user: this.user, isAdminPanel: this.isAdminPanel, loggedIn: 'this.loggedIn' }})
     },
     handleSingleListing: function(event){
       // console.log('reaching the app.vue handle single listing', event)

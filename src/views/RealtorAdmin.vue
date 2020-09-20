@@ -10,6 +10,7 @@
     </div>
   </div>
   <Gridgallery 
+  @deletingListing="deleteListing($event)"
   @singleListingInfo="passSingleListingInfo($event)"
   v-bind:houseData="realtorListings" />
 
@@ -43,24 +44,22 @@ export default{
       console.log(event.target.value)
       this.newListing.type = event.target.value
     },
-    getAdminListings: function(){
-      console.log('******************** running get admin listings')
-      fetch(`${this.$URL}/api/realtor/${this.user.id}/listings/`, {
-        method: 'GET',
-        headers:{
-          "Content-Type": "application/json",
-          "Authorization" : `JWT ${this.user.token}`
-        }
-      })
-      .then(response => response.json())
-      .then(data => {
-          this.realtorListings = data.results 
-          console.log('this is the realtors listings!', this.realtorListings)
-      })
-    },
     passSingleListingInfo: function(event){
       console.log('passing single listing info from house info now in grid gallery', event)
       this.$emit('singleListingInfo', event)
+    },
+    deleteListing: function(event){
+      console.log('reaching realtor admin delete function', event)
+      console.log(`the url is deleting ${this.$URL}/api/listings/${event}/`)
+      fetch(`${this.$URL}/api/listings/${event}/`, {
+          method: "DELETE",
+          headers:{
+              "Content-Type": "application/json",
+              "Authorization" : `JWT ${this.$route.query.user.token}`
+          }
+      })
+      // Emit to app.vue that a listing has been deleted to trigger a refresh of this.realtorListings prop.
+      this.$emit('refreshRealtorListings', event)
     }
   }
 }
