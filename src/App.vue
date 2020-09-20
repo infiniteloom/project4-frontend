@@ -61,23 +61,7 @@ export default {
 
       if(this.user.token){
         this.loggedIn = true
-        this.getAdminListings()
-        this.$router.push({ path: '/', query: { user: this.user, loggedIn: 'this.loggedIn', realtorListings: 'this.realtorListings' }})
-        
-      // If user logs in successfully, fetch the listings associated with the realtor 
-      // and pass along to child as a prop through routerview.
-        // fetch(`${this.$URL}/api/realtor/${this.user.id}/listings/`, {
-        //   method: 'GET',
-        //   headers:{
-        //     "Content-Type": "application/json",
-        //     "Authorization" : `JWT ${this.user.token}`
-        //   }
-        // })
-        // .then(response => response.json())
-        // .then(data => {
-        //     this.realtorListings = data.results 
-        // })
-        // this.$router.push({ path: 'Admin', query: { user: this.user, loggedIn: 'this.loggedIn' }})
+        this.$router.push({ path: '/', query: { user: this.user, loggedIn: 'this.loggedIn' }})
       }
     },
     handleLogout: function() {
@@ -93,7 +77,7 @@ export default {
       this.getAdminListings()
 
       console.log('realtor listings in handle admin panel : ', this.realtorListings)
-      this.$router.push({ path: 'Admin', query: { user: this.user, realtorListings: this.realtorListings, isAdminPanel: this.isAdminPanel, loggedIn: 'this.loggedIn' }})
+      this.$router.push({ path: 'Admin', query: { user: this.user, loggedIn: 'this.loggedIn' } , props:{realtorListings: this.realtorListings}})
     },
     handleCreateListing: function(){
       this.isCreateListing = true

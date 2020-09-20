@@ -4,7 +4,7 @@
     <!-- For each house in house listings, print all properties/values! -->
     <div class="gallery-item" v-bind:key="house.id" v-for="house in houseData">
       <Houseinfo v-bind:house="house"/>
-      </div>
+    </div>
   </div>
 
 </template>
@@ -39,18 +39,10 @@ export default {
 .gallery-container p{
   font-size: .7fem;
 }
-
 .gallery-item{
   max-width: 400px;
   min-width: 300px;
   height: auto;
   padding: 10px;
 }
-@media (max-width: 600px){
-  .gallery-item{
-    /* flex-basis: 35%; */
-}
-
-}
-
 </style>

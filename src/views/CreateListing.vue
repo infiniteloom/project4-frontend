@@ -85,7 +85,6 @@ export default {
             this.newListing.type = event.target.value
         },
         handleLogin: function(){
-            // console.log(`${this.$URL} is the login url URL`)
             fetch(`${this.$URL}/auth/users/login/`, {
                 method: 'post',
                 headers:{
