@@ -1,7 +1,13 @@
 <template>
 <div>
-    <Houseinfo/>
-    <p> testing </p>
+    <div class="single-listing-view-container">
+        <Houseinfo 
+        v-if="singleListingInfo" 
+        v-bind:house="singleListingInfo" 
+        />
+    </div>
+    
+
 </div>
 <!-- 
 // <div class="gallery-item" 
@@ -21,10 +27,18 @@ export default {
     name: 'SingleListing',
     components: {
         Houseinfo
-    }
+    },
+    props:["singleListingInfo"]
 }
 </script>
 
 <style>
-
+.single-listing-view-container{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding-top: 200px;
+}
 </style>

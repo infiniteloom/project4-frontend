@@ -12,6 +12,7 @@
 
     <div class="body-container">
       <router-view 
+        :singleListingInfo="singleListingInfo"
         :realtorListings="realtorListings" 
         :isAdminPanel="isAdminPanel" 
         :isCreateListing="isCreateListing"
@@ -106,8 +107,10 @@ export default {
       })
     },
     handleSingleListing: function(event){
-      console.log('reaching the app.vue handle single listing', event)
-      // this.$router.push({ path: '/singlelisting', query: { user: this.user, loggedIn: 'this.loggedIn' }, props: { singleListingInfo: 'this.singleListingInfo'}})
+      // console.log('reaching the app.vue handle single listing', event)
+      this.singleListingInfo = event
+      // console.log('this is single listing info as event in app.vue', this.singleListingInfo)
+      this.$router.push({ path: '/singlelisting', query: { user: this.user, loggedIn: 'this.loggedIn' }, props: { singleListingInfo: 'this.singleListingInfo'}})
     }
   }
 }

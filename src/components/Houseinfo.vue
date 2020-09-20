@@ -35,7 +35,7 @@ export default {
   props: ["house"],
   methods: {
       handleSelectingListing: function(){
-          console.log(this.house)
+        //   console.log(this.house)
           this.$emit("singleListingInfo", this.house)
       }
   }
