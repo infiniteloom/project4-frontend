@@ -17,7 +17,9 @@
         :isCreateListing="isCreateListing"
         :isEditListing="isEditListing"
         :isSelectListing="isSelectListing"
+        :house="singleListingInfo"
         :loggedIn="loggedIn" 
+        @singleListingInfo="handleSingleListing($event)"
         @createdNewListing="createdNewListing($event)"
         @loggedIn="handleLogin($event)"/>
     </div>
@@ -52,17 +54,19 @@ export default {
       isAdminPanel: false,
       isCreateListing: false,
       isEditListing: false,
-      isSelectListing: false
+      isSelectListing: false,
+      singleListingInfo: null,
     }
   },
   methods:{
     handleLogin: function(event){
       this.user = event
-
+      // If this user returns with a token, loggedIn = true. 
       if(this.user.token){
         this.loggedIn = true
         this.$router.push({ path: '/', query: { user: this.user, loggedIn: 'this.loggedIn' }})
       }
+      // If the user does not return with a token form the log in request, 
     },
     handleLogout: function() {
       this.loggedIn = false
@@ -75,7 +79,6 @@ export default {
       this.isCreateListing = false
       this.isEditListing = false
       this.getAdminListings()
-
       console.log('realtor listings in handle admin panel : ', this.realtorListings)
       this.$router.push({ path: 'Admin', query: { user: this.user, loggedIn: 'this.loggedIn' } , props:{realtorListings: this.realtorListings}})
     },
@@ -101,6 +104,10 @@ export default {
       .then(data => {
           this.realtorListings = data.results 
       })
+    },
+    handleSingleListing: function(event){
+      console.log('reaching the app.vue handle single listing', event)
+      // this.$router.push({ path: '/singlelisting', query: { user: this.user, loggedIn: 'this.loggedIn' }, props: { singleListingInfo: 'this.singleListingInfo'}})
     }
   }
 }

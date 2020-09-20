@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import RealtorAdmin from '../views/RealtorAdmin.vue'
 import CreateListing from '../views/CreateListing.vue'
-
+import SingleListing from '../views/SingleListing.vue'
 
 
 
@@ -32,6 +32,12 @@ Vue.use(VueRouter)
     path: '/newlisting',
     name: 'CreateListing',
     component: CreateListing,
+    props:true
+  },
+  {
+    path: '/singlelisting',
+    name: 'SingleListing',
+    component: SingleListing,
     props:true
   }
 ]

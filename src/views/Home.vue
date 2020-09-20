@@ -6,7 +6,9 @@
       </div>
         <Brandsubtitle/>
       <div>
-        <Gridgallery v-bind:houseData="houseData"/>  
+        <Gridgallery 
+        @singleListingInfo="passSingleListingInfo($event)"
+        v-bind:houseData="houseData"/>  
       </div>
     </div>
   </div>
@@ -38,6 +40,12 @@ export default {
             this.houseData = data.results
             console.log(this.houseData)
         })
+  },
+  methods: {
+      passSingleListingInfo: function(event){
+        console.log('passing single listing info from house info now in grid gallery', event)
+        this.$emit('singleListingInfo', event)
+    }
   }
 }
 </script>

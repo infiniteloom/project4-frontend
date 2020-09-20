@@ -9,7 +9,9 @@
       <p>Sort by: Newest</p>
     </div>
   </div>
-  <Gridgallery v-bind:houseData="realtorListings" />
+  <Gridgallery 
+  @singleListingInfo="passSingleListingInfo($event)"
+  v-bind:houseData="realtorListings" />
 
 </div>
 </template>
@@ -55,6 +57,10 @@ export default{
           this.realtorListings = data.results 
           console.log('this is the realtors listings!', this.realtorListings)
       })
+    },
+    passSingleListingInfo: function(event){
+      console.log('passing single listing info from house info now in grid gallery', event)
+      this.$emit('singleListingInfo', event)
     }
   }
 }

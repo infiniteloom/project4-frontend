@@ -2,9 +2,16 @@
 
   <div class="gallery-container">
     <!-- For each house in house listings, print all properties/values! -->
-    <div class="gallery-item" v-bind:key="house.id" v-for="house in houseData">
-      <Houseinfo v-bind:house="house"/>
+    <div class="gallery-item" 
+
+
+    v-bind:key="`${i}-${house.id}`" 
+    v-for="(house, i) in houseData">
+      <Houseinfo 
+      @singleListingInfo="passSingleListingInfo($event)"
+      v-bind:house="house"/>
     </div>
+    
   </div>
 
 </template>
@@ -21,7 +28,17 @@ export default {
   components: {
     Houseinfo
   },
-  props: ['houseData']
+  props: ['houseData'],
+  methods: {
+    selectSingleListing: function (event){
+      console.log('this is the selectsinglelisting object from the grid gallery on click event per house.', event.target)
+      this.$attrs.house = this.houseData[event.target.id] 
+    },
+    passSingleListingInfo: function(event){
+      console.log('passing single listing info from house info now in grid gallery', event)
+      this.$emit('singleListingInfo', event)
+    }
+  }
 };
 </script>
 
