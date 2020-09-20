@@ -14,7 +14,7 @@
                     <p>${{house.price}} </p> 
                 </div>
                 <!-- If a realtor was logged in, show this div with edit/delete functions -->
-                <div class="admin-edit-delete-container" v-if="this.$route.query.loggedIn ">
+                <div class="admin-edit-delete-container" v-if="this.$route.query.loggedIn && this.$attrs.isAdminPanel">
                     <button @click="handleEditListing" class="admin-edit-delete">
                         Edit
                     </button>
@@ -40,17 +40,10 @@ export default {
         },
         handleEditListing: function(){
             console.log('edit listing is being triggered')
+            this.$emit("editListing", this.house)
         },
         handleDeleteListing: function(){
             this.$emit("deletingListing", this.house.id)
-            // console.log(`the url is deleting ${this.$URL}/api/listings/${id}/`)
-            // fetch(`${this.$URL}/api/listings/${id}/`, {
-            //     method: "DELETE",
-            //     headers:{
-            //         "Content-Type": "application/json",
-            //         "Authorization" : `JWT ${this.$route.query.user.token}`
-            //     }
-            // })
         },
   }
 }

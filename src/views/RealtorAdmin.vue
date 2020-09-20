@@ -10,6 +10,8 @@
     </div>
   </div>
   <Gridgallery 
+  :isAdminPanel="isAdminPanel"
+  @editListing="editListing($event)"
   @deletingListing="deleteListing($event)"
   @singleListingInfo="passSingleListingInfo($event)"
   v-bind:houseData="realtorListings" />
@@ -47,6 +49,10 @@ export default{
     passSingleListingInfo: function(event){
       console.log('passing single listing info from house info now in grid gallery', event)
       this.$emit('singleListingInfo', event)
+    },
+    editListing: function(event){
+      console.log('this is the edit listing buttons event: ', event)
+      this.$emit('editListing', event)
     },
     deleteListing: function(event){
       console.log('reaching realtor admin delete function', event)

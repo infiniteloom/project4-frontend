@@ -8,6 +8,8 @@
     v-bind:key="`${i}-${house.id}`" 
     v-for="(house, i) in houseData">
       <Houseinfo 
+      :isAdminPanel="$attrs.isAdminPanel"
+      @editListing="passEditListing($event)"
       @deletingListing="passDeletingListing($event)"
       @singleListingInfo="passSingleListingInfo($event)"
       v-bind:house="house"/>
@@ -41,6 +43,10 @@ export default {
     },
     passDeletingListing: function(event){
       this.$emit('deletingListing', event)
+    },
+    passEditListing: function(event){
+      console.log('passing edit listing from house info now in grid gallery', event)
+      this.$emit('editListing', event)
     }
   }
 };

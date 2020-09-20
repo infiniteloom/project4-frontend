@@ -7,6 +7,7 @@
         <Brandsubtitle/>
       <div>
         <Gridgallery 
+        :isAdminPanel="$attrs.isAdminPanel"
         @singleListingInfo="passSingleListingInfo($event)"
         v-bind:houseData="houseData"/>  
       </div>
@@ -34,6 +35,8 @@ export default {
     }
   },
   beforeMount: function(){
+    this.$attrs.isHomeView = true
+    this.$attrs.isAdminPanel= false
     fetch(`${this.$URL}/api/listings/`)
         .then(response => response.json())
         .then(data => {
