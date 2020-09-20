@@ -46,7 +46,7 @@
             <b-input placeholder="Home Description" v-model="newListing.description" type="text"></b-input>
         </b-field>
         <b-field>  
-            <b-input placeholder="Image URL: (http://www.cloudinary..." v-model="newListing.image1" type="text"></b-input>
+            <b-input placeholder="Image URL: (http://www.hudsonvalleyrealtors..." v-model="newListing.image1" type="text"></b-input>
         </b-field>
         <div class="form-button-container">
              <b-button @click="createNewListing">Publish Listing</b-button>
@@ -99,13 +99,13 @@ export default {
             })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 this.$emit("loggedIn", data)
             })
         },
         createNewListing: function(){
-            console.log('this is the url in create new listing ', this.$URL)
-            console.log('this is the token in create new listing ', this.$route.query.user.token)
+            // console.log('this is the url in create new listing ', this.$URL)
+            // console.log('this is the token in create new listing ', this.$route.query.user.token)
             
             fetch(`${this.$URL}/api/listings/`, {
                 method: 'POST',
@@ -135,10 +135,8 @@ export default {
             .then(response => response.json())
             .then(data => {
                 let createdListing = data
-                console.log('this is what the fetch is returning from the create new listing', createdListing)
-            })
-            .then(()=> {
-                this.getAdminListings()
+                console.log('Successfully created a new listing: ', createdListing)
+                this.$emit("createdNewListing")
             })
         }
     }
