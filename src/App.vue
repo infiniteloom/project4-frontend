@@ -68,7 +68,6 @@ export default {
     logout: function() {
       this.loggedIn = false
       this.tokens = {}
-      // this.realtorListings = []
     }
   }
 }
