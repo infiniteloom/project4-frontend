@@ -20,6 +20,9 @@
       </p>
     </div>
   </div>
+
+
+  <!-- If realtor has no active listings display message:  -->
   <div v-bind:class="{'is-no-listings': length}">
       <p 
       v-if="!length">
@@ -44,8 +47,6 @@
 
 <script>
 import Gridgallery from '../components/Gridgallery.vue'
-import Vue from 'vue'
-
 
 export default{
   name: "RealtorAdmin",
@@ -54,53 +55,33 @@ export default{
     Gridgallery,
   },
   props: ['loggedIn', 'isAdminPanel', 'realtorListings'],
-  // props: ['loggedIn', 'isAdminPanel',],
-  data: function (){
-    return {
-      // houseData: this.checkRealtorListings(),
-      length: this.getLength()
-    }
-  },
-  methods:{
-        getLength: function(){
+  computed:{
+    // If there are no realtor listings, show the no-listings messages instead.
+    length: function(){
       if(this.realtorListings){
         return this.realtorListings.length
       }else{
         return false
       }
-    // },
-    // checkRealtorListings: function(){
-    //   if(this.realtorListings){
-    //     this.houseData = this.realtorListings
-    //   }
     },
+  },
+  methods:{
+
     isCreateListing: function(){
-      console.log('this is the create new listing trigger in editcreatelisting page')
+      // console.log('this is the create new listing trigger in editcreatelisting page')
       this.$emit('isCreateListing')
     },
     passSingleListingInfo: function(event){
-      console.log('passing single listing info from house info now in grid gallery', event)
+      // console.log('passing single listing info from house info now in grid gallery', event)
       this.$emit('singleListingInfo', event)
     },
     editListing: function(event){
-      console.log('this is the edit listing buttons event: ', event)
+      // console.log('this is the edit listing buttons event: ', event)
       this.$emit('editListing', event)
     },
     deleteListing: function(event){
-      console.log('reaching realtor admin delete function', event)
-      console.log(`the url is deleting ${this.$URL}/api/listings/${event}/`)
-      fetch(`${this.$URL}/api/listings/${event}/`, {
-          method: "DELETE",
-          headers:{
-              "Content-Type": "application/json",
-              "Authorization" : `JWT ${this.$route.query.user.token}`
-          }
-      })
-      console.log('after delete listing ')
-      // Emit to app.vue that a listing has been deleted to trigger a refresh of this.realtorListings prop.
-      this.$emit('refreshRealtorListings', event)
-      console.log('after refresh listings ')
-      Vue.$forceUpdate();
+      // console.log('reaching realtor admin delete function', event)
+      this.$emit('deleteListing', event)
     }
   }
 }
