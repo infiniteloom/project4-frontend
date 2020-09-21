@@ -26,6 +26,7 @@
         @editListing="editListing($event)"
         @refreshRealtorListings="refreshRealtorListings($event)"
         @singleListingInfo="handleSingleListing($event)"
+        @isCreateListing="handleCreateListing($event)"
         @createdNewListing="createdNewListing($event)"
         @loggedIn="handleLogin($event)"/>
     </div>

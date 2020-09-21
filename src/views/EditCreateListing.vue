@@ -4,7 +4,7 @@
 
         <!-- House type (Select Menu)-->
         <b-field  class="create-edit-fields" label="Property type:">
-            <select class="input" v-if="$attrs.isCreateListing" name="housetype" @change="selectType($event)">
+            <select class="input" name="housetype" @change="selectType($event)">
                 <option class="input">{{placeholder.type}}</option>
                 <option value="Single Family">Single Family</option>
                 <option value="Condominium">Condominium</option>
@@ -14,11 +14,6 @@
             </select>
         </b-field>
 
-        <!-- House type (Input Field)-->
-        <!-- <b-field v-if="$attrs.isEditListing" class="create-edit-fields" label="House type:">
-            <b-input :placeholder="placeholder.type" v-model="newListing.type" type="text"></b-input>
-        </b-field> -->
-
         <!-- County -->
         <b-field class="create-edit-fields" label="County:">
             <b-input :placeholder="placeholder.county" v-model="newListing.county" type="text"></b-input>
@@ -26,8 +21,7 @@
 
         <!-- State (Select Menu)-->
         <b-field  class="create-edit-fields" label="State:">
-            <!-- <b-input v-if="$attrs.isEditListing" :placeholder="placeholder.state" v-model="newListing.state" type="text"></b-input> -->
-            <select class="input" v-if="$attrs.isCreateListing" name="state" @change="selectState($event)">
+            <select class="input" name="state" @change="selectState($event)">
                 <option class="input">{{placeholder.state}}</option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
@@ -148,7 +142,7 @@
 
 <script>
 export default {
-    name: 'CreateListing',
+    name: 'EditCreateListing',
     data: function (){
         return {
             newListing: {

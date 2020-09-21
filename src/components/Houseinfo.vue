@@ -3,7 +3,7 @@
     <div> 
         <div class="house-info">
             <!-- Inserts home data from db as captions to each listing. -->
-            <div @click="handleSelectingListing"  class="house-info-image-container">
+            <div @click="handleSelectingListing" v-bind:class="{'house-info-image-container':true, 'is-single-house-hover':($attrs.isAdminPanel)}">
                 <img class="house-info-image" v-bind:src="house.image1">
             </div>
             <div  class="house-info-p-container">
@@ -53,7 +53,6 @@ export default {
 <style scoped>  
 .house-info-container{
     display: flex;
-
 }
 .house-info-image-container{
     height: 200px;
@@ -63,6 +62,10 @@ export default {
 .house-info-image{
     width: 100%;
     max-width: 350px;
+}
+.is-single-house-hover:hover{
+    opacity: .95;
+    cursor: pointer;
 }
 .house-info{
     padding-top: 5px;
@@ -85,7 +88,8 @@ export default {
     background-color: transparent;
     margin: 0;
 }
-.admin-edit-delete button :hover{
-    opacity: .95;
+.admin-edit-delete:hover{
+    opacity: .6;
+    cursor: pointer;
 }
 </style>

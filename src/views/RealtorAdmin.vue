@@ -5,8 +5,13 @@
       <p>Active Listings: <span>{{realtorListings.length}}</span></p>
     </div>
     <div class="admin-info-bar-functions">
-      <p>Create New Listing</p>
-      <p>Sort by: Newest</p>
+      <p 
+        @click="isCreateListing">
+        New listing
+      </p>
+      <p>
+        Sort by: Newest
+      </p>
     </div>
   </div>
   <Gridgallery 
@@ -15,7 +20,6 @@
   @deletingListing="deleteListing($event)"
   @singleListingInfo="passSingleListingInfo($event)"
   v-bind:houseData="realtorListings" />
-
 </div>
 </template>
 
@@ -41,10 +45,9 @@ export default{
         this.houseData = this.realtorListings
       }
     },
-    // onChange function watches for change in select field 
-    onChange(event) {
-      console.log(event.target.value)
-      this.newListing.type = event.target.value
+    isCreateListing: function(){
+      console.log('this is the create new listing trigger in editcreatelisting page')
+      this.$emit('isCreateListing')
     },
     passSingleListingInfo: function(event){
       console.log('passing single listing info from house info now in grid gallery', event)
@@ -76,7 +79,7 @@ export default{
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding-top: 200px;
+  padding-top: 100px;
   padding-bottom: 10px;
   width: 80%;
   margin: 0 auto;
@@ -90,6 +93,16 @@ export default{
   align-items: flex-end;
 }
 .admin-info-bar-functions p{
-  padding-left: 10px;
+  background-color: transparent;
+  border-style: none;
+
+  line-height: 1.5;
+  padding: 0 10px 0 10px;
+  font-size: 1em;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+.admin-info-bar-functions p:hover{
+  opacity: .4;
+  cursor: pointer;
 }
 </style>

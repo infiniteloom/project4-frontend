@@ -71,7 +71,8 @@ export default {
   min-width: 300px;
   height: auto;
   padding: 10px;
-}.gallery-item :hover{
-  opacity: .95;
 }
+/* .gallery-item :hover{
+  opacity: .95;
+} */
 </style>
