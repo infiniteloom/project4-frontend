@@ -1,141 +1,217 @@
 <template>
 <div>
+    
     <div class="create-listing-container">
 
-        <!-- House type (Select Menu)-->
-        <b-field  class="create-edit-fields" label="Property type:">
-            <select class="input" name="housetype" @change="selectType($event)">
-                <option class="input">{{placeholder.type}}</option>
-                <option value="Single Family">Single Family</option>
-                <option value="Condominium">Condominium</option>
-                <option value="Multi-family">Multi-family</option>
-                <option value="Land">Land</option>
-                <option value="Apartment">Apartment</option>
-            </select>
-        </b-field>
-
-        <!-- County -->
-        <b-field class="create-edit-fields" label="County:">
-            <b-input :placeholder="placeholder.county" v-model="newListing.county" type="text"></b-input>
-        </b-field>
-
-        <!-- State (Select Menu)-->
-        <b-field  class="create-edit-fields" label="State:">
-            <select class="input" name="state" @change="selectState($event)">
-                <option class="input">{{placeholder.state}}</option>
-                <option value="AL">Alabama</option>
-                <option value="AK">Alaska</option>
-                <option value="AZ">Arizona</option>
-                <option value="AR">Arkansas</option>
-                <option value="CA">California</option>
-                <option value="CO">Colorado</option>
-                <option value="CT">Connecticut</option>
-                <option value="DE">Delaware</option>
-                <option value="DC">District of Columbia</option>
-                <option value="FL">Florida</option>
-                <option value="GA">Georgia</option>
-                <option value="HI">Hawaii</option>
-                <option value="ID">Idaho</option>
-                <option value="IL">Illinois</option>
-                <option value="IN">Indiana</option>
-                <option value="IA">Iowa</option>
-                <option value="KS">Kansas</option>
-                <option value="KY">Kentucky</option>
-                <option value="LA">Louisiana</option>
-                <option value="ME">Maine</option>
-                <option value="MD">Maryland</option>
-                <option value="MA">Massachusetts</option>
-                <option value="MI">Michigan</option>
-                <option value="MN">Minnesota</option>
-                <option value="MS">Mississippi</option>
-                <option value="MO">Missouri</option>
-                <option value="MT">Montana</option>
-                <option value="NE">Nebraska</option>
-                <option value="NV">Nevada</option>
-                <option value="NH">New Hampshire</option>
-                <option value="NJ">New Jersey</option>
-                <option value="NM">New Mexico</option>
-                <option value="NY">New York</option>
-                <option value="NC">North Carolina</option>
-                <option value="ND">North Dakota</option>
-                <option value="OH">Ohio</option>
-                <option value="OK">Oklahoma</option>
-                <option value="OR">Oregon</option>
-                <option value="PA">Pennsylvania</option>
-                <option value="RI">Rhode Island</option>
-                <option value="SC">South Carolina</option>
-                <option value="SD">South Dakota</option>
-                <option value="TN">Tennessee</option>
-                <option value="TX">Texas</option>
-                <option value="UT">Utah</option>
-                <option value="VT">Vermont</option>
-                <option value="VA">Virginia</option>
-                <option value="WA">Washington</option>
-                <option value="WV">West Virginia</option>
-                <option value="WI">Wisconsin</option>
-                <option value="WY">Wyoming</option>
-            </select>
-        </b-field>
-
-        <!-- Zip code -->
-        <b-field  class="create-edit-fields" label="Zip code:">
-            <b-input :placeholder="placeholder.zip" v-model="newListing.zip" type="text"></b-input>
-        </b-field>
-
-        <!-- Street address -->
-        <b-field  class="create-edit-fields" label="Street address:">
-            <b-input :placeholder="placeholder.street" v-model="newListing.street" type="text"></b-input>
-        </b-field>
-
-        <!-- Year Built -->
-        <b-field  class="create-edit-fields" label="Year built:">  
-            <b-input :placeholder="placeholder.year_built" v-model="newListing.year_built" type="text"></b-input>
-        </b-field>
+        <div class="create-edit-header-msg">
+            <p v-if="$attrs.isCreateListing">
+                Enter details to publish a new listing. 
+            </p>
+            <p  v-if="$attrs.isEditListing">
+                Enter details to update your listing. 
+            </p>
+        </div>
 
         <!-- Total beds -->
-        <b-field  class="create-edit-fields" label="Total beds:">  
-            <b-input :placeholder="placeholder.bed" v-model="newListing.bed" type="text"></b-input>
-        </b-field>
+        <div class="edit-create-cols-container">
+            <div class="edit-create-col-l-web">
 
-        <!-- Total baths -->
-        <b-field  class="create-edit-fields" label="Total baths:">  
-            <b-input :placeholder="placeholder.bath" v-model="newListing.bath" type="text"></b-input>
-        </b-field>
+                <!-- Home details label -->
+                <p class="edit-create-field-labels"> 
+                    Home description
+                </p>
+                <b-field  class="create-edit-fields has-addons">  
+                    <p class="control">
+                        <b-input :placeholder="placeholder.bed" v-model="newListing.bed" type="text"></b-input>
+                    <p class="control">
+                        <a class="button is-static">
+                        bedrooms
+                        </a>
+                    </p>
+                </b-field>
 
-        <!-- Home Size  -->
-        <b-field  class="create-edit-fields" label="Home size (sq ft):">  
-            <b-input :placeholder="placeholder.home_size" v-model="newListing.home_size" type="text"></b-input>
-        </b-field>  
-        
-        <!-- Lot Size -->
-        <b-field  class="create-edit-fields" label="Lot size (acres):">  
-            <b-input :placeholder="placeholder.lot_size" v-model="newListing.lot_size" type="text"></b-input>
-        </b-field>
+                <!-- Total baths -->
+                <b-field  class="create-edit-fields has-addons">  
+                    <p class="control">
+                        <b-input :placeholder="placeholder.bath" v-model="newListing.bath" type="text"></b-input>
+                    </p>
+                    <p class="control">
+                        <a class="button is-static">
+                        bathrooms
+                        </a>
+                    </p>
+                </b-field>
 
-        <!-- Home Price -->
-        <b-field  class="create-edit-fields" label="Price (USD):">  
-            <b-input :placeholder="placeholder.price" v-model="newListing.price" type="text"></b-input>
-        </b-field>
+                <!-- Home Size  -->
+                <b-field  class="create-edit-fields has-addons">  
+                    <p class="control">
+                        <b-input :placeholder="placeholder.home_size" v-model="newListing.home_size" type="text"></b-input>
+                    </p>
+                    <p class="control">
+                        <a class="button is-static">
+                        sq ft
+                        </a>
+                    </p>
+                </b-field>  
+                
+                <!-- House type (Select Menu)-->
+                <b-field  class="create-edit-fields">
+                    <select class="input" name="housetype" @change="selectType($event)">
+                        <option class="input">{{placeholder.type}}</option>
+                        <option value="Single Family">Single Family</option>
+                        <option value="Condominium">Condominium</option>
+                        <option value="Multi-family">Multi-family</option>
+                        <option value="Land">Land</option>
+                        <option value="Apartment">Apartment</option>
+                    </select>
+                </b-field>
 
-        <!-- Home Description -->
-        <b-field  class="create-edit-fields" label="Description:">  
-            <b-input :placeholder="placeholder.description" v-model="newListing.description" type="text"></b-input>
-        </b-field>
+                <!-- Year Built -->
+                <b-field  class="create-edit-fields">  
+                    <b-input :placeholder="placeholder.year_built" v-model="newListing.year_built" type="text"></b-input>
+                </b-field>
 
-        <!-- Image URL -->
-        <b-field  class="create-edit-fields" label="Image URL:">  
-            <b-input :placeholder="placeholder.image1" v-model="newListing.image1" type="text"></b-input>
-        </b-field>
+                <p class="edit-create-field-labels"> 
+                    Price (USD)
+                </p>
+                <!-- Home Price -->
+                <b-field  class="create-edit-fields">  
+                    <b-input :placeholder="placeholder.price" v-model="newListing.price" type="text"></b-input>
+                </b-field>
+            </div>
+            
 
-        <!-- Edit button -->
-        <div class="form-button-container" v-if="$attrs.isCreateListing">
-             <b-button @click="createNewListing">Publish listing</b-button>
+
+
+
+            <div class="edit-create-col-r-web">
+                
+                <!-- Property information label -->
+                <p class="edit-create-field-labels"> 
+                    Property information
+                </p>
+
+                <!-- Lot Size -->
+                <b-field  class="create-edit-fields has-addons">  
+                    <p class="control">
+                        <b-input :placeholder="placeholder.lot_size" v-model="newListing.lot_size" type="text"></b-input>
+                    </p>
+                    <p class="control">
+                        <a class="button is-static">
+                        acres
+                        </a>
+                    </p>
+                </b-field>
+
+                <!-- Street address -->
+                <b-field  class="create-edit-fields">
+                    <b-input :placeholder="placeholder.street" v-model="newListing.street" type="text"></b-input>
+                </b-field>
+
+                <!-- County -->
+                <b-field class="create-edit-fields">
+                    <b-input :placeholder="placeholder.county" v-model="newListing.county" type="text"></b-input>
+                </b-field>
+
+                <!-- State (Select Menu)-->
+                <b-field  class="create-edit-fields">
+                    <select class="input" name="state" @change="selectState($event)">
+                        <option class="input">{{placeholder.state}}</option>
+                        <option value="AL">Alabama</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="DE">Delaware</option>
+                        <option value="DC">District of Columbia</option>
+                        <option value="FL">Florida</option>
+                        <option value="GA">Georgia</option>
+                        <option value="HI">Hawaii</option>
+                        <option value="ID">Idaho</option>
+                        <option value="IL">Illinois</option>
+                        <option value="IN">Indiana</option>
+                        <option value="IA">Iowa</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="ME">Maine</option>
+                        <option value="MD">Maryland</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MT">Montana</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NY">New York</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="UT">Utah</option>
+                        <option value="VT">Vermont</option>
+                        <option value="VA">Virginia</option>
+                        <option value="WA">Washington</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WY">Wyoming</option>
+                    </select>
+                </b-field>
+
+                <!-- Zip code -->
+                <b-field  class="create-edit-fields">
+                    <b-input :placeholder="placeholder.zip" v-model="newListing.zip" type="text"></b-input>
+                </b-field>
+
+
+                <!-- Image URL -->
+                <!-- Description label -->
+                <p class="edit-create-field-labels"> 
+                    Image URL:
+                </p>
+                <b-field  class="create-edit-fields">  
+                    <b-input :placeholder="placeholder.image1" v-model="newListing.image1" type="text"></b-input>
+                </b-field>
+
+            </div>
         </div>
 
-        <!-- Create button -->
-        <div class="form-button-container" v-if="$attrs.isEditListing">
-             <b-button @click="editListing">Publish changes</b-button>
-        </div>
+            <div class="create-edit-description">
+                <!-- Description label -->
+                <p class="edit-create-field-labels"> 
+                    Description:
+                </p>
+                <!-- Home Description -->
+                <b-field  class="create-edit-fields">  
+                    <!-- <b-input :placeholder="placeholder.description" v-model="newListing.description" type="text"></b-input> -->
+                    <textarea class="textarea" :placeholder="placeholder.description" v-model="newListing.description" type="text" rows="10"></textarea>
+                </b-field>
+            </div>
+
+
+            <!-- Edit button -->
+            <div class="form-button-container" v-if="$attrs.isCreateListing">
+                <b-button @click="createNewListing">Publish listing</b-button>
+            </div>
+
+            <!-- Create button -->
+            <div class="form-button-container" v-if="$attrs.isEditListing">
+                <b-button @click="editListing">Publish changes</b-button>
+            </div>
+
     </div>
 </div>
 </template>
@@ -186,20 +262,20 @@ export default {
             // console.log('this is the listing we want to edit: ', this.$attrs.singleListingInfo.lot_size)
             let singleListing = this.$attrs.singleListingInfo
             // console.log('this is single listing stuff', singleListing.lot_size.toString())
-            this.placeholder.type= singleListing.type, 
-            this.placeholder.city = singleListing.city,
-            this.placeholder.county = singleListing.county,
-            this.placeholder.state = singleListing.state,
-            this.placeholder.zip = singleListing.zip,
-            this.placeholder.street = singleListing.street,
-            this.placeholder.year_built = singleListing.year_built,
-            this.placeholder.bed = singleListing.bed.toString()
-            this.placeholder.bath = singleListing.bath.toString()
-            this.placeholder.home_size = singleListing.home_size.toString(),
-            this.placeholder.lot_size = singleListing.lot_size.toString(),
-            this.placeholder.price = singleListing.price.toString(),
-            this.placeholder.description = singleListing.description,
-            this.placeholder.image1 = singleListing.image1
+            this.newListing.type= singleListing.type, 
+            this.newListing.city = singleListing.city,
+            this.newListing.county = singleListing.county,
+            this.newListing.state = singleListing.state,
+            this.newListing.zip = singleListing.zip,
+            this.newListing.street = singleListing.street,
+            this.newListing.year_built = singleListing.year_built,
+            this.newListing.bed = singleListing.bed.toString()
+            this.newListing.bath = singleListing.bath.toString()
+            this.newListing.home_size = singleListing.home_size.toString(),
+            this.newListing.lot_size = singleListing.lot_size.toString(),
+            this.newListing.price = singleListing.price.toString(),
+            this.newListing.description = singleListing.description,
+            this.newListing.image1 = singleListing.image1
         }
     },
     methods:{
@@ -263,50 +339,50 @@ export default {
             })
         },
         editListing: function(){
-            if(!this.newListing.type){
-                this.newListing.type = this.placeholder.type
-            }
-            if(!this.newListing.city){
-                this.newListing.city = this.placeholder.city
-            }
-            if(!this.newListing.county){
-                this.newListing.county = this.placeholder.county
-            }
-            if(!this.newListing.state){
-                this.newListing.state = this.placeholder.state
-            }
-            if(!this.newListing.zip){
-                this.newListing.zip = this.placeholder.zip
-            }
-            if(!this.newListing.street){
-                this.newListing.street = this.placeholder.street
-            }
-            if(!this.newListing.year_built){
-                this.newListing.year_built = this.placeholder.year_built
-            }
-            if(!this.newListing.bed){
-                this.newListing.bed = this.placeholder.bed
-            }
-            if(!this.newListing.bath){
-                this.newListing.bath = this.placeholder.bath
-            }
-            if(!this.newListing.home_size){
-                this.newListing.home_size = this.placeholder.home_size
-            }
-            if(!this.newListing.lot_size){
-                this.newListing.lot_size = this.placeholder.lot_size
-            }
-            if(!this.newListing.price){
-                this.newListing.price = this.placeholder.price
-            }
-            if(!this.newListing.description){
-                this.newListing.description = this.placeholder.description
-            }
-            if(!this.newListing.image1){
-                this.newListing.image1 = this.placeholder.image1
-            }
-            console.log('this is the placeholder type that is being assigned to new listing', this.placeholder.type)
-            console.log(this.newListing.type)            
+            // if(!this.newListing.type){
+            //     this.newListing.type = this.placeholder.type
+            // }
+            // if(!this.newListing.city){
+            //     this.newListing.city = this.placeholder.city
+            // }
+            // if(!this.newListing.county){
+            //     this.newListing.county = this.placeholder.county
+            // }
+            // if(!this.newListing.state){
+            //     this.newListing.state = this.placeholder.state
+            // }
+            // if(!this.newListing.zip){
+            //     this.newListing.zip = this.placeholder.zip
+            // }
+            // if(!this.newListing.street){
+            //     this.newListing.street = this.placeholder.street
+            // }
+            // if(!this.newListing.year_built){
+            //     this.newListing.year_built = this.placeholder.year_built
+            // }
+            // if(!this.newListing.bed){
+            //     this.newListing.bed = this.placeholder.bed
+            // }
+            // if(!this.newListing.bath){
+            //     this.newListing.bath = this.placeholder.bath
+            // }
+            // if(!this.newListing.home_size){
+            //     this.newListing.home_size = this.placeholder.home_size
+            // }
+            // if(!this.newListing.lot_size){
+            //     this.newListing.lot_size = this.placeholder.lot_size
+            // }
+            // if(!this.newListing.price){
+            //     this.newListing.price = this.placeholder.price
+            // }
+            // if(!this.newListing.description){
+            //     this.newListing.description = this.placeholder.description
+            // }
+            // if(!this.newListing.image1){
+            //     this.newListing.image1 = this.placeholder.image1
+            // }
+            // console.log('this is the placeholder type that is being assigned to new listing', this.placeholder.type)
+            // console.log(this.newListing.type)            
             const id = this.$attrs.singleListingInfo.id
             
             fetch(`${this.$URL}/api/listings/${id}/`, {
@@ -353,18 +429,47 @@ export default {
     text-align: center;
 }
 .create-listing-container{
-    width: 50%;
+    width: 70%;
     min-width: 350px;
+    max-width: 700px;
     margin: 0 auto; 
     padding: 100px 20px 100px 20px;
+}
+.create-edit-header-msg{
+    text-align: center;
+    padding: 80px 0px 50px 0;
 }
 .create-edit-fields label{
     font-size: .8em;
 }
 .form-button-container button{
-  width: 100%;
-  margin: 0 auto;
-  color: white;
-  background-color: rgb(73, 73, 73);
+    width: 100%;
+    margin: 0 auto;
+    color: white;
+    background-color: rgb(73, 73, 73);
+}
+.edit-create-cols-container{
+    display: flex;
+    flex-direction: column;
+}
+.create-edit-description{
+    padding-top: 30px;
+}
+.edit-create-field-labels{
+    padding-bottom: 5px;
+    padding-top: 10px;
+}
+@media only screen and (min-width: 600px){
+    .edit-create-cols-container{
+        display: flex;
+        flex-direction: row;
+    }
+    .edit-create-col-l-web{
+        padding-right: 40px;
+    }
+    .edit-create-col-r-web{
+        padding-left:40px;
+        border-left: solid 1px lightgrey;
+    }
 }
 </style>
