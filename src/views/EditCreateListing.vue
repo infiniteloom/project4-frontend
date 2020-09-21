@@ -15,6 +15,11 @@
         <!-- Total beds -->
         <div class="edit-create-cols-container">
             <div class="edit-create-col-l-web">
+
+                <!-- Home details label -->
+                <p class="edit-create-field-labels"> 
+                    Home description
+                </p>
                 <b-field  class="create-edit-fields has-addons">  
                     <p class="control">
                         <b-input :placeholder="placeholder.bed" v-model="newListing.bed" type="text"></b-input>
@@ -66,8 +71,11 @@
                     <b-input :placeholder="placeholder.year_built" v-model="newListing.year_built" type="text"></b-input>
                 </b-field>
 
+                <p class="edit-create-field-labels"> 
+                    Price (USD)
+                </p>
                 <!-- Home Price -->
-                <b-field  class="create-edit-fields" label="Price (USD):">  
+                <b-field  class="create-edit-fields">  
                     <b-input :placeholder="placeholder.price" v-model="newListing.price" type="text"></b-input>
                 </b-field>
             </div>
@@ -77,6 +85,12 @@
 
 
             <div class="edit-create-col-r-web">
+                
+                <!-- Property information label -->
+                <p class="edit-create-field-labels"> 
+                    Property information
+                </p>
+
                 <!-- Lot Size -->
                 <b-field  class="create-edit-fields has-addons">  
                     <p class="control">
@@ -84,7 +98,7 @@
                     </p>
                     <p class="control">
                         <a class="button is-static">
-                        sq ft
+                        acres
                         </a>
                     </p>
                 </b-field>
@@ -93,7 +107,6 @@
                 <b-field  class="create-edit-fields">
                     <b-input :placeholder="placeholder.street" v-model="newListing.street" type="text"></b-input>
                 </b-field>
-
 
                 <!-- County -->
                 <b-field class="create-edit-fields">
@@ -164,22 +177,30 @@
                 </b-field>
 
 
-
                 <!-- Image URL -->
-                <b-field  class="create-edit-fields" label="Image URL:">  
+                <!-- Description label -->
+                <p class="edit-create-field-labels"> 
+                    Image URL:
+                </p>
+                <b-field  class="create-edit-fields">  
                     <b-input :placeholder="placeholder.image1" v-model="newListing.image1" type="text"></b-input>
                 </b-field>
 
             </div>
         </div>
 
-            
+            <div class="create-edit-description">
+                <!-- Description label -->
+                <p class="edit-create-field-labels"> 
+                    Description:
+                </p>
+                <!-- Home Description -->
+                <b-field  class="create-edit-fields">  
+                    <!-- <b-input :placeholder="placeholder.description" v-model="newListing.description" type="text"></b-input> -->
+                    <textarea class="textarea" :placeholder="placeholder.description" v-model="newListing.description" type="text" rows="10"></textarea>
+                </b-field>
+            </div>
 
-            <!-- Home Description -->
-            <b-field  class="create-edit-fields create-edit-description">  
-                <!-- <b-input :placeholder="placeholder.description" v-model="newListing.description" type="text"></b-input> -->
-                <textarea class="textarea" :placeholder="placeholder.description" v-model="newListing.description" type="text" rows="10"></textarea>
-            </b-field>
 
             <!-- Edit button -->
             <div class="form-button-container" v-if="$attrs.isCreateListing">
@@ -241,20 +262,20 @@ export default {
             // console.log('this is the listing we want to edit: ', this.$attrs.singleListingInfo.lot_size)
             let singleListing = this.$attrs.singleListingInfo
             // console.log('this is single listing stuff', singleListing.lot_size.toString())
-            this.placeholder.type= singleListing.type, 
-            this.placeholder.city = singleListing.city,
-            this.placeholder.county = singleListing.county,
-            this.placeholder.state = singleListing.state,
-            this.placeholder.zip = singleListing.zip,
-            this.placeholder.street = singleListing.street,
-            this.placeholder.year_built = singleListing.year_built,
-            this.placeholder.bed = singleListing.bed.toString()
-            this.placeholder.bath = singleListing.bath.toString()
-            this.placeholder.home_size = singleListing.home_size.toString(),
-            this.placeholder.lot_size = singleListing.lot_size.toString(),
-            this.placeholder.price = singleListing.price.toString(),
-            this.placeholder.description = singleListing.description,
-            this.placeholder.image1 = singleListing.image1
+            this.newListing.type= singleListing.type, 
+            this.newListing.city = singleListing.city,
+            this.newListing.county = singleListing.county,
+            this.newListing.state = singleListing.state,
+            this.newListing.zip = singleListing.zip,
+            this.newListing.street = singleListing.street,
+            this.newListing.year_built = singleListing.year_built,
+            this.newListing.bed = singleListing.bed.toString()
+            this.newListing.bath = singleListing.bath.toString()
+            this.newListing.home_size = singleListing.home_size.toString(),
+            this.newListing.lot_size = singleListing.lot_size.toString(),
+            this.newListing.price = singleListing.price.toString(),
+            this.newListing.description = singleListing.description,
+            this.newListing.image1 = singleListing.image1
         }
     },
     methods:{
@@ -318,50 +339,50 @@ export default {
             })
         },
         editListing: function(){
-            if(!this.newListing.type){
-                this.newListing.type = this.placeholder.type
-            }
-            if(!this.newListing.city){
-                this.newListing.city = this.placeholder.city
-            }
-            if(!this.newListing.county){
-                this.newListing.county = this.placeholder.county
-            }
-            if(!this.newListing.state){
-                this.newListing.state = this.placeholder.state
-            }
-            if(!this.newListing.zip){
-                this.newListing.zip = this.placeholder.zip
-            }
-            if(!this.newListing.street){
-                this.newListing.street = this.placeholder.street
-            }
-            if(!this.newListing.year_built){
-                this.newListing.year_built = this.placeholder.year_built
-            }
-            if(!this.newListing.bed){
-                this.newListing.bed = this.placeholder.bed
-            }
-            if(!this.newListing.bath){
-                this.newListing.bath = this.placeholder.bath
-            }
-            if(!this.newListing.home_size){
-                this.newListing.home_size = this.placeholder.home_size
-            }
-            if(!this.newListing.lot_size){
-                this.newListing.lot_size = this.placeholder.lot_size
-            }
-            if(!this.newListing.price){
-                this.newListing.price = this.placeholder.price
-            }
-            if(!this.newListing.description){
-                this.newListing.description = this.placeholder.description
-            }
-            if(!this.newListing.image1){
-                this.newListing.image1 = this.placeholder.image1
-            }
-            console.log('this is the placeholder type that is being assigned to new listing', this.placeholder.type)
-            console.log(this.newListing.type)            
+            // if(!this.newListing.type){
+            //     this.newListing.type = this.placeholder.type
+            // }
+            // if(!this.newListing.city){
+            //     this.newListing.city = this.placeholder.city
+            // }
+            // if(!this.newListing.county){
+            //     this.newListing.county = this.placeholder.county
+            // }
+            // if(!this.newListing.state){
+            //     this.newListing.state = this.placeholder.state
+            // }
+            // if(!this.newListing.zip){
+            //     this.newListing.zip = this.placeholder.zip
+            // }
+            // if(!this.newListing.street){
+            //     this.newListing.street = this.placeholder.street
+            // }
+            // if(!this.newListing.year_built){
+            //     this.newListing.year_built = this.placeholder.year_built
+            // }
+            // if(!this.newListing.bed){
+            //     this.newListing.bed = this.placeholder.bed
+            // }
+            // if(!this.newListing.bath){
+            //     this.newListing.bath = this.placeholder.bath
+            // }
+            // if(!this.newListing.home_size){
+            //     this.newListing.home_size = this.placeholder.home_size
+            // }
+            // if(!this.newListing.lot_size){
+            //     this.newListing.lot_size = this.placeholder.lot_size
+            // }
+            // if(!this.newListing.price){
+            //     this.newListing.price = this.placeholder.price
+            // }
+            // if(!this.newListing.description){
+            //     this.newListing.description = this.placeholder.description
+            // }
+            // if(!this.newListing.image1){
+            //     this.newListing.image1 = this.placeholder.image1
+            // }
+            // console.log('this is the placeholder type that is being assigned to new listing', this.placeholder.type)
+            // console.log(this.newListing.type)            
             const id = this.$attrs.singleListingInfo.id
             
             fetch(`${this.$URL}/api/listings/${id}/`, {
@@ -408,23 +429,24 @@ export default {
     text-align: center;
 }
 .create-listing-container{
-    width: 50%;
+    width: 70%;
     min-width: 350px;
+    max-width: 700px;
     margin: 0 auto; 
     padding: 100px 20px 100px 20px;
 }
 .create-edit-header-msg{
     text-align: center;
-    padding: 20px;
+    padding: 80px 0px 50px 0;
 }
 .create-edit-fields label{
     font-size: .8em;
 }
 .form-button-container button{
-  width: 100%;
-  margin: 0 auto;
-  color: white;
-  background-color: rgb(73, 73, 73);
+    width: 100%;
+    margin: 0 auto;
+    color: white;
+    background-color: rgb(73, 73, 73);
 }
 .edit-create-cols-container{
     display: flex;
@@ -432,6 +454,10 @@ export default {
 }
 .create-edit-description{
     padding-top: 30px;
+}
+.edit-create-field-labels{
+    padding-bottom: 5px;
+    padding-top: 10px;
 }
 @media only screen and (min-width: 600px){
     .edit-create-cols-container{
@@ -442,7 +468,6 @@ export default {
         padding-right: 40px;
     }
     .edit-create-col-r-web{
-        /* width: 50%;     */
         padding-left:40px;
         border-left: solid 1px lightgrey;
     }
