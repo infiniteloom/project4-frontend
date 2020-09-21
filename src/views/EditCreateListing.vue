@@ -20,28 +20,30 @@
                 <p class="edit-create-field-labels"> 
                     Home description
                 </p>
-                <b-field  class="create-edit-fields has-addons">  
-                    <p class="control">
-                        <b-input :placeholder="placeholder.bed" v-model="newListing.bed" type="text"></b-input>
-                    <p class="control">
-                        <a class="button is-static">
-                        bedrooms
-                        </a>
-                    </p>
-                </b-field>
 
-                <!-- Total baths -->
-                <b-field  class="create-edit-fields has-addons">  
-                    <p class="control">
-                        <b-input :placeholder="placeholder.bath" v-model="newListing.bath" type="text"></b-input>
-                    </p>
-                    <p class="control">
-                        <a class="button is-static">
-                        bathrooms
-                        </a>
-                    </p>
-                </b-field>
+                <div class="beds-baths-container">
+                    <b-field  class="create-edit-fields has-addons">  
+                        <p class="control beds-baths">
+                            <b-input :placeholder="placeholder.bed" v-model="newListing.bed" type="text"></b-input>
+                        <p class="control beds-baths">
+                            <a class="button is-static">
+                            bedrooms
+                            </a>
+                        </p>
+                    </b-field>
 
+                    <!-- Total baths -->
+                    <b-field  class="create-edit-fields has-addons">  
+                        <p class="control">
+                            <b-input :placeholder="placeholder.bath" v-model="newListing.bath" type="text"></b-input>
+                        </p>
+                        <p class="control">
+                            <a class="button is-static">
+                            bathrooms
+                            </a>
+                        </p>
+                    </b-field>
+                </div>
                 <!-- Home Size  -->
                 <b-field  class="create-edit-fields has-addons">  
                     <p class="control">
@@ -211,6 +213,10 @@
             <div class="form-button-container" v-if="$attrs.isEditListing">
                 <b-button @click="editListing">Publish changes</b-button>
             </div>
+            <p class="privacy-policy">
+                By publishing you agree to <br/>
+                Haven's Privacy Policy and Terms of Use.
+            </p>
 
     </div>
 </div>
@@ -338,51 +344,7 @@ export default {
                 this.$emit("createdNewListing")
             })
         },
-        editListing: function(){
-            // if(!this.newListing.type){
-            //     this.newListing.type = this.placeholder.type
-            // }
-            // if(!this.newListing.city){
-            //     this.newListing.city = this.placeholder.city
-            // }
-            // if(!this.newListing.county){
-            //     this.newListing.county = this.placeholder.county
-            // }
-            // if(!this.newListing.state){
-            //     this.newListing.state = this.placeholder.state
-            // }
-            // if(!this.newListing.zip){
-            //     this.newListing.zip = this.placeholder.zip
-            // }
-            // if(!this.newListing.street){
-            //     this.newListing.street = this.placeholder.street
-            // }
-            // if(!this.newListing.year_built){
-            //     this.newListing.year_built = this.placeholder.year_built
-            // }
-            // if(!this.newListing.bed){
-            //     this.newListing.bed = this.placeholder.bed
-            // }
-            // if(!this.newListing.bath){
-            //     this.newListing.bath = this.placeholder.bath
-            // }
-            // if(!this.newListing.home_size){
-            //     this.newListing.home_size = this.placeholder.home_size
-            // }
-            // if(!this.newListing.lot_size){
-            //     this.newListing.lot_size = this.placeholder.lot_size
-            // }
-            // if(!this.newListing.price){
-            //     this.newListing.price = this.placeholder.price
-            // }
-            // if(!this.newListing.description){
-            //     this.newListing.description = this.placeholder.description
-            // }
-            // if(!this.newListing.image1){
-            //     this.newListing.image1 = this.placeholder.image1
-            // }
-            // console.log('this is the placeholder type that is being assigned to new listing', this.placeholder.type)
-            // console.log(this.newListing.type)            
+        editListing: function(){         
             const id = this.$attrs.singleListingInfo.id
             
             fetch(`${this.$URL}/api/listings/${id}/`, {
@@ -437,7 +399,8 @@ export default {
 }
 .create-edit-header-msg{
     text-align: center;
-    padding: 80px 0px 50px 0;
+    padding: 10% 0px 50px 0;
+    opacity: .6;
 }
 .create-edit-fields label{
     font-size: .8em;
@@ -457,9 +420,20 @@ export default {
 }
 .edit-create-field-labels{
     padding-bottom: 5px;
-    padding-top: 10px;
+    padding-top: 20px;
+    font-size: .8em;
+    font-weight: bold;
 }
-@media only screen and (min-width: 600px){
+@media only screen and (max-width: 700px){
+    .beds-baths-container{
+        display: flex;
+        justify-content: space-between;
+    }
+    /* .beds-baths{
+        width: 45%;
+    } */
+}
+@media only screen and (min-width: 700px){
     .edit-create-cols-container{
         display: flex;
         flex-direction: row;
@@ -471,5 +445,10 @@ export default {
         padding-left:40px;
         border-left: solid 1px lightgrey;
     }
+}
+.privacy-policy{
+    padding-top: 20px;
+    text-align: center;
+    font-size: .8em;
 }
 </style>

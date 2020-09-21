@@ -6,14 +6,17 @@
             <p>{{welcomeRealtor}}</p>
         </div>
         <b-field>
-            <b-input placeholder="email" v-model="username" type="email"></b-input>
+            <b-input placeholder="email" v-bind:class="{'error':$attrs.error}" v-model="username" type="email"></b-input>
         </b-field>
         <b-field>
-            <b-input value="" type="password" v-model="password" maxlength="30" placeholder="password"></b-input>
+            <b-input value="" v-bind:class="{'error':$attrs.error}"  type="password" v-model="password" maxlength="30" placeholder="password"></b-input>
         </b-field>
 
-        <b-button @click="login">Log In</b-button>
+        <b-button class="button login-button" @click="login">Log In</b-button>
 
+        <p v-if="$attrs.error" v-bind:class="{'error':$attrs.error}" >
+            Log in failed. Invalid username or password. 
+        </p>
 
 
         <!--FOR REGISTERING
@@ -95,5 +98,19 @@ export default{
     min-width: 350px;
     margin: 0 auto; 
     padding: 100px 20px 100px 20px;
+}
+.button.login-button{
+    width: 100%;
+    background-color: rgb(240, 240, 240);
+}
+.button.login-button{
+    font-size: .9em;
+    margin-bottom: 20px;
+}
+.error{
+    border-color: red 1px solid;
+    font-size: .8em;
+    color: red;
+    text-align: center;
 }
 </style>
