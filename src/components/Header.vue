@@ -4,8 +4,18 @@
 
       <!-- Brand Logo -->
       <template slot="brand">
-        <b-navbar-item tag="router-link" :to="{ path: '/' }">
+        <!-- <b-navbar-item tag="router-link" :to="{ path: '/' }">
           <img
+            src="https://res.cloudinary.com/infiniteloom/image/upload/v1599965230/Unit%2004%20-%20Project%20-%20Haven/haven-logo-black_sysaf0.png"
+            alt="Ha•ven /ˈhāvən/ (noun) a place of safety or refuge. Find your perfect home with Haven.com"
+          />
+        </b-navbar-item> -->
+        <b-navbar-item href="#">
+          <!-- <button class="button drop-down-button" 
+            @click="returnHome">
+            New listing</button> -->
+            <img
+            @click="returnHome"
             src="https://res.cloudinary.com/infiniteloom/image/upload/v1599965230/Unit%2004%20-%20Project%20-%20Haven/haven-logo-black_sysaf0.png"
             alt="Ha•ven /ˈhāvən/ (noun) a place of safety or refuge. Find your perfect home with Haven.com"
           />
@@ -29,7 +39,9 @@
           <div class="buttons nav-right">
             <router-link to="/signup" v-if="!loggedIn">
               <a v-if="!loggedIn" class="button login-reg" href="#">
-                  <strong>Sign up</strong>
+                <strong>
+                Sign up
+                </strong>
               </a>
             </router-link>
             <router-link to="/login" v-if="!loggedIn">
@@ -43,6 +55,7 @@
         <b-navbar-item v-if="loggedIn" href="#">
           <!-- <router-link  v-if="loggedIn" @click="isAdminPanel"><button class="button drop-down-button">Manage Listings</button></router-link> -->
           <button class="button drop-down-button" 
+            :isAdminPanel="$attrs.isAdminPanel" 
             @click="isAdminPanel">
             Manage listings</button>
         </b-navbar-item>
@@ -58,20 +71,6 @@
             @click="logout">
             Log out</button>
         </b-navbar-item>
-        <!-- <b-navbar-item>
-           <div>
-            <b-navbar-dropdown v-if="loggedIn" class="user-drop" label="User">     
-              <b-navbar-item class="user-drop" href="#">
-                <router-link to="/admin"><button class="button drop-down-button">Manage Listings</button></router-link>
-              </b-navbar-item>
-              <b-navbar-item v-if="loggedIn" class="user-drop" href="#">
-                <button class="button drop-down-button" v-if="loggedIn" @click="logout">Log out</button>
-              </b-navbar-item>
-            </b-navbar-dropdown>
-          </div>
-        </b-navbar-item> -->
-
-
       </template>
     </b-navbar>
   </div>
@@ -92,6 +91,9 @@ export default {
     isCreateListing: function(){
       console.log('this is the create new listing trigger in header')
       this.$emit('isCreateListing')
+    },
+    returnHome: function(){
+      this.$emit('returnHome')
     }
   }
 };

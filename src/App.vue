@@ -5,6 +5,8 @@
       <Header 
       v-bind:loggedIn="loggedIn" 
       v-bind:user="user" 
+      :isAdminPanel="isAdminPanel" 
+      @returnHome="returnHome"
       @isAdminPanel="handleAdminPanel($event)" 
       @isCreateListing="handleCreateListing($event)"
       @logout="handleLogout"  />
@@ -15,13 +17,16 @@
         :singleListingInfo="singleListingInfo"
         :realtorListings="realtorListings" 
         :isAdminPanel="isAdminPanel" 
+        :isHomeView="isHomeView"
         :isCreateListing="isCreateListing"
         :isEditListing="isEditListing"
         :isSelectListing="isSelectListing"
         :house="singleListingInfo"
         :loggedIn="loggedIn" 
+        @editListing="editListing($event)"
         @refreshRealtorListings="refreshRealtorListings($event)"
         @singleListingInfo="handleSingleListing($event)"
+        @isCreateListing="handleCreateListing($event)"
         @createdNewListing="createdNewListing($event)"
         @loggedIn="handleLogin($event)"/>
     </div>
@@ -53,6 +58,7 @@ export default {
       user: {},
       houseData: null,
       realtorListings: [],
+      isHomeView: false,
       isAdminPanel: false,
       isCreateListing: false,
       isEditListing: false,
@@ -78,21 +84,29 @@ export default {
     handleAdminPanel: function(){
       console.log('handle admin panel in app.vue is being called ')
       this.isAdminPanel = true
+      this.isHomeView = false
       this.isCreateListing = false
       this.isEditListing = false
+      this.isSelectListing= false,
+      this.singleListingInfo= false,
       this.getAdminListings()
       console.log('realtor listings in handle admin in app.vue : ', this.realtorListings)
-      this.$router.push({ path: 'Admin', query: { user: this.user, loggedIn: 'this.loggedIn' } , props:{realtorListings: this.realtorListings}})
+      this.$router.push({ path: '/admin', query: { user: this.user, loggedIn: 'this.loggedIn' } , props:{realtorListings: this.realtorListings}})
     },
     handleCreateListing: function(){
       this.isCreateListing = true
+      this.isAdminPanel = false
+      this.isHomeView = false
       this.isEditListing = false
-      this.$router.push({ path: 'Newlisting', query: { user: this.user, isAdminPanel: this.isAdminPanel, loggedIn: 'this.loggedIn'  }})
+      this.isSelectListing= false,
+      this.singleListingInfo= false,
+      this.$router.push({ path: '/newlisting', query: { user: this.user, isAdminPanel: this.isAdminPanel, loggedIn: 'this.loggedIn'  }})
     },
     createdNewListing: function(){
+      this.isAdminPanel = true
       this.isCreateListing = false
       this.getAdminListings()
-      this.$router.push({ path: 'Admin', query: { user: this.user, isAdminPanel: this.isAdminPanel, loggedIn: 'this.loggedIn' }})
+      this.$router.push({ path: '/admin', query: { user: this.user, isAdminPanel: this.isAdminPanel, loggedIn: 'this.loggedIn' }})
     },
     getAdminListings: function(){
       console.log('getting admin listings')
@@ -108,16 +122,40 @@ export default {
           this.realtorListings = data.results 
       })
     },
+    editListing: function(event){
+      console.log('reaching edit listing function in app.vue', event)
+      this.isEditListing = true
+      this.isAdminPanel = false
+      this.singleListingInfo = event
+      this.$router.push({ path: '/newlisting', query: { user: this.user, isAdminPanel: this.isAdminPanel, loggedIn: 'this.loggedIn' }})
+    },
     refreshRealtorListings: function(){
       console.log('refreshing admin listings')
       this.getAdminListings()
-      this.$router.push({ path: 'Admin', query: { user: this.user, isAdminPanel: this.isAdminPanel, loggedIn: 'this.loggedIn' }})
+      this.$router.push({ path: '/admin', query: { user: this.user, isAdminPanel: this.isAdminPanel, loggedIn: 'this.loggedIn' }})
     },
     handleSingleListing: function(event){
-      // console.log('reaching the app.vue handle single listing', event)
+      this.isSelectListing = true
+      this.isAdminPanel = false
+      this.isHomeView = false
+      this.isCreateListing = false
+      this.isEditListing = false
       this.singleListingInfo = event
-      // console.log('this is single listing info as event in app.vue', this.singleListingInfo)
       this.$router.push({ path: '/singlelisting', query: { user: this.user, loggedIn: 'this.loggedIn' }, props: { singleListingInfo: 'this.singleListingInfo'}})
+    },
+    returnHome: function(){
+      console.log('returning home')
+      this.resetAll()
+      if(!this.isHomeView){
+        this.$router.push({ path: '/', query: { user: this.user, loggedIn: 'this.loggedIn' }})
+      }
+    },
+    resetAll: function(){
+      console.log('resetting all ')
+      this.isCreateListing = false
+      this.isAdminPanel = false
+      this.isEditListing = false
+      this.isSelectListing = false
     }
   }
 }

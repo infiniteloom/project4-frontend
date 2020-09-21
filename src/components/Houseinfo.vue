@@ -3,7 +3,7 @@
     <div> 
         <div class="house-info">
             <!-- Inserts home data from db as captions to each listing. -->
-            <div @click="handleSelectingListing"  class="house-info-image-container">
+            <div @click="handleSelectingListing" v-bind:class="{'house-info-image-container':true, 'is-single-house-hover':($attrs.isAdminPanel)}">
                 <img class="house-info-image" v-bind:src="house.image1">
             </div>
             <div  class="house-info-p-container">
@@ -14,7 +14,7 @@
                     <p>${{house.price}} </p> 
                 </div>
                 <!-- If a realtor was logged in, show this div with edit/delete functions -->
-                <div class="admin-edit-delete-container" v-if="this.$route.query.loggedIn ">
+                <div class="admin-edit-delete-container" v-if="this.$route.query.loggedIn && this.$attrs.isAdminPanel">
                     <button @click="handleEditListing" class="admin-edit-delete">
                         Edit
                     </button>
@@ -40,17 +40,10 @@ export default {
         },
         handleEditListing: function(){
             console.log('edit listing is being triggered')
+            this.$emit("editListing", this.house)
         },
         handleDeleteListing: function(){
             this.$emit("deletingListing", this.house.id)
-            // console.log(`the url is deleting ${this.$URL}/api/listings/${id}/`)
-            // fetch(`${this.$URL}/api/listings/${id}/`, {
-            //     method: "DELETE",
-            //     headers:{
-            //         "Content-Type": "application/json",
-            //         "Authorization" : `JWT ${this.$route.query.user.token}`
-            //     }
-            // })
         },
   }
 }
@@ -60,7 +53,6 @@ export default {
 <style scoped>  
 .house-info-container{
     display: flex;
-
 }
 .house-info-image-container{
     height: 200px;
@@ -69,7 +61,11 @@ export default {
 }
 .house-info-image{
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
+}
+.is-single-house-hover:hover{
+    opacity: .95;
+    cursor: pointer;
 }
 .house-info{
     padding-top: 5px;
@@ -92,7 +88,8 @@ export default {
     background-color: transparent;
     margin: 0;
 }
-.admin-edit-delete button :hover{
-    opacity: .95;
+.admin-edit-delete:hover{
+    opacity: .6;
+    cursor: pointer;
 }
 </style>
