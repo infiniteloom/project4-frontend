@@ -38,11 +38,13 @@ export default {
     this.$attrs.isHomeView = true
     this.$attrs.isAdminPanel= false
     fetch(`${this.$URL}/api/listings/`)
-        .then(response => response.json())
-        .then(data => {
-            this.houseData = data.results
-            console.log(this.houseData)
-        })
+      .then(response => response.json())
+      .then(data => {
+        this.houseData = data.results
+        console.log(this.houseData)
+        this.$emit('houseData', data)
+      })
+      
   },
   methods: {
       passSingleListingInfo: function(event){
