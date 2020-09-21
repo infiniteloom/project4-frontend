@@ -62,7 +62,7 @@ export default {
 }
 .house-info-image{
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
 }
 .house-info{
     padding-top: 5px;
