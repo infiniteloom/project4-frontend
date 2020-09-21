@@ -5,7 +5,9 @@
       <Header 
       v-bind:loggedIn="loggedIn" 
       v-bind:user="user" 
+      :isHomeView="isHomeView"
       :isAdminPanel="isAdminPanel" 
+      :allListings="houseData"
       @returnHome="returnHome"
       @isAdminPanel="handleAdminPanel($event)" 
       @isCreateListing="handleCreateListing($event)"
@@ -24,6 +26,7 @@
         :house="singleListingInfo"
         :loggedIn="loggedIn" 
         @editListing="editListing($event)"
+        @houseData="handleHouseData($event)"
         @refreshRealtorListings="refreshRealtorListings($event)"
         @singleListingInfo="handleSingleListing($event)"
         @isCreateListing="handleCreateListing($event)"
@@ -80,6 +83,9 @@ export default {
       this.loggedIn = false
       this.user = {}
       this.$router.push('/')
+    },
+    handleHouseData: function(event){
+      this.houseData = event.results
     },
     handleAdminPanel: function(){
       console.log('handle admin panel in app.vue is being called ')
@@ -146,9 +152,8 @@ export default {
     returnHome: function(){
       console.log('returning home')
       this.resetAll()
-      if(!this.isHomeView){
-        this.$router.push({ path: '/', query: { user: this.user, loggedIn: 'this.loggedIn' }})
-      }
+      this.isHomeView = true
+      this.$router.push({ path: '/', query: { user: this.user, loggedIn: 'this.loggedIn' }})
     },
     resetAll: function(){
       console.log('resetting all ')
@@ -171,7 +176,7 @@ export default {
 }
 
 #nav {
-  background-color: transparent;
+  background-color: #ffffff;
   width: 100%;
   padding: 0;
   margin: 0 auto;

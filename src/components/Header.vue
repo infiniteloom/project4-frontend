@@ -2,19 +2,11 @@
   <div class="header">
     <b-navbar class="navbar-transp">
 
-      <!-- Brand Logo -->
       <template slot="brand">
-        <!-- <b-navbar-item tag="router-link" :to="{ path: '/' }">
-          <img
-            src="https://res.cloudinary.com/infiniteloom/image/upload/v1599965230/Unit%2004%20-%20Project%20-%20Haven/haven-logo-black_sysaf0.png"
-            alt="Ha•ven /ˈhāvən/ (noun) a place of safety or refuge. Find your perfect home with Haven.com"
-          />
-        </b-navbar-item> -->
+        <!-- Brand Logo -->
         <b-navbar-item href="#">
-          <!-- <button class="button drop-down-button" 
-            @click="returnHome">
-            New listing</button> -->
             <img
+            
             @click="returnHome"
             src="https://res.cloudinary.com/infiniteloom/image/upload/v1599965230/Unit%2004%20-%20Project%20-%20Haven/haven-logo-black_sysaf0.png"
             alt="Ha•ven /ˈhāvən/ (noun) a place of safety or refuge. Find your perfect home with Haven.com"
@@ -22,12 +14,14 @@
         </b-navbar-item>
 
         <!-- Search bar -->
-        <b-navbar-item tag="router-link" :to="{ path: '/' }">
+        <b-navbar-item>
         <b-field>
-            <b-input placeholder="Search..."
-                type="search"
-                icon="magnify"
-                icon-clickable>
+            <b-input 
+              v-model="search"
+              placeholder="Search..."
+              type="search"
+              icon="magnify"
+              icon-clickable>
             </b-input>
         </b-field>
         </b-navbar-item>
@@ -80,6 +74,19 @@
 export default {
   name: "Header",
   props:['loggedIn'],
+  data:function(){
+    return{
+      search: ''
+    }
+  },
+  computed:{
+    filteredListings: function () {
+      console.log(this.$attrs.allListings)
+      return this.$attrs.allListings.filter((listing) => {
+          return listing.city.toLowerCase().match(this.search.toLowerCase()) || listing.county.toLowerCase().match(this.search.toLowerCase()) || listing.type.toLowerCase().match(this.search.toLowerCase())
+      })
+    }
+  },
   methods: {
     logout: function(){
       this.$emit('logout')
@@ -93,7 +100,9 @@ export default {
       this.$emit('isCreateListing')
     },
     returnHome: function(){
-      this.$emit('returnHome')
+      if(!this.$attrs.isHomeView){
+        this.$emit('returnHome')
+      }
     }
   }
 };
