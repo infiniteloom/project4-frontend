@@ -25,6 +25,7 @@
         :isSelectListing="isSelectListing"
         :house="singleListingInfo"
         :loggedIn="loggedIn" 
+        :error="error"
         @editListing="editListing($event)"
         @houseData="handleHouseData($event)"
         @refreshRealtorListings="refreshRealtorListings($event)"
@@ -67,6 +68,18 @@ export default {
       isEditListing: false,
       isSelectListing: false,
       singleListingInfo: null,
+      error: false
+    }
+  },
+  beforeMount: function () {
+    this.user.id = localStorage.getItem('userid')
+    this.user.token = localStorage.getItem('token')
+    this.user.user_type = localStorage.getItem('user_type')
+    this.user.email = localStorage.getItem('email')
+    this.user.username = localStorage.getItem('username')
+ 
+    if(this.user){
+      this.loggedIn = true
     }
   },
   methods:{
@@ -75,13 +88,20 @@ export default {
       // If this user returns with a token, loggedIn = true. 
       if(this.user.token){
         this.loggedIn = true
+        localStorage.setItem('userid', (this.user.id))
+        localStorage.setItem('token', this.user.token)
+        localStorage.setItem('user_type', this.user.user_type)
+        localStorage.setItem('email', this.user.email)
+        localStorage.setItem('username', this.user.username)
         this.$router.push({ path: '/', query: { user: this.user, loggedIn: 'this.loggedIn' }})
+      }else{
+        this.error = true
       }
-      // If the user does not return with a token form the log in request, 
     },
     handleLogout: function() {
       this.loggedIn = false
       this.user = {}
+      localStorage.clear()
       this.$router.push('/')
     },
     handleHouseData: function(event){

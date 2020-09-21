@@ -211,6 +211,10 @@
             <div class="form-button-container" v-if="$attrs.isEditListing">
                 <b-button @click="editListing">Publish changes</b-button>
             </div>
+            <p class="privacy-policy">
+                By publishing you agree to <br/>
+                Haven's Privacy Policy and Terms of Use.
+            </p>
 
     </div>
 </div>
@@ -459,7 +463,7 @@ export default {
     padding-bottom: 5px;
     padding-top: 10px;
 }
-@media only screen and (min-width: 600px){
+@media only screen and (min-width: 700px){
     .edit-create-cols-container{
         display: flex;
         flex-direction: row;
@@ -471,5 +475,10 @@ export default {
         padding-left:40px;
         border-left: solid 1px lightgrey;
     }
+}
+.privacy-policy{
+    padding-top: 20px;
+    text-align: center;
+    font-size: .8em;
 }
 </style>
