@@ -3,7 +3,7 @@
     <div> 
         <div class="house-info">
             <!-- Inserts home data from db as captions to each listing. -->
-            <div @click="handleSelectingListing" v-bind:class="{'house-info-image-container':true, 'is-single-house-hover':($attrs.isAdminPanel)}">
+            <div @click="handleSelectingListing" v-bind:class="{'house-info-image-container':true, 'is-single-house-hover':($attrs.isAdminPanel || $attrs.isHomeView)}">
                 <img class="house-info-image" v-bind:src="house.image1">
             </div>
             <div  class="house-info-p-container">
