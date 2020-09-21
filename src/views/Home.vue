@@ -5,12 +5,23 @@
         <Featureimage/>
       </div>
         <Brandsubtitle/>
+
+
+      <!-- If search text exists: -->
+      <!-- <div v-if="$attrs.searchText"> -->
+        <!-- <Gridgallery 
+        :isAdminPanel="$attrs.isAdminPanel"
+        @singleListingInfo="passSingleListingInfo($event)"
+        v-bind:houseData="houseData"/>   -->
+      <!-- </div> -->
+
       <div>
         <Gridgallery 
         :isAdminPanel="$attrs.isAdminPanel"
         @singleListingInfo="passSingleListingInfo($event)"
         v-bind:houseData="houseData"/>  
       </div>
+
     </div>
   </div>
 </template>
@@ -44,7 +55,6 @@ export default {
         console.log(this.houseData)
         this.$emit('houseData', data)
       })
-      
   },
   methods: {
       passSingleListingInfo: function(event){

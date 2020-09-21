@@ -6,7 +6,6 @@
         <!-- Brand Logo -->
         <b-navbar-item href="#">
             <img
-            
             @click="returnHome"
             src="https://res.cloudinary.com/infiniteloom/image/upload/v1599965230/Unit%2004%20-%20Project%20-%20Haven/haven-logo-black_sysaf0.png"
             alt="Ha•ven /ˈhāvən/ (noun) a place of safety or refuge. Find your perfect home with Haven.com"
@@ -16,20 +15,18 @@
         <!-- Search bar -->
         <b-navbar-item>
         <b-field>
-            <b-input 
-              v-model="search"
-              placeholder="Search..."
-              type="search"
-              icon="magnify"
-              icon-clickable>
-            </b-input>
+           <input 
+           v-model="search"
+           @keyup="searching"
+              placeholder="Search county, zip, state..."
+              type="search">
         </b-field>
         </b-navbar-item>
       </template>
 
       <template slot="end">
         <b-navbar-item tag="div">
-
+          <!-- Sign up -->
           <div class="buttons nav-right">
             <router-link to="/signup" v-if="!loggedIn">
               <a v-if="!loggedIn" class="button login-reg" href="#">
@@ -38,6 +35,8 @@
                 </strong>
               </a>
             </router-link>
+
+            <!-- Log in -->
             <router-link to="/login" v-if="!loggedIn">
               <a v-if="!loggedIn" class="button login-reg">
                 Log in
@@ -45,21 +44,23 @@
             </router-link>
           </div>
 
+        <!-- Manage listings -->
         </b-navbar-item>
         <b-navbar-item v-if="loggedIn" href="#">
-          <!-- <router-link  v-if="loggedIn" @click="isAdminPanel"><button class="button drop-down-button">Manage Listings</button></router-link> -->
           <button class="button drop-down-button" 
             :isAdminPanel="$attrs.isAdminPanel" 
             @click="isAdminPanel">
             Manage listings</button>
         </b-navbar-item>
 
+        <!-- Create new listing -->
         <b-navbar-item v-if="loggedIn" href="#">
           <button class="button drop-down-button" 
             @click="isCreateListing">
             New listing</button>
         </b-navbar-item>
 
+        <!-- Log out  -->
         <b-navbar-item v-if="loggedIn" href="#">
           <button class="button drop-down-button" 
             @click="logout">
@@ -79,14 +80,6 @@ export default {
       search: ''
     }
   },
-  computed:{
-    filteredListings: function () {
-      console.log(this.$attrs.allListings)
-      return this.$attrs.allListings.filter((listing) => {
-          return listing.city.toLowerCase().match(this.search.toLowerCase()) || listing.county.toLowerCase().match(this.search.toLowerCase()) || listing.type.toLowerCase().match(this.search.toLowerCase())
-      })
-    }
-  },
   methods: {
     logout: function(){
       this.$emit('logout')
@@ -103,9 +96,13 @@ export default {
       if(!this.$attrs.isHomeView){
         this.$emit('returnHome')
       }
+    },
+    searching: function(){
+      console.log('this is search text in header', this.search)
+      this.$emit('searching', this.search)
     }
   }
-};
+}
 </script>
 
 <style>
