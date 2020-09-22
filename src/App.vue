@@ -94,7 +94,6 @@ export default {
     },
     forceRerender: function() {
       this.componentKey += 1;
-      // console.log('forcererender being called')
     },
     handleLogin: function(event){
       this.user = event
@@ -121,7 +120,6 @@ export default {
       this.houseData = event.results
     },
     handleAdminPanel: function(){
-      // console.log('handle admin panel in app.vue is being called ')
       this.isAdminPanel = true
       this.isHomeView = false
       this.isCreateListing = false
@@ -129,7 +127,6 @@ export default {
       this.isSelectListing= false,
       this.singleListingInfo= false,
       this.getAdminListings()
-      // console.log('realtor listings in handle admin in app.vue : ', this.realtorListings)
       this.$router.push({ path: '/admin', query: { user: this.user, loggedIn: 'this.loggedIn' } , props:{realtorListings: this.realtorListings}})
     },
     handleCreateListing: function(){
@@ -154,7 +151,6 @@ export default {
       this.$router.push({ path: '/admin', query: { user: this.user, isAdminPanel: this.isAdminPanel, loggedIn: 'this.loggedIn' }})
     },
     getAdminListings: function(){
-      // console.log('getting admin listings')
       fetch(`${this.$URL}/api/realtor/${this.user.id}/listings/`, {
         method: 'GET',
         headers:{

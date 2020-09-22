@@ -23,14 +23,12 @@
 
 
   <!-- If realtor has no active listings display message:  -->
-  <div v-bind:class="{'is-no-listings': length}">
-      <p 
-      v-if="!length">
+  <div class="is-no-listings" v-if="!length">
+      <p>
         You have no active listings.
       </p>
       <p 
       class="create-link"
-      v-if="!length"
       @click="isCreateListing">
         Publish a new listing here.
       </p>
@@ -66,21 +64,16 @@ export default{
     },
   },
   methods:{
-
     isCreateListing: function(){
-      // console.log('this is the create new listing trigger in editcreatelisting page')
       this.$emit('isCreateListing')
     },
     passSingleListingInfo: function(event){
-      // console.log('passing single listing info from house info now in grid gallery', event)
       this.$emit('singleListingInfo', event)
     },
     editListing: function(event){
-      // console.log('this is the edit listing buttons event: ', event)
       this.$emit('editListing', event)
     },
     deleteListing: function(event){
-      // console.log('reaching realtor admin delete function', event)
       this.$emit('deleteListing', event)
     }
   }
@@ -108,7 +101,6 @@ export default{
 .admin-info-bar-functions p{
   background-color: transparent;
   border-style: none;
-
   line-height: 1.5;
   padding: 0 10px 0 10px;
   font-size: 1em;
@@ -118,7 +110,7 @@ export default{
   opacity: .4;
   cursor: pointer;
 }
-.if-no-listings{
+.is-no-listings{
   text-align: center;
   margin: 0 auto;
   padding-top: 30%;

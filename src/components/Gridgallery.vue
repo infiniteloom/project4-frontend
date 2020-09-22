@@ -9,6 +9,7 @@
     v-for="(house, i) in houseData">
       <Houseinfo 
       :isAdminPanel="$attrs.isAdminPanel"
+      @searching="searching($event)"
       @editListing="passEditListing($event)"
       @deletingListing="passDeletingListing($event)"
       @singleListingInfo="passSingleListingInfo($event)"
@@ -47,8 +48,11 @@ export default {
     passEditListing: function(event){
       console.log('passing edit listing from house info now in grid gallery', event)
       this.$emit('editListing', event)
+    },
+    searching: function(event){
+      this.$emit('searching', event)
     }
-  }
+  } 
 };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <b-navbar class="navbar-transp">
+    <b-navbar>
 
       <template slot="brand">
         <!-- Brand Logo -->
@@ -14,15 +14,17 @@
 
         <!-- Search bar -->
         <b-navbar-item>
-        <b-field>
-           <input 
-           v-model="search"
-           @keyup="searching"
-              placeholder="Search county, zip, state..."
-              type="search">
-        </b-field>
+          <b-field>
+            <input 
+            class="input search-bar"
+            v-model="search"
+            @keyup="searching"
+            placeholder="Search county, zip, state..."
+            type="search">
+          </b-field>
         </b-navbar-item>
       </template>
+
 
       <template slot="end">
         <b-navbar-item tag="div">
@@ -143,4 +145,8 @@ export default {
 .navbar-dropdown{
   left: -60px;
 }
+.input.search-bar{
+  width: 300px;
+}
+
 </style>
