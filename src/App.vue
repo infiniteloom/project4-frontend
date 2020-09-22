@@ -75,6 +75,7 @@ export default {
     }
   },
   beforeMount: function () {
+    this.isHomeView = true
     // Not best practice but using local storage to save user info to stay logged in on refresh of page. 
     this.user.id = localStorage.getItem('userid')
     this.user.token = localStorage.getItem('token')

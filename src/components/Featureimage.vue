@@ -3,7 +3,13 @@
         <!-- Search bar appears in the center of the home page  -->
         <div class="featured-container" >
 
-          <div>
+          <div v-if="$attrs.isHomeView">
+
+            <div class="home-message">
+              <p>
+                {{homeMessage}}
+              </p>
+            </div>
             <b-field class="centered">
               <input 
               class="input search-bar"
@@ -26,7 +32,8 @@ export default {
     name: 'Featuredimage',
     data:function(){
       return{
-        search: ''
+        search: '',
+        homeMessage: "Discover your perfect home",
       }
     },
     methods: {
@@ -41,7 +48,10 @@ export default {
 <style>
 #home-wide-img{
   width: 100%;
-  /* max-width: 1200px; */
+  filter: brightness(.85);
+  min-width: 700px;
+  overflow: hidden;
+  max-width: 1200px;
 }
 .featured-container {
   position: relative;
@@ -54,4 +64,20 @@ export default {
   z-index: 100;
   transform: translate(-50%, -50%);
 }
+.home-message{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  z-index: 100;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}
+.home-message p{
+  font-size: 2em;
+  line-height: 1em;
+  font-weight: bold;
+  color: white;
+  margin: 0 0 5% 0;
+}
+
 </style>

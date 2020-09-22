@@ -13,7 +13,7 @@
         </b-navbar-item>
 
         <!-- Search bar -->
-        <b-navbar-item>
+        <b-navbar-item v-if="!$attrs.isHomeView">
           <b-field>
             <input 
             class="input search-bar"

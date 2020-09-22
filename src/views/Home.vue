@@ -3,9 +3,9 @@
     <div class="home-body-container">
       <div class="home-body">
 
-
-
-        <Featureimage/>
+      <!-- Feature image contains search bar center and welcome message -->
+        <Featureimage 
+        :isHomeView="$attrs.isHomeView" />
       </div>
         <Brandsubtitle/>
 
@@ -71,8 +71,6 @@ export default {
     }
   },
   beforeMount: function(){
-    this.$attrs.isHomeView = true
-    this.$attrs.isAdminPanel= false
     fetch(`${this.$URL}/api/listings/`)
       .then(response => response.json())
       .then(data => {
