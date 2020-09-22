@@ -1,12 +1,12 @@
 <template>
-  <div class="header">
-    <b-navbar class="navbar-transp">
+  <div >
+    <b-navbar v-bind:class="{'header': true, 'is-transparent': $attrs.isHomeView}">
 
       <template slot="brand">
         <!-- Brand Logo -->
         <b-navbar-item href="#">
             <img
-            
+            class="nav-left brand"
             @click="returnHome"
             src="https://res.cloudinary.com/infiniteloom/image/upload/v1599965230/Unit%2004%20-%20Project%20-%20Haven/haven-logo-black_sysaf0.png"
             alt="Ha•ven /ˈhāvən/ (noun) a place of safety or refuge. Find your perfect home with Haven.com"
@@ -14,22 +14,22 @@
         </b-navbar-item>
 
         <!-- Search bar -->
-        <b-navbar-item>
-        <b-field>
-            <b-input 
-              v-model="search"
-              placeholder="Search..."
-              type="search"
-              icon="magnify"
-              icon-clickable>
-            </b-input>
-        </b-field>
+        <b-navbar-item v-if="!$attrs.isHomeView">
+          <b-field>
+            <input 
+            class="input search-bar"
+            v-model="search"
+            @keyup="searching"
+            placeholder="Search county, zip, state..."
+            type="search">
+          </b-field>
         </b-navbar-item>
       </template>
 
+
       <template slot="end">
         <b-navbar-item tag="div">
-
+          <!-- Sign up -->
           <div class="buttons nav-right">
             <router-link to="/signup" v-if="!loggedIn">
               <a v-if="!loggedIn" class="button login-reg" href="#">
@@ -38,6 +38,8 @@
                 </strong>
               </a>
             </router-link>
+
+            <!-- Log in -->
             <router-link to="/login" v-if="!loggedIn">
               <a v-if="!loggedIn" class="button login-reg">
                 Log in
@@ -45,21 +47,23 @@
             </router-link>
           </div>
 
+        <!-- Manage listings -->
         </b-navbar-item>
         <b-navbar-item v-if="loggedIn" href="#">
-          <!-- <router-link  v-if="loggedIn" @click="isAdminPanel"><button class="button drop-down-button">Manage Listings</button></router-link> -->
           <button class="button drop-down-button" 
             :isAdminPanel="$attrs.isAdminPanel" 
             @click="isAdminPanel">
             Manage listings</button>
         </b-navbar-item>
 
+        <!-- Create new listing -->
         <b-navbar-item v-if="loggedIn" href="#">
           <button class="button drop-down-button" 
             @click="isCreateListing">
             New listing</button>
         </b-navbar-item>
 
+        <!-- Log out  -->
         <b-navbar-item v-if="loggedIn" href="#">
           <button class="button drop-down-button" 
             @click="logout">
@@ -79,14 +83,6 @@ export default {
       search: ''
     }
   },
-  computed:{
-    filteredListings: function () {
-      console.log(this.$attrs.allListings)
-      return this.$attrs.allListings.filter((listing) => {
-          return listing.city.toLowerCase().match(this.search.toLowerCase()) || listing.county.toLowerCase().match(this.search.toLowerCase()) || listing.type.toLowerCase().match(this.search.toLowerCase())
-      })
-    }
-  },
   methods: {
     logout: function(){
       this.$emit('logout')
@@ -103,24 +99,32 @@ export default {
       if(!this.$attrs.isHomeView){
         this.$emit('returnHome')
       }
+    },
+    searching: function(){
+      console.log('this is search text in header', this.search)
+      this.$emit('searching', this.search)
     }
   }
-};
+}
 </script>
 
 <style>
+.navbar{
+  background-color: transparent;
+  background-image: none;
+}
 .header {
   width: 100%;
   margin: 0px auto;
 }
-.navbar{
-  background-color: rgba(255, 255, 255, 0);
+.nav-left{
+  margin-left: 5%;
 }
-.nav-bar-menu{
-  background-color: #ffffff;
+.nav-right{
+  margin-right: 5%;
 }
 .brand{
-  padding: 0;
+  padding-left: 10px;
   margin: 0;
 }
 .brand-subtitle{
@@ -130,15 +134,6 @@ export default {
   font-weight: normal;
   text-decoration: none;
 }
-.user-icon:after{
-  font-family: 'Font Awesome\ 5 Brands' , 'arial';
-  content: '\f007';
-  font-weight: normal;
-  font-style: normal;
-  margin:0px 0px 0px 10px;
-  text-decoration:none;
-
-}
 .button.login-reg, .button.drop-down-button{
   border: none;
   background-color: white;
@@ -146,4 +141,8 @@ export default {
 .navbar-dropdown{
   left: -60px;
 }
+.input.search-bar{
+  width: 300px;
+}
+
 </style>

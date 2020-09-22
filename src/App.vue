@@ -1,13 +1,14 @@
 <template>
   <div id="app">
 
-    <div id="nav">
+    <div v-bind:class="{'is-transparent': isHomeView}" id="nav">
       <Header 
       v-bind:loggedIn="loggedIn" 
       v-bind:user="user" 
       :isHomeView="isHomeView"
       :isAdminPanel="isAdminPanel" 
       :allListings="houseData"
+      @searching="handleSearching($event)"
       @returnHome="returnHome"
       @isAdminPanel="handleAdminPanel($event)" 
       @isCreateListing="handleCreateListing($event)"
@@ -27,10 +28,10 @@
         :house="singleListingInfo"
         :loggedIn="loggedIn" 
         :error="error"
+        :searchText="searchText"
         @editListing="editListing($event)"
         @deleteListing="deleteListing($event)"
         @houseData="handleHouseData($event)"
-        @refreshRealtorListings="refreshRealtorListings($event)"
         @singleListingInfo="handleSingleListing($event)"
         @isCreateListing="handleCreateListing($event)"
         @createdNewListing="createdNewListing($event)"
@@ -50,9 +51,6 @@
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 
-// Export this combination of components to be a vue parent component called 'App'
-// Creates a full page view containing all designated components. 
-// Helpful for repetitive components such as header, footer, etc. 
 export default {
   name: 'App',
   components: {
@@ -72,24 +70,31 @@ export default {
       isSelectListing: false,
       singleListingInfo: null,
       error: false,
-      componentKey: 0
+      searchText: '',
+      componentKey: 0 // to force re-render of child component when listings refresh
     }
   },
   beforeMount: function () {
+    this.isHomeView = true
+    // Not best practice but using local storage to save user info to stay logged in on refresh of page. 
     this.user.id = localStorage.getItem('userid')
     this.user.token = localStorage.getItem('token')
     this.user.user_type = localStorage.getItem('user_type')
     this.user.email = localStorage.getItem('email')
     this.user.username = localStorage.getItem('username')
- 
+
+    // If user values are present, remain logged in.
     if(this.user){
       this.loggedIn = true
     }
   },
   methods:{
-    forceRerender() {
+    handleSearching: function(event){
+      console.log('searching text reaching app.vue: ', event)
+      this.searchText = event
+    },
+    forceRerender: function() {
       this.componentKey += 1;
-      console.log('forcererender being called')
     },
     handleLogin: function(event){
       this.user = event
@@ -116,7 +121,6 @@ export default {
       this.houseData = event.results
     },
     handleAdminPanel: function(){
-      console.log('handle admin panel in app.vue is being called ')
       this.isAdminPanel = true
       this.isHomeView = false
       this.isCreateListing = false
@@ -124,7 +128,6 @@ export default {
       this.isSelectListing= false,
       this.singleListingInfo= false,
       this.getAdminListings()
-      console.log('realtor listings in handle admin in app.vue : ', this.realtorListings)
       this.$router.push({ path: '/admin', query: { user: this.user, loggedIn: 'this.loggedIn' } , props:{realtorListings: this.realtorListings}})
     },
     handleCreateListing: function(){
@@ -149,7 +152,6 @@ export default {
       this.$router.push({ path: '/admin', query: { user: this.user, isAdminPanel: this.isAdminPanel, loggedIn: 'this.loggedIn' }})
     },
     getAdminListings: function(){
-      console.log('getting admin listings')
       fetch(`${this.$URL}/api/realtor/${this.user.id}/listings/`, {
         method: 'GET',
         headers:{
@@ -160,13 +162,10 @@ export default {
       .then(response => response.json())
       .then(data => {
           this.realtorListings = data.results 
-          console.log('results of the getadminlistings fetch call', data.results)
-          console.log('this is the new value of realtor listings', this.realtorListings)
+          this.forceRerender()
       })
-      this.forceRerender()
     },
     editListing: function(event){
-      console.log('reaching edit listing function in app.vue', event)
       this.isEditListing = true
       this.isAdminPanel = false
       this.singleListingInfo = event
@@ -183,13 +182,6 @@ export default {
       .then(() => {
         this.getAdminListings()
       })
-      console.log('deleted listing in app.vue')
-
-    },
-    refreshRealtorListings: function(){
-      console.log('refreshing admin listings')
-      this.getAdminListings()
-      this.$router.push({ path: '/admin', query: { user: this.user, isAdminPanel: this.isAdminPanel, loggedIn: 'this.loggedIn' }})
     },
     handleSingleListing: function(event){
       this.isSelectListing = true
@@ -201,13 +193,11 @@ export default {
       this.$router.push({ path: '/singlelisting', query: { user: this.user, loggedIn: 'this.loggedIn' }, props: { singleListingInfo: 'this.singleListingInfo'}})
     },
     returnHome: function(){
-      console.log('returning home')
       this.resetAll()
       this.isHomeView = true
       this.$router.push({ path: '/', query: { user: this.user, loggedIn: 'this.loggedIn' }})
     },
     resetAll: function(){
-      console.log('resetting all ')
       this.isCreateListing = false
       this.isAdminPanel = false
       this.isEditListing = false
@@ -232,7 +222,10 @@ export default {
   padding: 0;
   margin: 0 auto;
 }
-
+.is-transparent{
+  background-color: transparent;
+  background: rgba(0,0,0,0.5);
+}
 #nav a {
   font-weight: bold;
   color: #000000;
