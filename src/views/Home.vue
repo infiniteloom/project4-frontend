@@ -1,13 +1,12 @@
 <template>
   <div>
     <div class="home-body-container">
-      <div class="home-body">
 
+      <div class="home-body">
       <!-- Feature image contains search bar center and welcome message -->
         <Featureimage 
         @searching="searching($event)"
         :isHomeView="$attrs.isHomeView" />
-        
       </div>
         <Brandsubtitle/>
 
@@ -58,6 +57,7 @@ export default {
     }
   },
   computed:{
+    // Filter listings on home page based on search bar input 
     filteredListings: function () {
       console.log('this is ithe house data in the filterst listings', this.houseData)
       if(this.$attrs.searchText){
@@ -69,13 +69,13 @@ export default {
           || listing.description.toLowerCase().includes(this.$attrs.searchText.toLowerCase())
           || listing.street.toLowerCase().includes(this.$attrs.searchText.toLowerCase())
         })
-
       }else{
         return ''
       }
     }
   },
   beforeMount: function(){
+    // Fetches all house listings in database, emits to app.vue to distribute
     fetch(`${this.$URL}/api/listings/`)
       .then(response => response.json())
       .then(data => {
