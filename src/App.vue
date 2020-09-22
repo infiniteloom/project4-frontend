@@ -29,6 +29,7 @@
         :loggedIn="loggedIn" 
         :error="error"
         :searchText="searchText"
+        @searching="handleSearching($event)"
         @editListing="editListing($event)"
         @deleteListing="deleteListing($event)"
         @houseData="handleHouseData($event)"
@@ -113,6 +114,7 @@ export default {
     },
     handleLogout: function() {
       this.loggedIn = false
+      this.homeView = true
       this.user = {}
       localStorage.clear()
       this.$router.push('/')

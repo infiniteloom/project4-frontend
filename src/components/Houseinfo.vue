@@ -1,27 +1,37 @@
 <template>
 <div>
-    <div> 
-        <div class="house-info">
-            <!-- Inserts home data from db as captions to each listing. -->
-            <div @click="handleSelectingListing" v-bind:class="{'house-info-image-container':true, 'is-single-house-hover':($attrs.isAdminPanel || $attrs.isHomeView)}">
-                <img class="house-info-image" v-bind:src="house.image1">
+    <div v-bind:class="{'house-info':true, 'single-listing-view-container': $attrs.isSelectListing}">
+        <!-- Inserts home data from db as captions to each listing. -->
+        <div @click="handleSelectingListing" v-bind:class="{'house-info-image-container': !$attrs.isSelectListing, 'is-single-house-hover': ($attrs.isAdminPanel || $attrs.isHomeView)}">
+            <img v-bind:class="{'house-info-image': !$attrs.isSelectListing}" v-bind:src="house.image1">
+        </div>
+
+        <!-- If in single listing view, image becomes a background image for sake of scale -->
+        <!-- <div v-if="$attrs.isSelectListing" class="house-info-image-container-select" v-bind:style="{ backgroundImage: 'url(' + house.image1 + ')' }">
+        </div> -->
+
+
+        <div v-bind:class="{'house-info-p-container': !$attrs.isSelectListing}">
+            <div v-if="!$attrs.isSelectListing" @click="handleSelectingListing" v-bind:class="{'house-info-p': !$attrs.isSelectListing, 'house-info-p-select': $attrs.isSelectListing}">
+                <p><strong>{{house.bed}}</strong>bed  <strong>{{house.bath}}</strong>bath  <strong>{{house.home_size}}</strong>sqft  <strong>{{house.lot_size}}</strong>acre lot</p>
+                <p>{{house.street}}</p>
+                <p>{{house.city}}, {{house.state}} {{house.zip}}</p>
+                <p>${{house.price}} </p> 
             </div>
-            <div  class="house-info-p-container">
-                <div @click="handleSelectingListing" class="house-info-p">
-                    <p><strong>{{house.bed}}</strong>bed  <strong>{{house.bath}}</strong>bath  <strong>{{house.home_size}}</strong>sqft  <strong>{{house.lot_size}}</strong>acre lot</p>
-                    <p>{{house.street}}</p>
-                    <p>{{house.city}}, {{house.state}} {{house.zip}}</p>
-                    <p>${{house.price}} </p> 
-                </div>
-                <!-- If a realtor was logged in, show this div with edit/delete functions -->
-                <div class="admin-edit-delete-container" v-if="this.$route.query.loggedIn && this.$attrs.isAdminPanel">
-                    <button @click="handleEditListing" class="admin-edit-delete">
-                        Edit
-                    </button>
-                    <button @click="handleDeleteListing" class="admin-edit-delete">
-                        Delete
-                    </button>
-                </div>
+            <div v-if="$attrs.isSelectListing" class="house-info-p-select">
+                <p><strong>{{house.bed}}</strong>bed  <strong>{{house.bath}}</strong>bath  <strong>{{house.home_size}}</strong>sqft  <strong>{{house.lot_size}}</strong>acre lot</p>
+                <p>{{house.street}}, {{house.city}}, {{house.state}} {{house.zip}}</p>
+                <p>{{house.county}}, {{house.year_built}}</p>
+                <p>${{house.price}} </p> 
+            </div>
+            <!-- If a realtor was logged in, show this div with edit/delete functions -->
+            <div class="admin-edit-delete-container" v-if="this.$route.query.loggedIn && this.$attrs.isAdminPanel || this.$attrs.loggedIn && this.$attrs.isSelectListing">
+                <button @click="handleEditListing" class="admin-edit-delete">
+                    Edit
+                </button>
+                <button @click="handleDeleteListing" class="admin-edit-delete">
+                    Delete
+                </button>
             </div>
         </div>
     </div>
@@ -50,7 +60,16 @@ export default {
 </script>
 
 
-<style scoped>  
+<style>  
+.house-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    /* width: 90%; */
+}
 .house-info-container{
     display: flex;
 }
@@ -63,17 +82,27 @@ export default {
     width: 100%;
     max-width: 350px;
 }
-.is-single-house-hover:hover{
-    opacity: .95;
-    cursor: pointer;
+.single-listing-view-container{
+    width: 90%;
+    max-width: 600px;
+    overflow: hidden;
+    margin: 0 auto;
 }
-.house-info{
-    padding-top: 5px;
-    padding-bottom: 10px;
+.single-listing-view-image{
+    width: 90%
+}
+.is-single-house-hover:hover{
+    opacity: .9;
+    cursor: pointer;
 }
 .house-info-p-container{
     display: flex;
     justify-content: space-between;
+}
+.house-info-p-select{
+    font-size: .9em;
+    text-align: left;
+    padding: 10px;
 }
 .house-info-p{
     font-size: .8em;
