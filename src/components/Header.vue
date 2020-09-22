@@ -110,12 +110,12 @@ export default {
 
 <style>
 .navbar-home{
-  background-color: transparent;
+  background-color: rgb(255,255,255, .9);
   background-image: none;
   max-width: 900px;
 }
 .navbar-white{
-  background-color: #ffffff;
+  background-color: rgb(255,255,255, .9);
   max-width: 900px;
 }
 .header {
@@ -141,7 +141,12 @@ export default {
 }
 .button.login-reg, .button.drop-down-button{
   border: none;
-  background-color: white;
+  background-color: transparent;
+}
+.button.login-reg:hover, .button.drop-down-button:hover{
+  border: none;
+  background-color: transparent;
+  opacity: .8;
 }
 .navbar-dropdown{
   left: -60px;
