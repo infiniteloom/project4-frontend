@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <div id="nav">
+    <div v-bind:class="{'is-transparent': isHomeView}" id="nav">
       <Header 
       v-bind:loggedIn="loggedIn" 
       v-bind:user="user" 
@@ -222,7 +222,10 @@ export default {
   padding: 0;
   margin: 0 auto;
 }
-
+.is-transparent{
+  background-color: transparent;
+  background: rgba(0,0,0,0.5);
+}
 #nav a {
   font-weight: bold;
   color: #000000;

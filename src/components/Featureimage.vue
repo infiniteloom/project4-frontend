@@ -52,6 +52,35 @@ export default {
   min-width: 700px;
   overflow: hidden;
   max-width: 1200px;
+  opacity: 1;
+  animation: fadeIn ease 2s;
+  -webkit-animation: fadeIn ease 2s;
+}
+
+@keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+
 }
 .featured-container {
   position: relative;

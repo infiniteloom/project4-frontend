@@ -1,11 +1,12 @@
 <template>
-  <div class="header">
-    <b-navbar>
+  <div >
+    <b-navbar v-bind:class="{'header': true, 'is-transparent': $attrs.isHomeView}">
 
       <template slot="brand">
         <!-- Brand Logo -->
         <b-navbar-item href="#">
             <img
+            class="nav-left brand"
             @click="returnHome"
             src="https://res.cloudinary.com/infiniteloom/image/upload/v1599965230/Unit%2004%20-%20Project%20-%20Haven/haven-logo-black_sysaf0.png"
             alt="Ha•ven /ˈhāvən/ (noun) a place of safety or refuge. Find your perfect home with Haven.com"
@@ -108,18 +109,22 @@ export default {
 </script>
 
 <style>
+.navbar{
+  background-color: transparent;
+  background-image: none;
+}
 .header {
   width: 100%;
   margin: 0px auto;
 }
-.navbar{
-  background-color: rgba(255, 255, 255, 0);
+.nav-left{
+  margin-left: 5%;
 }
-.nav-bar-menu{
-  background-color: #ffffff;
+.nav-right{
+  margin-right: 5%;
 }
 .brand{
-  padding: 0;
+  padding-left: 10px;
   margin: 0;
 }
 .brand-subtitle{
@@ -128,15 +133,6 @@ export default {
   font-size: .7em;
   font-weight: normal;
   text-decoration: none;
-}
-.user-icon:after{
-  font-family: 'Font Awesome\ 5 Brands' , 'arial';
-  content: '\f007';
-  font-weight: normal;
-  font-style: normal;
-  margin:0px 0px 0px 10px;
-  text-decoration:none;
-
 }
 .button.login-reg, .button.drop-down-button{
   border: none;
