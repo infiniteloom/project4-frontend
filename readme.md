@@ -8,24 +8,6 @@ Link to project frontend on GitHub [here](https://github.com/infiniteloom/projec
 
 Link to project backend on GitHub [here](https://github.com/infiniteloom/project4-backend)
 
-## Project Schedule
-
-| Day   | Deliverable                                                      | Status     |
-| ----- | ---------------------------------------------------------------- | ---------- |
-| Day 1 | Project description                                              | Completed  |
-| Day 1 | Wireframes / Priority Matrix / Timeline `backend` and `frontend` | Completed  |
-| Day 1 | Begin backend build (All auth, Data models)                      | Incomplete |
-| Day 1 | Create comma-separated seed data - import into Python            | Incomplete |
-| Day 2 | Finish backend build (Complete CRUD routes for listings)         | Incomplete |
-| Day 3 | Core Application Structure (HTML, Bootstrap nav and gallery)     | Incomplete |
-| Day 4 | Bootstrap modals - complete login & register for Buyer & Realtor | Incomplete |
-| Day 5 | Bootstrap modals - connect create/edit functionality to backend  | Incomplete |
-| Day 5 | Create Realtor admin list view                                   | Incomplete |
-| Day 6 | CSS styling & fine-tuning UX for error handling & required fields| Incomplete |
-| Day 7 | Add sort/filter features to list view                            | Incomplete |
-| Day 8 | Add Map functionality with Geopy                                 | Incomplete |
-| Day 9 | Final Touches and Present                                        | Incomplete |
-
 
 ## Project Description
 
@@ -130,79 +112,8 @@ Each saved listing has an image and details of the home beneath the image as wel
 Cleo really likes one house in particular and would like to speak to an agent about it. He clicks on the link to “Contact Agent” and a modal pops up with an email form. In the footer of the modal, he sees the name of the real estate agent, as well as the agency’s name and phone number. He decides to call them and inquire further about the listing. 
 
 
-
-## Time/Priority Matrix
-
-[A graph of all features](https://res.cloudinary.com/infiniteloom/image/upload/v1600031319/Unit%2004%20-%20Project%20-%20Haven/Frontend_Time_Priority_Matrix_vppgu6.jpg) based on their priority and the time estimated to complete each.
-
-### MVP/PostMVP
-
-The functionality of Haven.com is divided into two separate lists: MPV and PostMVP. 
-
-#### MVP:
--	Use Bootstrap to design nav bar
--	Design registration / login modals for Buyer and Realtor, connect to database
--	Create listings list view, each image clicks through to view more details
--	Create Realtor admin view, make panel accessible in top nav if signed in
--	Design “create” and “edit” modals for listings and connect retrieved data to database
--	Add edit/delete hypertext to admin listings – link to edit/delete confirmation modals
--	Optimize mobile experience
-
-#### POST-MVP:
--	Add sort functionality in listings view. Sort by: newest, price high – low, price low – high, count of bedrooms, count of bathrooms, sq. footage, lot size
--	User can leave notes/comments on favorite items.
--	Require login for favoriting homes – trigger registration prompt modal on click of hearts if not logged in.  
--	AWS file drop image uploader in Realtor create listing panel???
--	Create a “new” sticker for houses on market for less than 3 days (change to 14 days when app goes live?)
--	Pin homes in a Google Maps widget- use Geopy and Pandas libraries to convert street address into longitude/latitude using Nominatim Geocoding service built on top of OpenStreetMap databaes. 
--	Send an email confirmation upon registration? 
-
-<br/>
-
-## Functional Components
-
-#### MVP
-
-| Component                     | Priority | Estimated Time | Time Invested | Actual Time |
-| ----------------------------- | :------: | :------------: | :------------:| :---------: |
-| Bootstrap nav, footer         |    H     |     1 hr       |       hrs     |      hrs    |
-| Log in Modal (realtor,buyer)  |    H     |     3 hrs      |       hrs     |      hrs    |
-| Register Modal (realtor,buyer)|    H     |     3 hrs      |       hrs     |      hrs    |
-| List View (Bootstrap Grid Gallery)|    H |     1 hr       |       hrs     |      hrs    |
-| Create, edit modals           |    H     |     3 hrs      |       hrs     |      hrs    |
-| Realtor admin panel           |    M     |     2 hrs      |       hrs     |      hr     |
-| Error handling for required fields in modals|    L     |    2 hrs       |      hr       |     hr     |
-| CSS Fine-tuning UX            |    M     |     3 hrs      |       hrs     |      hr     |
-| Total                         |    H     |     18 hrs     |       hrs     |      hrs    |
-
-#### PostMVP
-
-| Component                                      | Priority | Estimated Time | Time Invested | Actual Time |
-| ---------------------------------------------- | :------: | :------------: | :------------: | :---------: |
-| Sort Functions (price, newest, etc.)           |    H     |     2 hrs      |      hrs      |      hrs   |
-| Buyer ability to comment on favorite homes     |    H     |     4 hrs      |      hr       |     hr     |
-| Overlaying and connecting hearts to favorites list|    H     |    4 hrs       |      hr       |     hr     |
-| Creating maps view                             |    M     |     5 hrs      |      hr       |     hr     |
-| AWS File Drop (Realtor create listing view)    |    M     |     5 hrs      |      hr       |     hr     |
-| "New" Listing sticker on new listings          |    L     |     2 hrs      |      hr       |     hr     |
-| Sending email confirmations of registration    |    L     |    2 hrs       |      hr       |     hr     |
-| Autologin                                      |    L     |    2 hrs       |      hr       |     hr     |
-| Error handling - trying to save homes w/out login|    L     |    2 hrs       |      hr       |     hr     |
-| Total                                          |          |     28 hrs   |      hrs      |    hrs     |
-
 ## Additional Libraries
 
 - Vue.js (DOM manipulation, sending and retrieving data to and from the backend)
 - Bootstrap (nav bar, modal menus, grid gallery, footer, mobile responsiveness)
 
-## Code Snippet
-
-Use this section to include a brief code snippet of functionality that you are proud of an a brief description
-
-
-## Issues and Resolutions
-
-Use this section to list of all major issues encountered and their resolution.
-
-**ERROR**: 
-**RESOLUTION**:

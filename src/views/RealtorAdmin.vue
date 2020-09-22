@@ -1,5 +1,6 @@
 <template>
 <div>
+  <!-- Admin listings sorting functions / details-->
   <div class="admin-info-bar">
     <div>
       <p 
@@ -8,6 +9,8 @@
         <span>{{length}}</span>
       </p>
     </div>
+
+    <!-- Create new listing  -->
     <div class="admin-info-bar-functions">
       <p 
       class="create-link"
@@ -15,6 +18,7 @@
       @click="isCreateListing">
         Publish new listing
       </p>
+      <!-- Sort select -->
       <p  v-if="length">
         Sort by: Newest
       </p>

@@ -14,7 +14,7 @@
         </b-navbar-item>
 
 
-        <!-- Search bar -->
+        <!-- Search bar for non-home views, pushes router back to main and loads filtered listings -->
         <!-- <b-navbar-item v-if="!$attrs.isHomeView">
           <b-field>
             <input 

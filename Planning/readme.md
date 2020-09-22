@@ -14,16 +14,19 @@ Link to project backend on GitHub [here](https://github.com/infiniteloom/project
 | ----- | ---------------------------------------------------------------- | ---------- |
 | Day 1 | Project description                                              | Completed  |
 | Day 1 | Wireframes / Priority Matrix / Timeline `backend` and `frontend` | Completed  |
-| Day 1 | Begin backend build (All auth, Data models)                      | Incomplete |
-| Day 1 | Create comma-separated seed data - import into Python            | Incomplete |
-| Day 2 | Finish backend build (Complete CRUD routes for listings)         | Incomplete |
-| Day 3 | Core Application Structure (HTML, Bootstrap nav and gallery)     | Incomplete |
-| Day 4 | Bootstrap modals - complete login & register for Buyer & Realtor | Incomplete |
-| Day 5 | Bootstrap modals - connect create/edit functionality to backend  | Incomplete |
-| Day 5 | Create Realtor admin list view                                   | Incomplete |
-| Day 6 | CSS styling & fine-tuning UX for error handling & required fields| Incomplete |
-| Day 7 | Add sort/filter features to list view                            | Incomplete |
-| Day 8 | Add Map functionality with Geopy                                 | Incomplete |
+| Day 4 | Create data flow chart for Vue components                        | Completed  |
+| Day 4 | Create and complete log in / log out for Realtor                 | Completed  |
+| Day 5 | Get all listings, 'get' request working                          | Completed  |
+| Day 5 | Create grid gallery and house info subcomponent                  | Completed  |
+| Day 5 | Get admin listings, 'get' request working                        | Completed  |
+| Day 6 | Create new listing view, 'post' request working                  | Completed  |
+| Day 6 | 'Edit' listing view, pre-populate with house info, 'put' request working| Completed  |
+| Day 7 | Single listing view (house info subcomponent) styling conditionally| Completed  |
+| Day 7 | 'Delete' listing view, 'delete' request working                  | Completed  |
+| Day 8 | Review data flow between components                              | Completed  |
+| Day 8 | Review conditional CSS to show/hide components with specific implementation (search bar, grid gallery, house info, featured image, edit/create form)           | Completed  |
+| Day 8 | Search bar functionality                                         | Completed  |
+| Day 8 | CSS error handling & required fields for login                   | Completed  |
 | Day 9 | Final Touches and Present                                        | Incomplete |
 
 
@@ -33,8 +36,6 @@ Link to project backend on GitHub [here](https://github.com/infiniteloom/project
 ### Haven 
 <i>Ha•ven /ˈhāvən/ (noun) a place of safety or refuge.</i>
 
-Find your perfect home with Haven.com
-
 Haven is a web application to showcase real estate listings. Haven is available for public browsing and offers additional features such as saving favorite homes and full CRUD functionality for realtors upon registration.
 
 The front-end is built with HTML, CSS and JavaScript using Vue.js and Bootstrap. 
@@ -42,10 +43,6 @@ The backend is built with Python and PostgreSQL using Django.
 
 
 ## Wireframes
-#### Logo:
-
-- [Logo](https://res.cloudinary.com/infiniteloom/image/upload/v1599965230/Unit%2004%20-%20Project%20-%20Haven/haven-logo-black_sysaf0.png)
-
 #### Mobile:
 
 - [Home Page](https://res.cloudinary.com/infiniteloom/image/upload/v1599963622/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Landing_kd4h3z.png)
@@ -55,8 +52,8 @@ The backend is built with Python and PostgreSQL using Django.
 - [Realtor Login](https://res.cloudinary.com/infiniteloom/image/upload/v1599963621/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Realtor_Login_e5u9bm.png)
 - [Realtor Register](https://res.cloudinary.com/infiniteloom/image/upload/v1599963622/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Realtor_Register_byhrxo.png)
 - [Listings - List View](https://res.cloudinary.com/infiniteloom/image/upload/v1599963622/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Listings_ed90y4.png)
-- [Realtor Admin Panel]()
-- [Create Listings Modal]()
+- [Realtor Admin Panel](https://res.cloudinary.com/infiniteloom/image/upload/v1600034789/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Admin_List_jnwlt0.png)
+- [Create Listings Modal](https://res.cloudinary.com/infiniteloom/image/upload/v1600033539/Unit%2004%20-%20Project%20-%20Haven/Mobile/Mobile_Create_Listings_View_vadrhx.png)
 
 
 #### Web:
@@ -68,31 +65,30 @@ The backend is built with Python and PostgreSQL using Django.
 - [Realtor Register](https://res.cloudinary.com/infiniteloom/image/upload/v1599963502/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Realtor_Register_mwyvvw.png)
 - [Listings - List View](https://res.cloudinary.com/infiniteloom/image/upload/v1599966783/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Listings_List_ejrkp2.png)
 - [Listings - Map View](https://res.cloudinary.com/infiniteloom/image/upload/v1599966391/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Listings_Map_View_User_Menu_Expanded_oszn5d.png)
-- [Realtor Admin Panel]()
-- [Create Listings Modal]()
+- [Realtor Admin Panel](https://res.cloudinary.com/infiniteloom/image/upload/v1600034781/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Admin_List_pvqb7k.png)
+- [Create Listings Modal](https://res.cloudinary.com/infiniteloom/image/upload/v1600033562/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Create_Listings_View_ffzbfd.png)
 
 #### Tablet:
 - [Home Page](https://res.cloudinary.com/infiniteloom/image/upload/v1599963504/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Landing_uqntdt.png)
-- [Home Page - User Menu Expanded]()
 - [Buyer Login](https://res.cloudinary.com/infiniteloom/image/upload/v1599963503/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Buyer_Login_tclvje.png)
 - [Buyer Register](https://res.cloudinary.com/infiniteloom/image/upload/v1599963504/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Buyer_Register_rh0l2c.png)
 - [Realtor Login](https://res.cloudinary.com/infiniteloom/image/upload/v1599963503/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Realtor_Login_d1pqyb.png)
 - [Realtor Register](https://res.cloudinary.com/infiniteloom/image/upload/v1599963502/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Realtor_Register_mwyvvw.png)
-- [Listings - List View]()
-- [Realtor Admin Panel]()
-- [Create Listings Modal]()
+- [Listings - List View](https://res.cloudinary.com/infiniteloom/image/upload/v1599966783/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Listings_List_ejrkp2.png)
+- [Realtor Admin Panel](https://res.cloudinary.com/infiniteloom/image/upload/v1600034781/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Admin_List_pvqb7k.png)
+- [Create Listings Modal](https://res.cloudinary.com/infiniteloom/image/upload/v1600033562/Unit%2004%20-%20Project%20-%20Haven/Web/Web_Create_Listings_View_ffzbfd.png)
 
 
-## User Stories
+##User Stories
 
-### User types:
+###User types:
 - **Public users** may browse available homes but will not be able to save favorite homes without registering for an account. 
 - **Realtor users** may sign up to create, delete or update a listing and manage their listings via a simple admin panel.
 - **Home buyer users** may sign up to browse available homes and save their favorite homes to a list where they can also append personal notes to each home. 
 
 <br/>
 
-#### Public User
+####Public User
 Angelica, the casual browser:
 
 Angelica has a dream to move to a house with a garden “some day.” She is intrigued by aesthetics and loves to casually browse the homes on Haven.com while she suns on her back porch. She is not a serious buyer and therefore does not feel motivated to sign up or reach out to agents for any of her favorite homes. 
@@ -101,7 +97,7 @@ Angelica periodically returns to Haven.com to browse but does not have any furth
 
 <br/>
 
-#### Realtor User
+####Realtor User
 Rachel, the realtor:
 
 Rachel is a realtor in Ulster County, New York. Rachel works for Halstead Realtors, Inc. and would like to increase the exposure of the listings she manages. She hears of Haven.com and browses the existing listings on her mobile phone. She feels like the aesthetic is clean and highlights the featured homes well. She decides to create an account. Rachel navigates to the menu and selects ‘Sign Up’ and finds the prompt in the modal footer, “Are you a real estate agent? Register here” and continues to fill in the required fields. 
@@ -118,7 +114,7 @@ After lunch, Rachel gets word from a client that they are no longer interested i
 
 <br/>
 
-#### Home Buyer User
+####Home Buyer User
 
 Cleo, the motivated buyer:
 
@@ -140,7 +136,7 @@ Cleo really likes one house in particular and would like to speak to an agent ab
 
 ## Time/Priority Matrix
 
-[A graph of all features](https://res.cloudinary.com/dssciwyew/image/upload/v1598141818/Priority%20Matrix%20Frontend%20P3.png) based on their priority and the time estimated to complete each.
+[A graph of all features](https://res.cloudinary.com/infiniteloom/image/upload/v1600031319/Unit%2004%20-%20Project%20-%20Haven/Frontend_Time_Priority_Matrix_vppgu6.jpg) based on their priority and the time estimated to complete each.
 
 ### MVP/PostMVP
 

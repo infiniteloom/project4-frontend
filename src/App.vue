@@ -116,12 +116,13 @@ export default {
       this.loggedIn = false
       this.homeView = true
       this.user = {}
-      localStorage.clear()
+      localStorage.clear() // clear stored user data on log out
       this.$router.push('/')
     },
     handleHouseData: function(event){
       this.houseData = event.results
     },
+    // push to admin panel and send listings as prop
     handleAdminPanel: function(){
       this.isAdminPanel = true
       this.isHomeView = false
