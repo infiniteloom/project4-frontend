@@ -226,7 +226,7 @@ export default {
 }
 .is-transparent{
   background-color: transparent;
-  background: rgba(0,0,0,0.5);
+  background: rgba(255,255,255,0.3);
 }
 #nav a {
   font-weight: bold;
