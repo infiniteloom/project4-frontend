@@ -6,7 +6,7 @@
         <!-- Brand Logo -->
         <b-navbar-item href="#">
             <img
-            class="nav-left brand"
+            class="brand"
             @click="returnHome"
             src="https://res.cloudinary.com/infiniteloom/image/upload/v1599965230/Unit%2004%20-%20Project%20-%20Haven/haven-logo-black_sysaf0.png"
             alt="Ha•ven /ˈhāvən/ (noun) a place of safety or refuge. Find your perfect home with Haven.com"
@@ -31,7 +31,7 @@
       <template slot="end">
         <b-navbar-item tag="div">
           <!-- Sign up -->
-          <div class="buttons nav-right">
+          <div class="buttons">
             <router-link to="/signup" v-if="!loggedIn">
               <a v-if="!loggedIn" class="button login-reg" href="#">
                 <strong>
@@ -124,12 +124,7 @@ export default {
   width: 100%;
   margin: 0px auto;
 }
-.nav-left{
-  margin-left: 5%;
-}
-.nav-right{
-  margin-right: 5%;
-}
+
 .brand{
   padding-left: 10px;
   margin: 0;
