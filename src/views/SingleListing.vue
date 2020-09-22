@@ -1,7 +1,8 @@
 <template>
 <div>
-    <div class="single-listing-view-container">
+    <div v-bind:class="{'single-listing-view-container-grid':!$attrs.isSelectListing}">
         <Houseinfo 
+        :isSelectListing="$attrs.isSelectListing"
         v-if="singleListingInfo" 
         v-bind:house="singleListingInfo" 
         />
@@ -29,9 +30,10 @@ export default {
 </script>
 
 <style>
-.single-listing-view-container{
+.single-listing-view-container-grid{
     width: 100%;
     min-width: 300px;
+    max-width: 600px;
     margin: 0 auto;
     text-align: center;
     display: flex;
@@ -40,8 +42,10 @@ export default {
 }
 .single-listing-view-description{
     margin: 0 auto;
-    width: 60%;
     min-width: 300px;
     max-width: 600px;
+    padding: 10px;
+    font-size: .9em;
 }
+
 </style>

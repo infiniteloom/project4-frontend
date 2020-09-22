@@ -8,6 +8,7 @@
     v-bind:key="`${i}-${house.id}`" 
     v-for="(house, i) in houseData">
       <Houseinfo 
+      :isHomeView="$attrs.isHomeView"
       :isAdminPanel="$attrs.isAdminPanel"
       @searching="searching($event)"
       @editListing="passEditListing($event)"

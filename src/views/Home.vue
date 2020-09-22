@@ -5,7 +5,9 @@
 
       <!-- Feature image contains search bar center and welcome message -->
         <Featureimage 
+        @searching="searching($event)"
         :isHomeView="$attrs.isHomeView" />
+        
       </div>
         <Brandsubtitle/>
 
@@ -13,6 +15,7 @@
       <!-- Grid gallery will render filtered listings if search text exists -->
       <div v-if="$attrs.searchText">
         <Gridgallery 
+        :isHomeView="$attrs.isHomeView"
         :isAdminPanel="$attrs.isAdminPanel"
         @searching="searching"
         @singleListingInfo="passSingleListingInfo($event)"
@@ -23,6 +26,7 @@
       <div>
         <Gridgallery 
         v-if="!$attrs.searchText"
+        :isHomeView="$attrs.isHomeView"
         :isAdminPanel="$attrs.isAdminPanel"
         @searching="searching"
         @singleListingInfo="passSingleListingInfo($event)"
@@ -85,6 +89,7 @@ export default {
       this.$emit('singleListingInfo', event)
     },
     searching: function(event){
+      console.log('searching in home.vue ', event)
       this.$emit('searching', event)
     }
   }
