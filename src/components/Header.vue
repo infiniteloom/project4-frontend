@@ -1,6 +1,6 @@
 <template>
   <div >
-    <b-navbar v-bind:class="{'header': true, 'is-transparent': $attrs.isHomeView}">
+    <b-navbar v-bind:class="{'nav-bar-home': $attrs.isHomeView, 'nav-bar-white': !$attrs.isHomeView, 'is-transparent': $attrs.isHomeView}">
 
       <template slot="brand">
         <!-- Brand Logo -->
@@ -109,9 +109,14 @@ export default {
 </script>
 
 <style>
-.navbar{
+.navbar-home{
   background-color: transparent;
   background-image: none;
+  max-width: 900px;
+}
+.navbar-white{
+  background-color: #ffffff;
+  max-width: 900px;
 }
 .header {
   width: 100%;
