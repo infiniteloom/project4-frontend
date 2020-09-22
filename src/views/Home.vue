@@ -69,6 +69,7 @@ export default {
           || listing.description.toLowerCase().includes(this.$attrs.searchText.toLowerCase())
           || listing.street.toLowerCase().includes(this.$attrs.searchText.toLowerCase())
         })
+
       }else{
         return ''
       }
