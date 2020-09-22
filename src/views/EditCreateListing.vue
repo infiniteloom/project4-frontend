@@ -338,9 +338,7 @@ export default {
                 })
             })
             .then(response => response.json())
-            .then(data => {
-                let createdListing = data
-                // console.log('Successfully created a new listing: ', createdListing)
+            .then(() => {
                 this.$emit("createdNewListing")
             })
         },
