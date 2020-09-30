@@ -15,9 +15,9 @@ Link to project backend on GitHub [here](https://github.com/infiniteloom/project
 ### Haven 
 <i>Ha•ven /ˈhāvən/ (noun) a place of safety or refuge.</i>
 
-Haven is a web application to showcase real estate listings. Haven is available for public browsing and offers additional features such as saving favorite homes and full CRUD functionality for realtors upon registration.
+Haven is a web application to showcase real estate listings. Haven is available for public browsing and offers additional features such as full CRUD functionality for realtors upon registration/login.
 
-The front-end is built with HTML, CSS and JavaScript using Vue.js and Bootstrap. 
+The front-end is built with HTML, CSS and JavaScript using a Vue.js components system and Bulma/Buefy CSS libraries. 
 The backend is built with Python and PostgreSQL using Django. 
 
 
@@ -63,7 +63,7 @@ The backend is built with Python and PostgreSQL using Django.
 ###User types:
 - **Public users** may browse available homes but will not be able to save favorite homes without registering for an account. 
 - **Realtor users** may sign up to create, delete or update a listing and manage their listings via a simple admin panel.
-- **Home buyer users** may sign up to browse available homes and save their favorite homes to a list where they can also append personal notes to each home. 
+- **Home buyer users** (to be implemented in Haven version 2.0) may sign up to browse available homes and save their favorite homes to a list where they can also append personal notes to each home. 
 
 <br/>
 
@@ -93,7 +93,7 @@ After lunch, Rachel gets word from a client that they are no longer interested i
 
 <br/>
 
-####Home Buyer User
+####Home Buyer User (To be implemented in Haven version 2.0)
 
 Cleo, the motivated buyer:
 
@@ -115,5 +115,5 @@ Cleo really likes one house in particular and would like to speak to an agent ab
 ## Additional Libraries
 
 - Vue.js (DOM manipulation, sending and retrieving data to and from the backend)
-- Bootstrap (nav bar, modal menus, grid gallery, footer, mobile responsiveness)
-
+- Bulma (nav bar, footer, mobile responsiveness)
+- BeautifulSoup (Python-based web scraper used to scrape real-world property listings from existing sites to populate the Haven database)

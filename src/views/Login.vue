@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- Login container -->
         <div class='login-view-container' v-if="$attrs.isLogin">
             <!-- Login welcome -->
             <div class='welcome-message-login'>
@@ -19,8 +20,13 @@
             <!-- Login button  -->
             <b-button class="button login-button" @click="login">Log In</b-button>
         </div>
+        <!-- Invalid login error message  -->
+        <p v-if="$attrs.error && $attrs.isLogin" v-bind:class="{'error':$attrs.error}" >
+            Log in failed. Invalid username or password. 
+        </p>
 
 
+        <!-- Registration container -->
         <div class="reg-view-container" v-if="$attrs.isRegister">
             <!-- Register welcome -->
             <div class='welcome-message-login'>
@@ -128,20 +134,13 @@
                     </b-field>
                 </div>
             </div>
-
-
             <!-- Register button -->
             <div>
                 <b-button class="login-button" @click="register">Register</b-button>
             </div>
 
-            <!-- Invalid login error message  -->
-            <p v-if="$attrs.error" v-bind:class="{'error':$attrs.error}" >
-                Log in failed. Invalid username or password. 
-            </p>
-
             <!-- Invalid registration error message  -->
-            <p v-if="$attrs.error" v-bind:class="{'error':$attrs.error}" >
+            <p v-if="$attrs.error  && $attrs.isRegister" v-bind:class="{'error':$attrs.error}" >
                 Invalid entry. Please fill in all fields correctly. 
             </p>
         </div>

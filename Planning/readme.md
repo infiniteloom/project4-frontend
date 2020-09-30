@@ -84,7 +84,7 @@ The backend is built with Python and PostgreSQL using Django.
 ###User types:
 - **Public users** may browse available homes but will not be able to save favorite homes without registering for an account. 
 - **Realtor users** may sign up to create, delete or update a listing and manage their listings via a simple admin panel.
-- **Home buyer users** may sign up to browse available homes and save their favorite homes to a list where they can also append personal notes to each home. 
+- **Home buyer users** (to be implemented in Haven version 2.0) may sign up to browse available homes and save their favorite homes to a list where they can also append personal notes to each home. 
 
 <br/>
 
@@ -114,7 +114,7 @@ After lunch, Rachel gets word from a client that they are no longer interested i
 
 <br/>
 
-####Home Buyer User
+####Home Buyer User (To be implemented in Haven version 2.0)
 
 Cleo, the motivated buyer:
 
@@ -168,44 +168,40 @@ The functionality of Haven.com is divided into two separate lists: MPV and PostM
 
 | Component                     | Priority | Estimated Time | Time Invested | Actual Time |
 | ----------------------------- | :------: | :------------: | :------------:| :---------: |
-| Bootstrap nav, footer         |    H     |     1 hr       |       hrs     |      hrs    |
-| Log in Modal (realtor,buyer)  |    H     |     3 hrs      |       hrs     |      hrs    |
-| Register Modal (realtor,buyer)|    H     |     3 hrs      |       hrs     |      hrs    |
-| List View (Bootstrap Grid Gallery)|    H |     1 hr       |       hrs     |      hrs    |
-| Create, edit modals           |    H     |     3 hrs      |       hrs     |      hrs    |
-| Realtor admin panel           |    M     |     2 hrs      |       hrs     |      hr     |
-| Error handling for required fields in modals|    L     |    2 hrs       |      hr       |     hr     |
-| CSS Fine-tuning UX            |    M     |     3 hrs      |       hrs     |      hr     |
-| Total                         |    H     |     18 hrs     |       hrs     |      hrs    |
+| Bulma nav, footer             |    H     |     1 hr       |       1hrs     |      1hrs    |
+| Log in view (realtor)         |    H     |     3 hrs      |       2hrs     |      2hrs    |
+| Register view (realtor)       |    H     |     3 hrs      |       3hrs     |      3hrs    |
+| Gallery View (Flex)           |    H     |     2 hr       |       3hrs     |      3hrs    |
+| Create view                   |    H     |     3 hrs      |       3hrs     |      3hrs    |
+| Edit view                     |    H     |     2 hrs      |       2hrs     |      2hrs    |
+| Realtor admin panel           |    M     |     2 hrs      |       3hrs     |      3hrs     |
+| Single listing view           |    H     |     3 hrs      |       5hrs     |      5hrs    |
+
+| Error handling for required fields in login view|    L   |    .5 hrs     |      .5hrs   |     .5hrs     |
+| CSS Fine-tuning UX            |    M     |     3 hrs     |       3hrs     |      3hrs     |
+| Total                         |    H     |     17.5 hrs  |       22.5hrs     |      22.5hrs    |
 
 #### PostMVP
 
 | Component                                      | Priority | Estimated Time | Time Invested | Actual Time |
 | ---------------------------------------------- | :------: | :------------: | :------------: | :---------: |
-| Sort Functions (price, newest, etc.)           |    H     |     2 hrs      |      hrs      |      hrs   |
-| Buyer ability to comment on favorite homes     |    H     |     4 hrs      |      hr       |     hr     |
-| Overlaying and connecting hearts to favorites list|    H     |    4 hrs       |      hr       |     hr     |
-| Creating maps view                             |    M     |     5 hrs      |      hr       |     hr     |
-| AWS File Drop (Realtor create listing view)    |    M     |     5 hrs      |      hr       |     hr     |
-| "New" Listing sticker on new listings          |    L     |     2 hrs      |      hr       |     hr     |
-| Sending email confirmations of registration    |    L     |    2 hrs       |      hr       |     hr     |
-| Autologin                                      |    L     |    2 hrs       |      hr       |     hr     |
-| Error handling - trying to save homes w/out login|    L     |    2 hrs       |      hr       |     hr     |
-| Total                                          |          |     28 hrs   |      hrs      |    hrs     |
+| Sort Functions (price, newest, etc.)           |    H     |     2 hrs      |      -hrs      |      -hrs   |
+| Buyer ability to comment on favorite homes     |    H     |     4 hrs      |      -hrs      |     -hrs    |
+| Overlaying and connecting hearts to favorites list|    H  |     4 hrs      |      -hrs      |     -hrs    |
+| Creating maps view                             |    M     |     5 hrs      |      -hrs      |     -hrs    |
+| AWS File Drop (Realtor create listing view)    |    M     |     5 hrs      |      -hrs      |     -hrs    |
+| "New" Listing sticker on new listings          |    L     |     2 hrs      |      -hrs      |     -hrs    |
+| Sending email confirmations of registration    |    L     |    2 hrs       |      -hrs      |     -hrs    |
+| Autologin                                      |    L     |    2 hrs       |      -hrs      |     -hrs    |
+| Error handling - trying to save homes w/out login|    L     |    2 hrs       |      -hrs      |     -hrs    |
+| Total                                          |          |     28 hrs   |      -hrs      |    -hrs     |
+
+
 
 ## Additional Libraries
 
 - Vue.js (DOM manipulation, sending and retrieving data to and from the backend)
-- Bootstrap (nav bar, modal menus, grid gallery, footer, mobile responsiveness)
-
-## Code Snippet
-
-Use this section to include a brief code snippet of functionality that you are proud of an a brief description
+- Bulma (nav bar, footer, mobile responsiveness)
+- BeautifulSoup (Python-based web scraper used to scrape real-world property listings from existing sites to populate the Haven database)
 
 
-## Issues and Resolutions
-
-Use this section to list of all major issues encountered and their resolution.
-
-**ERROR**: 
-**RESOLUTION**:
