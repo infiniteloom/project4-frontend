@@ -110,6 +110,11 @@
                     <b-input :placeholder="placeholder.street" v-model="newListing.street" type="text"></b-input>
                 </b-field>
 
+                <!-- City -->
+                <b-field  class="create-edit-fields">
+                    <b-input :placeholder="placeholder.city" v-model="newListing.city" type="text"></b-input>
+                </b-field>
+
                 <!-- County -->
                 <b-field class="create-edit-fields">
                     <b-input :placeholder="placeholder.county" v-model="newListing.county" type="text"></b-input>
@@ -191,32 +196,31 @@
             </div>
         </div>
 
-            <div class="create-edit-description">
-                <!-- Description label -->
-                <p class="edit-create-field-labels"> 
-                    Description:
-                </p>
-                <!-- Home Description -->
-                <b-field  class="create-edit-fields">  
-                    <!-- <b-input :placeholder="placeholder.description" v-model="newListing.description" type="text"></b-input> -->
-                    <textarea class="textarea" :placeholder="placeholder.description" v-model="newListing.description" type="text" rows="10"></textarea>
-                </b-field>
-            </div>
-
-
-            <!-- Edit button -->
-            <div class="form-button-container" v-if="$attrs.isCreateListing">
-                <b-button @click="createNewListing">Publish listing</b-button>
-            </div>
-
-            <!-- Create button -->
-            <div class="form-button-container" v-if="$attrs.isEditListing">
-                <b-button @click="editListing">Publish changes</b-button>
-            </div>
-            <p class="privacy-policy">
-                By publishing you agree to <br/>
-                Haven's Privacy Policy and Terms of Use.
+        <div class="create-edit-description">
+            <!-- Description label -->
+            <p class="edit-create-field-labels"> 
+                Description:
             </p>
+            <!-- Home Description -->
+            <b-field  class="create-edit-fields">  
+                <textarea class="textarea" :placeholder="placeholder.description" v-model="newListing.description" type="text" rows="10"></textarea>
+            </b-field>
+        </div>
+
+
+        <!-- Edit button -->
+        <div class="form-button-container" v-if="$attrs.isCreateListing">
+            <b-button @click="createNewListing">Publish listing</b-button>
+        </div>
+
+        <!-- Create button -->
+        <div class="form-button-container" v-if="$attrs.isEditListing">
+            <b-button @click="editListing">Publish changes</b-button>
+        </div>
+        <p class="privacy-policy">
+            By publishing you agree to <br/>
+            Haven's Privacy Policy and Terms of Use.
+        </p>
 
     </div>
 </div>
@@ -312,6 +316,7 @@ export default {
             })
         },
         createNewListing: function(){
+            console.log(this.newListing)
             fetch(`${this.$URL}/api/listings/`, {
                 method: 'POST',
                 headers:{
@@ -319,22 +324,22 @@ export default {
                 "Authorization" : `JWT ${this.$route.query.user.token}`
                 },
                 body: JSON.stringify({
-                type: this.newListing.type,
-                city: this.newListing.city,
-                county: this.newListing.county,
-                state: this.newListing.state,
-                zip: Number(this.newListing.zip),
-                street: this.newListing.street,
-                year_built: Number(this.newListing.year_built),
-                bed: Number(this.newListing.bed),
-                bath: Number(this.newListing.bath),
-                home_size: Number(this.newListing.home_size),
-                lot_size: parseFloat(this.newListing.lot_size),
-                price: parseFloat(this.newListing.price),
-                description: this.newListing.description,
-                image1: this.newListing.image1,
-                interested_buyers: [],
-                realtor: this.$route.query.user.id
+                    type: this.newListing.type,
+                    city: this.newListing.city,
+                    county: this.newListing.county,
+                    state: this.newListing.state,
+                    zip: Number(this.newListing.zip),
+                    street: this.newListing.street,
+                    year_built: Number(this.newListing.year_built),
+                    bed: Number(this.newListing.bed),
+                    bath: Number(this.newListing.bath),
+                    home_size: Number(this.newListing.home_size),
+                    lot_size: parseFloat(this.newListing.lot_size),
+                    price: parseFloat(this.newListing.price),
+                    description: this.newListing.description,
+                    image1: this.newListing.image1,
+                    interested_buyers: [],
+                    realtor: this.$route.query.user.id
                 })
             })
             .then(response => response.json())
@@ -427,9 +432,6 @@ export default {
         display: flex;
         justify-content: space-between;
     }
-    /* .beds-baths{
-        width: 45%;
-    } */
 }
 @media only screen and (min-width: 700px){
     .edit-create-cols-container{

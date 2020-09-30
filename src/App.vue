@@ -8,6 +8,7 @@
       :isHomeView="isHomeView"
       :isAdminPanel="isAdminPanel" 
       :allListings="houseData"
+      @loginRegister="handleLoginRegister($event)"
       @searching="handleSearching($event)"
       @returnHome="returnHome"
       @isAdminPanel="handleAdminPanel($event)" 
@@ -21,6 +22,8 @@
         :singleListingInfo="singleListingInfo"
         :realtorListings="realtorListings" 
         :isAdminPanel="isAdminPanel" 
+        :isLogin="isLogin"
+        :isRegister="isRegister"
         :isHomeView="isHomeView"
         :isCreateListing="isCreateListing"
         :isEditListing="isEditListing"
@@ -64,6 +67,8 @@ export default {
       user: {},
       houseData: null,
       realtorListings: [],
+      isLogin: false,
+      isRegister: false,
       isHomeView: false,
       isAdminPanel: false,
       isCreateListing: false,
@@ -85,7 +90,7 @@ export default {
     this.user.username = localStorage.getItem('username')
 
     // If user values are present, remain logged in.
-    if(this.user){
+    if(this.user.token){
       this.loggedIn = true
     }
   },
@@ -118,6 +123,22 @@ export default {
       this.user = {}
       localStorage.clear() // clear stored user data on log out
       this.$router.push('/')
+    },
+    handleLoginRegister: function(event){
+      this.isHomeView = false
+      // If login is requested, push route to login with isLogin = true
+      if(event == 'login'){
+        this.isLogin = true
+        this.isRegister = false
+        console.log('this is the login event in app.vue: ', event)
+        this.$router.push({ path: '/login'})
+      }else if(event =='register'){
+        // If register is requested, push route to register with isRegister = true
+        this.isRegister = true
+        this.isLogin = false
+        console.log('this is the register event in app.vue: ', event)
+        this.$router.push({ path: '/login'})
+      }
     },
     handleHouseData: function(event){
       this.houseData = event.results
@@ -210,7 +231,8 @@ export default {
 }
 </script>
 
-//  Global Styling
+
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
