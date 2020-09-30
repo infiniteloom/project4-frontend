@@ -59,7 +59,6 @@ export default {
   computed:{
     // Filter listings on home page based on search bar input 
     filteredListings: function () {
-      console.log('this is ithe house data in the filterst listings', this.houseData)
       if(this.$attrs.searchText){
         return this.houseData.filter((listing) => {
           return listing.city.toLowerCase().includes(this.$attrs.searchText.toLowerCase()) 
@@ -80,17 +79,14 @@ export default {
       .then(response => response.json())
       .then(data => {
         this.houseData = data.results
-        console.log(this.houseData)
         this.$emit('houseData', data)
       })
   },
   methods: {
     passSingleListingInfo: function(event){
-      console.log('passing single listing info from house info now in grid gallery', event)
       this.$emit('singleListingInfo', event)
     },
     searching: function(event){
-      console.log('searching in home.vue ', event)
       this.$emit('searching', event)
     }
   }

@@ -45,11 +45,9 @@ export default {
   props: ["house"],
   methods: {
         handleSelectingListing: function(){
-            //   console.log(this.house)
             this.$emit("singleListingInfo", this.house)
         },
         handleEditListing: function(){
-            console.log('edit listing is being triggered')
             this.$emit("editListing", this.house)
         },
         handleDeleteListing: function(){

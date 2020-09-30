@@ -30,15 +30,10 @@
 
       <template slot="end">
         <b-navbar-item tag="div">
-          <!-- Sign up -->
+
+          <!-- Login/Register buttons container -->
           <div class="buttons">
-            <!-- <router-link to="/login" v-if="!loggedIn">
-              <a v-if="!loggedIn" class="button login-reg" href="#">
-                <strong>
-                Sign up
-                </strong>
-              </a>
-            </router-link> -->
+            <!-- Login link -->
             <button 
             v-if="!loggedIn" 
             class="button drop-down-button" 
@@ -46,22 +41,19 @@
               Log in
             </button>
 
-            <!-- Log in -->
-            <!-- <router-link to="/login" v-if="!loggedIn">
-              <a v-if="!loggedIn" class="button login-reg">
-                Log in
-              </a>
-            </router-link> -->
+            <!-- Sign up link -->
             <button 
             v-if="!loggedIn" 
             class="button drop-down-button" 
             @click="handleIsRegister">
               Sign up
             </button>
+
           </div>
         </b-navbar-item>
-        <!-- Manage listings -->
 
+
+        <!-- Manage listings -->
         <b-navbar-item v-if="loggedIn" href="#">
           <button class="button drop-down-button" 
             :isAdminPanel="$attrs.isAdminPanel" 
@@ -104,28 +96,16 @@ export default {
       this.$emit('logout')
     },
     isAdminPanel: function(){
-      // console.log('this is admin panel trigger in header ')
       this.$emit('isAdminPanel')
     },
     isCreateListing: function(){
-      // console.log('this is the create new listing trigger in header')
       this.$emit('isCreateListing')
     },
     handleIsLogin: function(){
-      console.log('this is islogin trigger in header')
       this.$emit('loginRegister', 'login')
-      // this.isLogin = true
-      // this.isRegister = false
-      // this.$router.push({ path: '/login', query:{isLogin: this.isLogin}})
     },
     handleIsRegister: function(){
-      console.log('this is isregister trigger in header')
       this.$emit('loginRegister', 'register')
-
-      // this.isRegister = true
-      // this.isLogin = false
-      // console.log(this.isRegister)
-      // this.$router.push({ path: '/login', query:{isRegister: this.isRegister}})
     },
     returnHome: function(){
       if(!this.$attrs.isHomeView){
@@ -133,7 +113,6 @@ export default {
       }
     },
     searching: function(){
-      console.log('this is search text in header', this.search)
       this.$emit('searching', this.search)
     }
   }

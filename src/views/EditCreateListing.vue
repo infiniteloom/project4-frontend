@@ -269,9 +269,7 @@ export default {
     },
     mounted: function() {
         if(this.$attrs.isEditListing){
-            // console.log('this is the listing we want to edit: ', this.$attrs.singleListingInfo.lot_size)
             let singleListing = this.$attrs.singleListingInfo
-            // console.log('this is single listing stuff', singleListing.lot_size.toString())
             this.newListing.type= singleListing.type, 
             this.newListing.city = singleListing.city,
             this.newListing.county = singleListing.county,
@@ -290,11 +288,9 @@ export default {
     },
     methods:{
         selectType(event) {
-            // console.log(event.target.value)
             this.newListing.type = event.target.value
         },
         selectState: function(event){
-            // console.log(event.target.value)
             this.newListing.state = event.target.value
         },
         handleLogin: function(){
@@ -311,12 +307,10 @@ export default {
             })
             .then(response => response.json())
             .then(data => {
-                // console.log(data)
                 this.$emit("loggedIn", data)
             })
         },
         createNewListing: function(){
-            console.log(this.newListing)
             fetch(`${this.$URL}/api/listings/`, {
                 method: 'POST',
                 headers:{
@@ -378,7 +372,6 @@ export default {
             .then(response => response.json())
             .then(data => {
                 let editedListing = data
-                console.log('Successfully edited the listing: ', editedListing)
                 this.$emit("editedNewListing")
             })
         }

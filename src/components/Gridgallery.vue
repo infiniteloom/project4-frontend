@@ -36,18 +36,15 @@ export default {
   props: ['houseData'],
   methods: {
     selectSingleListing: function (event){
-      console.log('this is the selectsinglelisting object from the grid gallery on click event per house.', event.target)
       this.$attrs.house = this.houseData[event.target.id] 
     },
     passSingleListingInfo: function(event){
-      console.log('passing single listing info from house info now in grid gallery', event)
       this.$emit('singleListingInfo', event)
     },
     passDeletingListing: function(event){
       this.$emit('deletingListing', event)
     },
     passEditListing: function(event){
-      console.log('passing edit listing from house info now in grid gallery', event)
       this.$emit('editListing', event)
     },
     searching: function(event){

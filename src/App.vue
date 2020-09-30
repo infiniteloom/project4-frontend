@@ -96,7 +96,6 @@ export default {
   },
   methods:{
     handleSearching: function(event){
-      console.log('searching text reaching app.vue: ', event)
       this.searchText = event
     },
     forceRerender: function() {
@@ -130,13 +129,11 @@ export default {
       if(event == 'login'){
         this.isLogin = true
         this.isRegister = false
-        console.log('this is the login event in app.vue: ', event)
         this.$router.push({ path: '/login'})
       }else if(event =='register'){
         // If register is requested, push route to register with isRegister = true
         this.isRegister = true
         this.isLogin = false
-        console.log('this is the register event in app.vue: ', event)
         this.$router.push({ path: '/login'})
       }
     },

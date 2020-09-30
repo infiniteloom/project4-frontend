@@ -194,7 +194,6 @@ export default{
             })
             .then(response => response.json())
             .then(data => {
-                console.log('this is the res from registering', data)
                 this.$emit("loggedIn", data)
             })
         },
@@ -213,7 +212,7 @@ export default{
             })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 this.$emit("loggedIn", data)
             })
         },

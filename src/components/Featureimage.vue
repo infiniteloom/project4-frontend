@@ -38,7 +38,6 @@ export default {
     },
     methods: {
       searching: function(){
-        console.log('this is search text in feature image', this.search)
         this.$emit('searching', this.search)
       }
     }
