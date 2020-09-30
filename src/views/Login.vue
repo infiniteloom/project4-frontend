@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class='login-view-container'>
+        <div class='login-view-container' v-if="$attrs.isLogin">
             <!-- Login welcome -->
             <div class='welcome-message-login'>
                 <h4>{{loginWelcome}}</h4>
@@ -21,7 +21,7 @@
         </div>
 
 
-        <div class="reg-view-container">
+        <div class="reg-view-container" v-if="$attrs.isRegister">
             <!-- Register welcome -->
             <div class='welcome-message-login'>
                 <h4>{{registerWelcome}}</h4>
@@ -121,7 +121,7 @@
                         Account details
                     </p>
                 <b-field>
-                        <b-input class="register-fields" placeholder="Enter email" v-bind:class="{'error':$attrs.error}" v-model="realtor.username" type="email"></b-input>
+                        <b-input class="register-fields" placeholder="Enter email" v-bind:class="{'error':$attrs.error}" v-model="realtor.email" type="email"></b-input>
                     </b-field>
                     <b-field>
                         <b-input class="register-fields" placeholder="Enter password" v-bind:class="{'error':$attrs.error}"  type="password" v-model="realtor.password" maxlength="30"></b-input>
@@ -154,7 +154,6 @@
 <script>
 export default{
     name: "Login",
-    props:["URL"],
     data: function(){
         return{
             username:'',
@@ -183,9 +182,14 @@ export default{
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    username: this.username,
-                    email: this.username,
-                    password: this.password
+                    username: this.realtor.email,
+                    email: this.realtor.email,
+                    password: this.realtor.password,
+                    firstName: this.realtor.firstName,
+                    lastName: this.realtor.lastName,
+                    state: this.realtor.state,
+                    county: this.realtor.county,
+                    zip: this.realtor.zip
                 })
             })
             .then(response => response.json())
