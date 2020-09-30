@@ -32,7 +32,7 @@
         <b-navbar-item tag="div">
           <!-- Sign up -->
           <div class="buttons">
-            <router-link to="/signup" v-if="!loggedIn">
+            <router-link to="/login" v-if="!loggedIn">
               <a v-if="!loggedIn" class="button login-reg" href="#">
                 <strong>
                 Sign up
