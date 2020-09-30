@@ -185,8 +185,8 @@ export default{
                     username: this.realtor.email,
                     email: this.realtor.email,
                     password: this.realtor.password,
-                    firstName: this.realtor.firstName,
-                    lastName: this.realtor.lastName,
+                    first_name: this.realtor.firstName,
+                    last_name: this.realtor.lastName,
                     state: this.realtor.state,
                     county: this.realtor.county,
                     zip: this.realtor.zip
