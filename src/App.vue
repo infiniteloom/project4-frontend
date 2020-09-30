@@ -85,7 +85,7 @@ export default {
     this.user.username = localStorage.getItem('username')
 
     // If user values are present, remain logged in.
-    if(this.user){
+    if(this.user.token){
       this.loggedIn = true
     }
   },
@@ -210,7 +210,8 @@ export default {
 }
 </script>
 
-//  Global Styling
+
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
